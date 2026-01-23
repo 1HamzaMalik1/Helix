@@ -3,7 +3,6 @@ export const companyInfo = {
   tagline: "Crafting Digital Excellence Through Code & Creativity",
   description: "HelixCore Studio is a premier software development house specializing in game development, full-stack web solutions, and AI-powered applications. With 5+ years of industry expertise.",
   ceo: "Hamza Hakim",
-  cto: "Samran Shoukat",
   experience: "5+ years",
   email: "helixcorestudio@gmail.com",
   adminEmail: "hamzahakim12235@gmail.com",
@@ -60,15 +59,6 @@ export const teamMembers = [
     image: "/hamza.png",
     linkedin: "https://www.linkedin.com/in/hamza-hakim1/",
     github: "https://github.com/1HamzaMalik1"
-  },
-  {
-    name: "Samran Shoukat",
-    role: "CTO & Full-Stack Developer",
-    bio: "Senior full-stack developer specializing in web technologies and AI integration. Advanced degree in Software Engineering with expertise in building scalable enterprise solutions.",
-    expertise: ["Full-Stack Development", "AI/ML Integration", "Cloud Architecture", "Database Engineering"],
-    image: "/team/samran.jpg",
-    linkedin: "#",
-    github: "#"
   }
 ];
 

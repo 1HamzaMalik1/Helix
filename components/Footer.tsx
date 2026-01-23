@@ -18,7 +18,7 @@ export default function Footer() {
                 alt="Company Logo" 
                 width={160} 
                 height={50} 
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
             </div>
             <p className="text-sm opacity-70 mb-6" style={{ color: '#2A2E30' }}>

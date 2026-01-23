@@ -35,77 +35,78 @@ export default function Team() {
     <section id="team" className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         
-        {/* Section Header with Glitch Effect */}
-        <div className="mb-16 relative">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
+        {/* Section Header */}
+        <div className="mb-12 text-center relative">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-[2px]" style={{ backgroundColor: '#F46530' }} />
             <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#F46530' }}>
-              Masterminds
+              Leadership Excellence
             </span>
+            <div className="w-12 h-[2px]" style={{ backgroundColor: '#F46530' }} />
           </div>
 
-          <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight" style={{ color: '#2A2E30' }}>
-              <span className="relative">
-                <span className="relative z-10">Technical</span>
-              </span>
-              <br />
-              <span className="opacity-90">Architects</span>
-            </h2>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
+            Meet Our
+            <span className="block mt-2" style={{ color: '#F46530' }}>Technical Architect</span>
+          </h2>
 
-            <p className="text-sm md:text-md opacity-70" style={{ color: '#2A2E30' }}>
-              Led by industry veterans {companyInfo.ceo} and {companyInfo.cto} with {companyInfo.experience} of 
-              delivering exceptional digital solutions to clients worldwide.
-            </p>
-          </div>
-
-          {/* Floating Elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
-            <div className="absolute top-0 right-0 w-16 h-16 rounded-full border" style={{ borderColor: '#F46530' }} />
-            <div className="absolute bottom-0 left-0 w-8 h-8 rounded-full" style={{ backgroundColor: '#2A2E30' }} />
-          </div>
+          <p className="text-base md:text-lg opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
+            Led by industry veteran {companyInfo.ceo} with {companyInfo.experience} of 
+            delivering exceptional digital solutions to clients worldwide.
+          </p>
         </div>
 
-        {/* Interactive Team Grid */}
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        {/* Featured Leader Profile */}
+        <div ref={ref} className="mb-16 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <div
               key={member.name}
               onMouseEnter={() => setHoveredMember(member.name)}
               onMouseLeave={() => setHoveredMember(null)}
-              className={`group relative overflow-hidden rounded-2xl transition-all duration-700 ${
+              className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
-              style={{ animationDelay: `${index * 200}ms` }}
             >
-              {/* Card Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white rounded-2xl" />
+              {/* Animated Background Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" />
               
               {/* Animated Border */}
-              <div className="absolute inset-0 rounded-2xl p-[1.5px]">
-                <div className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
+              <div className="absolute inset-0 rounded-3xl p-[2px]">
+                <div className={`absolute inset-0 rounded-3xl transition-all duration-500 ${
                   hoveredMember === member.name 
                     ? 'bg-gradient-to-r from-[#F46530] via-[#FF8B66] to-[#F46530] opacity-100' 
-                    : 'bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-30'
+                    : 'bg-gradient-to-r from-[#F46530]/20 via-gray-200 to-[#F46530]/20 opacity-50'
                 }`} />
-                <div className="absolute inset-[1.5px] bg-white rounded-2xl" />
+                <div className="absolute inset-[2px] bg-white rounded-3xl" />
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute top-8 right-8 w-32 h-32 opacity-5">
+                <div className="absolute inset-0 rounded-full" style={{ 
+                  background: 'radial-gradient(circle, #F46530 0%, transparent 70%)' 
+                }} />
+              </div>
+              <div className="absolute bottom-8 left-8 w-24 h-24 opacity-5">
+                <div className="absolute inset-0 rounded-full" style={{ 
+                  background: 'radial-gradient(circle, #2A2E30 0%, transparent 70%)' 
+                }} />
               </div>
 
               {/* Content */}
-              <div className="relative z-10 p-8">
-                <div className="flex items-start gap-6">
+              <div className="relative z-10 p-10 lg:p-12">
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
                   
-                  {/* Avatar with Hover Effect */}
-                  <div className="relative">
-                    <div className={`w-20 h-20 rounded-full overflow-hidden border-4 transition-all duration-500 group-hover:scale-110 ${
+                  {/* Enhanced Avatar Section */}
+                  <div className="relative flex-shrink-0">
+                    <div className={`w-40 h-40 lg:w-48 lg:h-48 rounded-3xl overflow-hidden border-4 transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 ${
                       hoveredMember === member.name ? 'border-[#F46530]' : 'border-white'
-                    }`} style={{ boxShadow: '0 8px 32px rgba(42, 46, 48, 0.1)' }}>
+                    }`} style={{ boxShadow: '0 20px 60px rgba(42, 46, 48, 0.15)' }}>
                       {member.image && !member.image.includes('team/samran') ? (
                         <Image
                           src={member.image}
                           alt={member.name}
-                          width={80}
-                          height={80}
+                          width={192}
+                          height={192}
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLElement;
@@ -119,31 +120,36 @@ export default function Team() {
                       <div className={`w-full h-full bg-gradient-to-br from-[#2A2E30] to-[#4A4F53] flex items-center justify-center ${
                         member.image && !member.image.includes('team/samran') ? 'hidden' : ''
                       }`}>
-                        <span className="text-2xl font-bold text-white">
+                        <span className="text-5xl font-bold text-white">
                           {member.name.split(' ').map(n => n.charAt(0)).join('')}
                         </span>
                       </div>
                     </div>
                     
-                    {/* Status Indicator */}
-                    <div className={`absolute -bottom-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center border-2 border-white transition-all duration-300 ${
+                    {/* Status Badge */}
+                    <div className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full flex items-center gap-2 border-2 border-white transition-all duration-300 ${
                       hoveredMember === member.name ? 'scale-110' : ''
-                    }`} style={{ backgroundColor: '#F46530' }}>
-                      <Award className="w-4 h-4 text-white" />
+                    }`} style={{ 
+                      backgroundColor: '#F46530',
+                      boxShadow: '0 8px 24px rgba(244, 101, 48, 0.3)'
+                    }}>
+                      <Award className="w-5 h-5 text-white" />
+                      <span className="text-sm font-semibold text-white">Founder</span>
                     </div>
 
-                    {/* Floating Particles */}
+                    {/* Animated Particles */}
                     {hoveredMember === member.name && (
                       <>
-                        {[...Array(3)].map((_, i) => (
+                        {[...Array(6)].map((_, i) => (
                           <div
                             key={i}
-                            className="absolute w-1 h-1 rounded-full animate-ping"
+                            className="absolute w-2 h-2 rounded-full animate-ping"
                             style={{
                               backgroundColor: '#F46530',
-                              top: `${Math.random() * 80}%`,
-                              left: `${Math.random() * 80}%`,
-                              animationDelay: `${i * 200}ms`
+                              top: `${Math.random() * 100}%`,
+                              left: `${Math.random() * 100}%`,
+                              animationDelay: `${i * 150}ms`,
+                              opacity: 0.6
                             }}
                           />
                         ))}
@@ -152,79 +158,93 @@ export default function Team() {
                   </div>
 
                   {/* Member Details */}
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h3 className="text-lg font-semibold mb-1" style={{ color: '#2A2E30' }}>
-                          {member.name}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#F46530' }} />
-                          <p className="text-sm font-medium" style={{ color: '#F46530' }}>
-                            {member.role}
-                          </p>
-                        </div>
+                  <div className="flex-1 text-center lg:text-left">
+                    <div className="mb-6">
+                      <h3 className="text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#2A2E30' }}>
+                        {member.name}
+                      </h3>
+                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                        <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#F46530' }} />
+                        <p className="text-lg font-semibold" style={{ color: '#F46530' }}>
+                          {member.role}
+                        </p>
                       </div>
                       
                       {/* Social Links */}
-                      <div className={`flex items-center gap-2 transition-all duration-500 ${
-                        hoveredMember === member.name ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-                      }`}>
+                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
                         {member.linkedin && member.linkedin !== '#' && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                            <Linkedin className="w-4 h-4" style={{ color: '#2A2E30' }} />
+                          <a 
+                            href={member.linkedin} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="p-3 rounded-xl hover:scale-110 transition-all duration-300"
+                            style={{ 
+                              backgroundColor: 'rgba(244, 101, 48, 0.1)',
+                              color: '#F46530'
+                            }}
+                          >
+                            <Linkedin className="w-5 h-5" />
                           </a>
                         )}
                         {member.github && member.github !== '#' && (
-                          <a href={member.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                            <Github className="w-4 h-4" style={{ color: '#2A2E30' }} />
+                          <a 
+                            href={member.github} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="p-3 rounded-xl hover:scale-110 transition-all duration-300"
+                            style={{ 
+                              backgroundColor: 'rgba(42, 46, 48, 0.1)',
+                              color: '#2A2E30'
+                            }}
+                          >
+                            <Github className="w-5 h-5" />
                           </a>
                         )}
                       </div>
                     </div>
 
                     {/* Bio */}
-                    <p className="text-sm mb-6 leading-relaxed opacity-75" style={{ color: '#2A2E30' }}>
+                    <p className="text-base mb-8 leading-relaxed opacity-80" style={{ color: '#2A2E30' }}>
                       {member.bio}
                     </p>
 
-                    {/* Expertise */}
-                    <div className="mb-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Briefcase className="w-4 h-4" style={{ color: '#F46530' }} />
-                        <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#2A2E30' }}>
-                          Expertise
+                    {/* Expertise Section */}
+                    <div className="mb-6">
+                      <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                        <Briefcase className="w-5 h-5" style={{ color: '#F46530' }} />
+                        <span className="text-sm font-bold uppercase tracking-wider" style={{ color: '#2A2E30' }}>
+                          Core Expertise
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        {member.expertise.slice(0, 3).map((skill, idx) => (
+                      <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                        {member.expertise.map((skill, idx) => (
                           <span
                             key={skill}
-                            className={`px-3 py-1 rounded-lg text-xs font-medium transition-all duration-300 ${
-                              idx === 0 ? 'bg-[#F46530] text-white' : 'bg-gray-100'
-                            } ${hoveredMember === member.name ? 'translate-y-0' : 'translate-y-1'}`}
+                            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-105 ${
+                              hoveredMember === member.name ? 'translate-y-0' : 'translate-y-1'
+                            }`}
                             style={{ 
-                              backgroundColor: idx === 0 ? '#F46530' : 'rgba(42, 46, 48, 0.05)',
-                              color: idx === 0 ? '#FFFFFF' : '#2A2E30',
-                              animationDelay: `${idx * 100}ms`
+                              backgroundColor: idx % 2 === 0 ? '#F46530' : 'rgba(42, 46, 48, 0.08)',
+                              color: idx % 2 === 0 ? '#FFFFFF' : '#2A2E30',
+                              animationDelay: `${idx * 100}ms`,
+                              boxShadow: idx % 2 === 0 ? '0 4px 12px rgba(244, 101, 48, 0.2)' : 'none'
                             }}
                           >
                             {skill}
                           </span>
                         ))}
-                        {member.expertise.length > 3 && (
-                          <span className="px-3 py-1 rounded-lg text-xs font-medium opacity-60" 
-                                style={{ backgroundColor: 'rgba(42, 46, 48, 0.05)', color: '#2A2E30' }}>
-                            +{member.expertise.length - 3}
-                          </span>
-                        )}
                       </div>
                     </div>
 
                     {/* Credentials */}
-                    <div className="flex items-center gap-2 text-sm opacity-60" style={{ color: '#2A2E30' }}>
-                      <BookOpen className="w-4 h-4" />
-                      <span>{companyInfo.degree}</span>
+                    <div className="flex items-center justify-center lg:justify-start gap-3 pt-6 border-t" 
+                         style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(244, 101, 48, 0.1)' }}>
+                        <BookOpen className="w-5 h-5" style={{ color: '#F46530' }} />
+                      </div>
+                      <span className="text-base font-medium" style={{ color: '#2A2E30' }}>
+                        {companyInfo.degree}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -317,8 +337,7 @@ export default function Team() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
                 <p className="text-sm md:text-md leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
-                  Founded by <span className="font-semibold" style={{ color: '#F46530' }}>{companyInfo.ceo}</span> and{' '}
-                  <span className="font-semibold" style={{ color: '#F46530' }}>{companyInfo.cto}</span>, HelixCore Studio 
+                  Founded by <span className="font-semibold" style={{ color: '#F46530' }}>{companyInfo.ceo}</span>, HelixCore Studio 
                   has established itself as a trusted partner for businesses seeking cutting-edge digital solutions. 
                   With a proven track record of over 50 successful projects, we deliver excellence across game development, 
                   web applications, and AI integration.
