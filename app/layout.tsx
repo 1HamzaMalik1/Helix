@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: seoContent.title,
   description: seoContent.description,
   keywords: seoContent.keywords,
-  authors: [{ name: companyInfo.ceo }, { name: companyInfo.cto }],
+  authors: [{ name: companyInfo.ceo }],
   openGraph: {
     title: seoContent.title,
     description: seoContent.description,
