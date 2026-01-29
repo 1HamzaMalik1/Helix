@@ -131,19 +131,23 @@ export default function Navbar() {
               ))}
               
               {/* CTA Button */}
-              <div className="relative ml-4 group">
-                <div className="absolute -inset-1 bg-[#F46530]/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="relative px-5 py-2 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md hover:scale-105 flex items-center text-sm font-semibold"
+              <div className="flex items-center gap-2 ml-4">
+                <a
+                  href="https://calendly.com/hamzahakim12235"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group px-5 py-2 rounded-xl hover:shadow-lg transition-all duration-300 shadow-md hover:scale-105 flex items-center text-sm font-semibold"
                   style={{ 
                     backgroundColor: 'var(--secondary, #F46530)',
                     color: 'var(--accent, #FFFFFF)'
                   }}
                 >
-                  Start Project
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                  <div className="absolute -inset-1 bg-[#F46530]/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                  <span className="relative flex items-center gap-2">
+                    Book Meeting
+                    <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </a>
               </div>
             </div>
 
@@ -282,19 +286,21 @@ export default function Navbar() {
                 <p className="text-sm opacity-70 mb-4" style={{ color: 'var(--primary, #2A2E30)' }}>
                   Partner with us to build <strong>enterprise-grade solutions</strong> that drive real business value.
                 </p>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full px-6 py-4 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-center group"
+                <a
+                  href="https://calendly.com/hamzahakim12235"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-6 py-4 rounded-xl hover:shadow-lg transition-all duration-300 font-semibold text-center group flex items-center justify-center"
                   style={{ 
                     backgroundColor: 'var(--secondary, #F46530)',
                     color: 'var(--accent, #FFFFFF)'
                   }}
                 >
                   <span className="flex items-center justify-center">
-                    Start Project
+                    Book a Meeting
                     <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </button>
+                </a>
               </div>
             </div>
 

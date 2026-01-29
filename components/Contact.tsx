@@ -150,17 +150,18 @@ ${formData.message}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-6">
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
-            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#F46530' }}>
+            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
               Get In Touch
             </span>
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
           </div>
           
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
-            Let's Build Something <span style={{ color: '#F46530' }}>Exceptional</span>
+            Let's Build Something
+            <span className="block mt-2" style={{ color: '#F46530' }}>Exceptional</span>
           </h2>
           
-          <p className="text-sm md:text-md opacity-70 max-w-2xl mx-auto" style={{ color: '#2A2E30' }}>
+          <p className="text-sm md:text-md opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
             Partner with us to transform your vision into reality. We provide comprehensive project proposals 
             within 24 hours and ensure complete transparency throughout the development process.
           </p>

@@ -4,8 +4,9 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import { 
   Search, Palette, Code, TestTube2, Rocket, Settings,
-  ChevronRight, Clock, CheckCircle, Target, BarChart3, Shield
+  ChevronRight, Clock, CheckCircle, Target, BarChart3, Shield, Calendar
 } from 'lucide-react';
+import { companyInfo } from '@/lib/constants';
 
 export default function Process() {
   const { ref, inView } = useInView({
@@ -96,22 +97,22 @@ export default function Process() {
       <div className="container mx-auto px-4 lg:px-8">
         
         {/* Section Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-12 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
-            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#F46530' }}>
+            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
               Our Process
             </span>
+            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
           </div>
           
-          <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight" style={{ color: '#2A2E30' }}>
-              Our Methodology
-            </h2>
-            <p className="text-sm md:text-md opacity-70" style={{ color: '#2A2E30' }}>
-              A structured approach ensuring quality, transparency, and successful project delivery.
-            </p>
-          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
+            Structured Development
+            <span className="block mt-2" style={{ color: '#F46530' }}>Methodology</span>
+          </h2>
+          <p className="text-sm md:text-md opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
+            A proven approach ensuring quality, transparency, and successful project delivery
+          </p>
         </div>
 
         {/* Mobile-Friendly Process Cards */}
@@ -252,39 +253,22 @@ export default function Process() {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="mb-6">
-            <h3 className="text-lg font-bold mb-2" style={{ color: '#2A2E30' }}>
-              Ready to Get Started?
-            </h3>
-            <p className="text-sm opacity-70 max-w-md mx-auto" style={{ color: '#2A2E30' }}>
-              Partner with us to deliver your project on time and on budget.
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group px-6 py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-1.5"
-              style={{ 
-                backgroundColor: '#F46530',
-                color: '#FFFFFF'
-              }}
-            >
-              <span>Start Project</span>
-              <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </button>
-            
-            <button
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 py-3 rounded-lg font-semibold border transition-colors duration-200 hover:bg-gray-50"
-              style={{ 
-                borderColor: '#2A2E30',
-                color: '#2A2E30'
-              }}
-            >
-              View Services
-            </button>
-          </div>
+          <p className="text-base mb-6 opacity-70" style={{ color: '#2A2E30' }}>
+            Ready to start your project with our proven methodology?
+          </p>
+          <a
+            href={companyInfo.calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
+            style={{ 
+              backgroundColor: '#F46530', 
+              color: '#FFFFFF'
+            }}
+          >
+            <Calendar className="w-5 h-5" />
+            <span>Book a Meeting</span>
+          </a>
         </div>
       </div>
     </section>

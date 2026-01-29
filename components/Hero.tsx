@@ -233,7 +233,6 @@ export default function Hero() {
     </section>
   );
 }
-
 // C# syntax highlighting
 function highlightCSharp(line: string) {
   return (
@@ -255,3 +254,4 @@ function highlightCSharp(line: string) {
     </>
   );
 }
+

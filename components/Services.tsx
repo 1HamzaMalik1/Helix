@@ -1,8 +1,9 @@
 'use client';
 
 import { useInView } from 'react-intersection-observer';
-import { Gamepad2, Globe, Brain, Megaphone, Code, Smartphone, ArrowRight, Zap, Sparkles } from 'lucide-react';
-import { services } from '@/lib/constants';
+import { useState } from 'react';
+import { Gamepad2, Globe, Brain, Megaphone, Code, Smartphone, ShoppingCart, Bot, Cog, Calendar, ChevronDown, Check, ArrowRight } from 'lucide-react';
+import { services, companyInfo } from '@/lib/constants';
 
 const iconMap = {
   Gamepad2,
@@ -10,7 +11,10 @@ const iconMap = {
   Brain,
   Megaphone,
   Code,
-  Smartphone
+  Smartphone,
+  ShoppingCart,
+  Bot,
+  Cog
 };
 
 export default function Services() {
@@ -19,226 +23,282 @@ export default function Services() {
     triggerOnce: true
   });
 
-  const techKeywords = [
-    'React', 'Unity', 'Node.js', 'Python', 'AI/ML', 'AWS', 'Docker', 'Flutter',
-    'TypeScript', 'Three.js', 'Next.js', 'TensorFlow', 'Firebase', 'MongoDB'
-  ];
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  const toggleCard = (index: number) => {
+    setExpandedCard(expandedCard === index ? null : index);
+  };
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-white overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
 
         {/* Section Header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-12 text-center" ref={ref}>
+          <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
-            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#F46530' }}>
-              Services
+            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
+              Our Services
             </span>
+            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
           </div>
 
-          <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight" style={{ color: '#2A2E30' }}>
-              <span className="relative">
-                <span className="relative z-10">Technical Excellence</span>
-                <div className="absolute -bottom-1 left-0 w-20 h-1 rounded-full" style={{ backgroundColor: '#F46530' }} />
-              </span>
-            </h2>
+          <h2 className={`text-3xl lg:text-4xl font-bold mb-6 leading-tight transition-all duration-700 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{ color: '#2A2E30' }}>
+            Professional Development
+            <span className="block mt-2" style={{ color: '#F46530' }}>Solutions That Scale</span>
+          </h2>
 
-            <p className="text-sm md:text-md opacity-70" style={{ color: '#2A2E30' }}>
-              Cutting-edge solutions built with precision engineering and innovative technology.
-            </p>
-          </div>
+          <p className={`text-sm md:text-md opacity-70 max-w-3xl mx-auto transition-all duration-700 delay-100 ${
+            inView ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{ color: '#2A2E30' }}>
+            Comprehensive technology services designed to accelerate your business growth
+          </p>
         </div>
 
-        {/* Tech Keywords Scroller */}
-        <div className="mb-12 overflow-hidden">
-          <div className="flex space-x-6 animate-marquee">
-            {[...techKeywords, ...techKeywords].map((keyword, idx) => (
-              <div
-                key={idx}
-                className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap backdrop-blur-sm"
-                style={{
-                  color: '#FFFFFF',
-                  backgroundColor: 'rgba(42, 46, 48, 0.9)'
-                }}
-              >
-                <div className="w-1.5 h-1.5 rounded-full mr-2 animate-pulse" style={{ backgroundColor: '#F46530' }} />
-                {keyword}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Enhanced Services Grid */}
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Interactive Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
+            const isExpanded = expandedCard === index;
+            const isHovered = hoveredCard === index;
+            
             return (
               <div
                 key={service.title}
-                className={`group relative overflow-hidden rounded-2xl transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}
-                style={{ animationDelay: `${index * 150}ms` }}
+                className={`group relative bg-white rounded-2xl border transition-all duration-700 cursor-pointer ${
+                  inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } ${isExpanded ? 'md:col-span-2 lg:col-span-1 shadow-2xl' : 'hover:shadow-xl'}`}
+                style={{ 
+                  borderColor: isHovered || isExpanded ? '#F46530' : 'rgba(42, 46, 48, 0.08)',
+                  transitionDelay: `${index * 100}ms`,
+                  transform: isHovered ? 'translateY(-8px)' : 'translateY(0)'
+                }}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+                onClick={() => toggleCard(index)}
               >
-                {/* Card Background Layers */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-gray-50 rounded-2xl" />
+                {/* Gradient Overlay on Hover */}
+                <div 
+                  className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
+                    isHovered || isExpanded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(244, 101, 48, 0.03) 0%, rgba(244, 101, 48, 0.01) 100%)'
+                  }}
+                />
 
-                {/* Animated Border */}
-                <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-br from-transparent via-gray-200 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white to-white rounded-2xl" />
-                </div>
+                {/* Animated Corner Accent */}
+                <div 
+                  className={`absolute top-0 right-0 w-20 h-20 rounded-bl-full transition-all duration-500 ${
+                    isHovered || isExpanded ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                  }`}
+                  style={{
+                    background: 'radial-gradient(circle at top right, rgba(244, 101, 48, 0.1), transparent)'
+                  }}
+                />
 
-                {/* Floating Particles */}
-                <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                <div className="relative z-10 p-6">
+                  {/* Icon with Pulsing Effect */}
+                  <div className="mb-4 relative">
+                    <div 
+                      className={`absolute inset-0 rounded-lg transition-all duration-500 ${
+                        isHovered ? 'animate-pulse' : ''
+                      }`}
                       style={{
-                        backgroundColor: '#F46530',
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDelay: `${i * 100}ms`
+                        backgroundColor: 'rgba(244, 101, 48, 0.1)',
+                        filter: 'blur(12px)'
                       }}
                     />
-                  ))}
-                </div>
-
-                {/* Card Content */}
-                <div className="relative z-10 p-8">
-                  {/* Icon Container with Glow Effect */}
-                  <div className="relative mb-6">
-                    <div className="absolute -inset-4 bg-gradient-to-br from-[#F46530]/20 to-transparent rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative">
-                      <div className="inline-flex p-4 rounded-xl border backdrop-blur-sm group-hover:scale-110 group-hover:rotate-3 transition-all duration-500"
-                        style={{
-                          backgroundColor: 'rgba(244, 101, 48, 0.08)',
-                          borderColor: 'rgba(244, 101, 48, 0.2)',
-                          color: '#F46530'
-                        }}>
-                        <Icon className="w-6 h-6" />
-                      </div>
+                    <div 
+                      className={`relative inline-flex p-4 rounded-lg transition-all duration-300 ${
+                        isHovered || isExpanded ? 'scale-110 rotate-3' : 'scale-100 rotate-0'
+                      }`}
+                      style={{
+                        backgroundColor: isHovered || isExpanded ? 'rgba(244, 101, 48, 0.15)' : 'rgba(244, 101, 48, 0.08)',
+                        color: '#F46530'
+                      }}
+                    >
+                      {Icon && <Icon className="w-7 h-7" />}
                     </div>
                   </div>
 
-                  {/* Service Title with Underline */}
-                  <h3 className="text-lg font-semibold mb-4 relative inline-block"
-                    style={{ color: '#2A2E30' }}>
-                    {service.title}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-500 ease-out"
-                      style={{ backgroundColor: '#F46530' }} />
-                  </h3>
+                  {/* Title with Animated Underline */}
+                  <div className="mb-3">
+                    <h3 className="text-lg font-bold mb-1 relative inline-block" style={{ color: '#2A2E30' }}>
+                      {service.title}
+                      <span 
+                        className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-500 ${
+                          isHovered || isExpanded ? 'w-full' : 'w-0'
+                        }`}
+                        style={{ backgroundColor: '#F46530' }} 
+                      />
+                    </h3>
+                    {(isHovered || isExpanded) && (
+                      <div className="inline-flex items-center gap-1 ml-2">
+                        <div 
+                          className="w-2 h-2 rounded-full animate-ping"
+                          style={{ backgroundColor: '#F46530' }}
+                        />
+                        <span className="text-xs font-semibold" style={{ color: '#F46530' }}>
+                          Popular
+                        </span>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Description */}
-                  <p className="text-sm mb-6 leading-relaxed opacity-80" style={{ color: '#2A2E30' }}>
+                  <p className="text-sm mb-4 leading-relaxed opacity-70 transition-opacity duration-300" 
+                     style={{ color: '#2A2E30' }}>
                     {service.description}
                   </p>
 
-                  {/* Tech Tags with Hover Effect */}
-                  <div className="mb-8">
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.slice(0, 4).map((feature, idx) => (
-                        <span
-                          key={feature}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 group-hover:translate-y-0.5"
-                          style={{
-                            backgroundColor: idx === 0 ? 'rgba(244, 101, 48, 0.1)' : 'rgba(42, 46, 48, 0.05)',
-                            border: `1px solid ${idx === 0 ? 'rgba(244, 101, 48, 0.2)' : 'rgba(42, 46, 48, 0.1)'}`,
-                            color: idx === 0 ? '#F46530' : '#2A2E30'
-                          }}
-                        >
-                          {idx === 0 && (
-                            <Sparkles className="w-3 h-3" />
-                          )}
-                          {feature}
-                        </span>
-                      ))}
+                  {/* Features - Always Visible */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.features.slice(0, isExpanded ? service.features.length : 3).map((feature, idx) => (
+                      <span
+                        key={feature}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                          isHovered ? 'scale-105' : 'scale-100'
+                        }`}
+                        style={{
+                          backgroundColor: idx === 0 ? 'rgba(244, 101, 48, 0.1)' : 'rgba(42, 46, 48, 0.05)',
+                          border: `1px solid ${idx === 0 ? 'rgba(244, 101, 48, 0.2)' : 'rgba(42, 46, 48, 0.1)'}`,
+                          color: idx === 0 ? '#F46530' : '#2A2E30'
+                        }}
+                      >
+                        <Check className="w-3 h-3" />
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Expanded Details */}
+                  <div 
+                    className={`overflow-hidden transition-all duration-500 ${
+                      isExpanded ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="pt-4 border-t" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
+                      <h4 className="text-sm font-semibold mb-3" style={{ color: '#2A2E30' }}>
+                        What's Included:
+                      </h4>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, idx) => (
+                          <li 
+                            key={idx}
+                            className="flex items-start gap-2 text-xs opacity-70"
+                            style={{ color: '#2A2E30' }}
+                          >
+                            <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#10B981' }} />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      {/* Quick CTA in Expanded State */}
+                      <a
+                        href={companyInfo.calendlyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:gap-3"
+                        style={{ 
+                          backgroundColor: '#F46530', 
+                          color: '#FFFFFF'
+                        }}
+                      >
+                        <Calendar className="w-4 h-4" />
+                        <span>Discuss This Service</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
 
-                  {/* Interactive Button */}
-                  <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
-                    <span className="text-xs font-medium opacity-60" style={{ color: '#2A2E30' }}>
-                      {index === 1 ? 'High Demand' : index === 2 ? 'Growing' : 'Core Service'}
-                    </span>
+                  {/* Expand/Collapse Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleCard(index);
+                    }}
+                    className="w-full flex items-center justify-center gap-2 py-2 text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-gray-50"
+                    style={{ color: '#F46530' }}
+                  >
+                    <span>{isExpanded ? 'Show Less' : 'Learn More'}</span>
+                    <ChevronDown 
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isExpanded ? 'rotate-180' : 'rotate-0'
+                      }`}
+                    />
+                  </button>
+                </div>
 
-                    <button
-                      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 group/btn opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+                {/* Interactive Shimmer Effect */}
+                {isHovered && (
+                  <div 
+                    className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl"
+                  >
+                    <div 
+                      className="absolute inset-0 opacity-30"
                       style={{
-                        backgroundColor: '#F46530',
-                        color: '#FFFFFF'
+                        background: 'linear-gradient(90deg, transparent, rgba(244, 101, 48, 0.3), transparent)',
+                        animation: 'shimmer 2s infinite',
+                        transform: 'translateX(-100%)'
                       }}
-                    >
-                      <span>Discuss</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                    />
                   </div>
-                </div>
-
-                {/* Corner Accents */}
-                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-[#F46530]/10 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 w-16 h-16 overflow-hidden">
-                  <div className="absolute bottom-0 left-0 w-8 h-8 bg-gradient-to-tr from-[#2A2E30]/5 to-transparent" />
-                </div>
+                )}
               </div>
             );
           })}
         </div>
-        {/* Enhanced CTA */}
-        <div className="mt-20 text-center">
-          <div className="relative inline-block">
-            {/* Background Glow */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#F46530]/20 to-transparent rounded-2xl blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500" />
 
-            {/* CTA Button */}
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl flex items-center gap-3 mx-auto"
-              style={{
-                backgroundColor: '#F46530',
-                color: '#FFFFFF'
-              }}
-            >
-              <span>Schedule Consultation</span>
-              <div className="relative">
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                <ArrowRight className="absolute top-0 left-0 w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300" />
-              </div>
-            </button>
+        {/* CTA Section */}
+        <div className={`text-center transition-all duration-700 delay-300 ${
+          inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="max-w-2xl mx-auto mb-8 p-6 rounded-2xl border" 
+               style={{ 
+                 backgroundColor: 'rgba(244, 101, 48, 0.03)',
+                 borderColor: 'rgba(244, 101, 48, 0.2)'
+               }}>
+            <p className="text-base mb-2 font-semibold" style={{ color: '#2A2E30' }}>
+              Ready to discuss your project?
+            </p>
+            <p className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
+              Get a detailed technical proposal within 24 hours
+            </p>
           </div>
-
-          {/* Supporting Text */}
-          <p className="mt-6 text-sm opacity-70 max-w-md mx-auto" style={{ color: '#2A2E30' }}>
-            Get a detailed technical proposal within 24 hours
-          </p>
+          
+          <a
+            href={companyInfo.calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            style={{ 
+              backgroundColor: '#F46530', 
+              color: '#FFFFFF'
+            }}
+          >
+            <Calendar className="w-5 h-5" />
+            <span>Book a Meeting</span>
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-          display: flex;
-          width: max-content;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-
-        .group:hover .floating-icon {
-          animation: float 3s ease-in-out infinite;
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
         }
       `}</style>
     </section>
-  )
+  );
 }

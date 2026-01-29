@@ -38,19 +38,19 @@ export default function Team() {
         {/* Section Header */}
         <div className="mb-12 text-center relative">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-[2px]" style={{ backgroundColor: '#F46530' }} />
-            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#F46530' }}>
+            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
+            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
               Leadership Excellence
             </span>
-            <div className="w-12 h-[2px]" style={{ backgroundColor: '#F46530' }} />
+            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
             Meet Our
             <span className="block mt-2" style={{ color: '#F46530' }}>Technical Architect</span>
           </h2>
 
-          <p className="text-base md:text-lg opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
+          <p className="text-sm md:text-md opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
             Led by industry veteran {companyInfo.ceo} with {companyInfo.experience} of 
             delivering exceptional digital solutions to clients worldwide.
           </p>
@@ -395,14 +395,25 @@ export default function Team() {
               </div>
             </div>
 
-            {/* View Full Story Button */}
-            {/* <div className="mt-8 pt-8 border-t" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
-              <button className="group flex items-center gap-2 text-sm font-semibold mx-auto"
-                      style={{ color: '#F46530' }}>
-                <span>Read Our Full Story</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div> */}
+            {/* CTA Button */}
+            <div className="mt-12 text-center">
+              <p className="text-base mb-6 opacity-70" style={{ color: '#2A2E30' }}>
+                Interested in working together on your next project?
+              </p>
+              <a
+                href={companyInfo.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
+                style={{ 
+                  backgroundColor: '#F46530', 
+                  color: '#FFFFFF'
+                }}
+              >
+                <Briefcase className="w-5 h-5" />
+                <span>Book a Meeting</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
