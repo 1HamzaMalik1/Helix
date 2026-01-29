@@ -46,8 +46,8 @@ export default function Testimonials() {
   const getCurrentTestimonial = () => testimonials[currentIndex];
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
+      <div className="container mx-auto px-4 lg:px-8 max-w-full">
         
         {/* Section Header */}
         <div className="mb-12 text-center relative" ref={ref}>
@@ -74,24 +74,24 @@ export default function Testimonials() {
         </div>
 
         {/* Testimonials Carousel */}
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative max-w-3xl mx-auto px-4 md:px-0">
           
           {/* Navigation Buttons */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute left-0 md:left-0 lg:-left-12 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
             style={{ 
               backgroundColor: '#F46530',
               boxShadow: '0 8px 24px rgba(244, 101, 48, 0.3)'
             }}
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
           </button>
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute right-0 md:right-0 lg:-right-12 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full transition-all duration-300 hover:scale-110"
             style={{ 
               backgroundColor: '#F46530',
               boxShadow: '0 8px 24px rgba(244, 101, 48, 0.3)'
@@ -102,7 +102,7 @@ export default function Testimonials() {
           </button>
 
           {/* Clean Testimonial Card */}
-          <div className="mb-8">
+          <div className="mb-8 px-2 md:px-0">
             {getCurrentTestimonial() && (
               <div
                 className={`bg-white rounded-xl p-8 md:p-10 transition-all duration-700 border ${

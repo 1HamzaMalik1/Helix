@@ -1,8 +1,8 @@
 'use client';
 
 import { useInView } from 'react-intersection-observer';
-import { useState, useEffect } from 'react';
-import { Linkedin, Github, Award, BookOpen, Briefcase, Zap, Cpu, Sparkles, ChevronRight, Star, Target, Users, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { Linkedin, Github, Award, Briefcase, Zap, Star, Target, Globe, Calendar, ArrowRight, TrendingUp, Users, Code } from 'lucide-react';
 import { companyInfo, teamMembers } from '@/lib/constants';
 import Image from 'next/image';
 
@@ -12,31 +12,43 @@ export default function Team() {
     triggerOnce: true
   });
 
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
-  const [activeStat, setActiveStat] = useState(0);
+  const [hoveredExpertise, setHoveredExpertise] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<'about' | 'expertise' | 'achievements'>('about');
 
   const stats = [
-    { value: '5+', label: 'Years Experience', icon: <Zap className="w-4 h-4" />, color: '#F46530' },
-    { value: '50+', label: 'Projects Delivered', icon: <Target className="w-4 h-4" />, color: '#2A2E30' },
-    { value: '100%', label: 'Client Satisfaction', icon: <Star className="w-4 h-4" />, color: '#F46530' },
-    { value: '10+', label: 'Technologies', icon: <Cpu className="w-4 h-4" />, color: '#2A2E30' },
+    { value: '5+', label: 'Years Experience', icon: <Zap className="w-5 h-5" />, color: '#F46530' },
+    { value: '50+', label: 'Projects Delivered', icon: <Target className="w-5 h-5" />, color: '#10B981' },
+    { value: '70+', label: 'Happy Clients', icon: <Users className="w-5 h-5" />, color: '#4F46E5' },
+    { value: '10+', label: 'Technologies', icon: <Code className="w-5 h-5" />, color: '#EC4899' },
   ];
 
-  useEffect(() => {
-    if (inView) {
-      const interval = setInterval(() => {
-        setActiveStat((prev) => (prev + 1) % stats.length);
-      }, 3000);
-      return () => clearInterval(interval);
+  const achievements = [
+    {
+      icon: <Award className="w-5 h-5" />,
+      title: 'Industry Veteran',
+      description: '5+ years delivering exceptional digital solutions',
+      color: '#F46530'
+    },
+    {
+      icon: <TrendingUp className="w-5 h-5" />,
+      title: 'Proven Track Record',
+      description: '98% project success rate with global clients',
+      color: '#10B981'
+    },
+    {
+      icon: <Globe className="w-5 h-5" />,
+      title: 'International Reach',
+      description: 'Serving clients across 10+ countries worldwide',
+      color: '#4F46E5'
     }
-  }, [inView]);
+  ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="team" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden">
+      <div className="container mx-auto px-4 lg:px-8 max-w-full">
         
         {/* Section Header */}
-        <div className="mb-12 text-center relative">
+        <div className="mb-12 text-center relative" ref={ref}>
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
             <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
@@ -45,63 +57,51 @@ export default function Team() {
             <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
           </div>
 
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight" style={{ color: '#2A2E30' }}>
+          <h2 className={`text-3xl lg:text-4xl font-bold mb-6 leading-tight transition-all duration-700 ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{ color: '#2A2E30' }}>
             Meet Our
             <span className="block mt-2" style={{ color: '#F46530' }}>Technical Architect</span>
           </h2>
 
-          <p className="text-sm md:text-md opacity-70 max-w-3xl mx-auto" style={{ color: '#2A2E30' }}>
+          <p className={`text-sm md:text-md opacity-70 max-w-3xl mx-auto transition-all duration-700 delay-100 ${
+            inView ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-8'
+          }`} style={{ color: '#2A2E30' }}>
             Led by industry veteran {companyInfo.ceo} with {companyInfo.experience} of 
             delivering exceptional digital solutions to clients worldwide.
           </p>
         </div>
 
-        {/* Featured Leader Profile */}
-        <div ref={ref} className="mb-16 max-w-5xl mx-auto">
-          {teamMembers.map((member, index) => (
+        {/* CEO Profile Card */}
+        <div className="max-w-6xl mx-auto mb-16 w-full">
+          {teamMembers.map((member) => (
             <div
               key={member.name}
-              onMouseEnter={() => setHoveredMember(member.name)}
-              onMouseLeave={() => setHoveredMember(null)}
-              className={`group relative overflow-hidden rounded-3xl transition-all duration-700 ${
+              className={`bg-white rounded-3xl shadow-2xl overflow-hidden border-2 transition-all duration-700 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
+              style={{ borderColor: 'rgba(244, 101, 48, 0.2)' }}
             >
-              {/* Animated Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" />
-              
-              {/* Animated Border */}
-              <div className="absolute inset-0 rounded-3xl p-[2px]">
-                <div className={`absolute inset-0 rounded-3xl transition-all duration-500 ${
-                  hoveredMember === member.name 
-                    ? 'bg-gradient-to-r from-[#F46530] via-[#FF8B66] to-[#F46530] opacity-100' 
-                    : 'bg-gradient-to-r from-[#F46530]/20 via-gray-200 to-[#F46530]/20 opacity-50'
-                }`} />
-                <div className="absolute inset-[2px] bg-white rounded-3xl" />
-              </div>
+              {/* Top Section with Gradient Background */}
+              <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 md:p-8 lg:p-12 overflow-hidden">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+                  <div className="absolute inset-0 rounded-full" style={{ 
+                    background: 'radial-gradient(circle, #F46530 0%, transparent 70%)' 
+                  }} />
+                </div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 opacity-10">
+                  <div className="absolute inset-0 rounded-full" style={{ 
+                    background: 'radial-gradient(circle, #FFFFFF 0%, transparent 70%)' 
+                  }} />
+                </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute top-8 right-8 w-32 h-32 opacity-5">
-                <div className="absolute inset-0 rounded-full" style={{ 
-                  background: 'radial-gradient(circle, #F46530 0%, transparent 70%)' 
-                }} />
-              </div>
-              <div className="absolute bottom-8 left-8 w-24 h-24 opacity-5">
-                <div className="absolute inset-0 rounded-full" style={{ 
-                  background: 'radial-gradient(circle, #2A2E30 0%, transparent 70%)' 
-                }} />
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 p-10 lg:p-12">
-                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-                  
-                  {/* Enhanced Avatar Section */}
-                  <div className="relative flex-shrink-0">
-                    <div className={`w-40 h-40 lg:w-48 lg:h-48 rounded-3xl overflow-hidden border-4 transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 ${
-                      hoveredMember === member.name ? 'border-[#F46530]' : 'border-white'
-                    }`} style={{ boxShadow: '0 20px 60px rgba(42, 46, 48, 0.15)' }}>
-                      {member.image && !member.image.includes('team/samran') ? (
+                <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                  {/* Avatar */}
+                  <div className="relative group flex-shrink-0">
+                    <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-500" />
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                      {member.image ? (
                         <Image
                           src={member.image}
                           alt={member.name}
@@ -117,332 +117,284 @@ export default function Team() {
                           }}
                         />
                       ) : null}
-                      <div className={`w-full h-full bg-gradient-to-br from-[#2A2E30] to-[#4A4F53] flex items-center justify-center ${
-                        member.image && !member.image.includes('team/samran') ? 'hidden' : ''
-                      }`}>
+                      <div className="w-full h-full bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center">
                         <span className="text-5xl font-bold text-white">
-                          {member.name.split(' ').map(n => n.charAt(0)).join('')}
+                          {member.name.split(' ').map(n => n[0]).join('')}
                         </span>
                       </div>
                     </div>
                     
-                    {/* Status Badge */}
-                    <div className={`absolute -bottom-4 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full flex items-center gap-2 border-2 border-white transition-all duration-300 ${
-                      hoveredMember === member.name ? 'scale-110' : ''
-                    }`} style={{ 
-                      backgroundColor: '#F46530',
-                      boxShadow: '0 8px 24px rgba(244, 101, 48, 0.3)'
-                    }}>
-                      <Award className="w-5 h-5 text-white" />
-                      <span className="text-sm font-semibold text-white">Founder</span>
+                    {/* Founder Badge */}
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shadow-lg"
+                         style={{ backgroundColor: '#F46530', color: '#FFFFFF' }}>
+                      ⭐ Founder & CEO
                     </div>
-
-                    {/* Animated Particles */}
-                    {hoveredMember === member.name && (
-                      <>
-                        {[...Array(6)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute w-2 h-2 rounded-full animate-ping"
-                            style={{
-                              backgroundColor: '#F46530',
-                              top: `${Math.random() * 100}%`,
-                              left: `${Math.random() * 100}%`,
-                              animationDelay: `${i * 150}ms`,
-                              opacity: 0.6
-                            }}
-                          />
-                        ))}
-                      </>
-                    )}
                   </div>
 
-                  {/* Member Details */}
-                  <div className="flex-1 text-center lg:text-left">
-                    <div className="mb-6">
-                      <h3 className="text-3xl lg:text-4xl font-bold mb-3" style={{ color: '#2A2E30' }}>
-                        {member.name}
-                      </h3>
-                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                        <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#F46530' }} />
-                        <p className="text-lg font-semibold" style={{ color: '#F46530' }}>
-                          {member.role}
-                        </p>
-                      </div>
-                      
-                      {/* Social Links */}
-                      <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-                        {member.linkedin && member.linkedin !== '#' && (
-                          <a 
-                            href={member.linkedin} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="p-3 rounded-xl hover:scale-110 transition-all duration-300"
-                            style={{ 
-                              backgroundColor: 'rgba(244, 101, 48, 0.1)',
-                              color: '#F46530'
-                            }}
-                          >
-                            <Linkedin className="w-5 h-5" />
-                          </a>
-                        )}
-                        {member.github && member.github !== '#' && (
-                          <a 
-                            href={member.github} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="p-3 rounded-xl hover:scale-110 transition-all duration-300"
-                            style={{ 
-                              backgroundColor: 'rgba(42, 46, 48, 0.1)',
-                              color: '#2A2E30'
-                            }}
-                          >
-                            <Github className="w-5 h-5" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Bio */}
-                    <p className="text-base mb-8 leading-relaxed opacity-80" style={{ color: '#2A2E30' }}>
+                  {/* Info */}
+                  <div className="flex-1 text-center md:text-left w-full min-w-0">
+                    <h3 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+                      {member.name}
+                    </h3>
+                    <p className="text-lg mb-4 opacity-90" style={{ color: '#F46530' }}>
+                      {member.role}
+                    </p>
+                    <p className="text-base leading-relaxed mb-6 opacity-80 text-white max-w-2xl">
                       {member.bio}
                     </p>
 
-                    {/* Expertise Section */}
-                    <div className="mb-6">
-                      <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
-                        <Briefcase className="w-5 h-5" style={{ color: '#F46530' }} />
-                        <span className="text-sm font-bold uppercase tracking-wider" style={{ color: '#2A2E30' }}>
-                          Core Expertise
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                        {member.expertise.map((skill, idx) => (
-                          <span
-                            key={skill}
-                            className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-105 ${
-                              hoveredMember === member.name ? 'translate-y-0' : 'translate-y-1'
-                            }`}
-                            style={{ 
-                              backgroundColor: idx % 2 === 0 ? '#F46530' : 'rgba(42, 46, 48, 0.08)',
-                              color: idx % 2 === 0 ? '#FFFFFF' : '#2A2E30',
-                              animationDelay: `${idx * 100}ms`,
-                              boxShadow: idx % 2 === 0 ? '0 4px 12px rgba(244, 101, 48, 0.2)' : 'none'
-                            }}
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Credentials */}
-                    <div className="flex items-center justify-center lg:justify-start gap-3 pt-6 border-t" 
-                         style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
-                      <div className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(244, 101, 48, 0.1)' }}>
-                        <BookOpen className="w-5 h-5" style={{ color: '#F46530' }} />
-                      </div>
-                      <span className="text-base font-medium" style={{ color: '#2A2E30' }}>
-                        {companyInfo.degree}
-                      </span>
+                    {/* Social Links */}
+                    <div className="flex items-center gap-3 justify-center md:justify-start">
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
+                      >
+                        <Linkedin className="w-5 h-5 text-white group-hover:text-blue-600 transition-colors" />
+                      </a>
+                      <a
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
+                      >
+                        <Github className="w-5 h-5 text-white group-hover:text-gray-900 transition-colors" />
+                      </a>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Tabs Navigation */}
+              <div className="border-b" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
+                <div className="flex justify-center gap-1 p-2">
+                  {[
+                    { id: 'about', label: 'About', icon: <Briefcase className="w-4 h-4" /> },
+                    { id: 'expertise', label: 'Expertise', icon: <Star className="w-4 h-4" /> },
+                    { id: 'achievements', label: 'Achievements', icon: <Award className="w-4 h-4" /> }
+                  ].map((tab) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id as any)}
+                      className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                        activeTab === tab.id ? 'scale-105' : 'hover:bg-gray-50'
+                      }`}
+                      style={{
+                        backgroundColor: activeTab === tab.id ? 'rgba(244, 101, 48, 0.1)' : 'transparent',
+                        color: activeTab === tab.id ? '#F46530' : '#2A2E30'
+                      }}
+                    >
+                      {tab.icon}
+                      <span className="hidden sm:inline">{tab.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tab Content */}
+              <div className="p-4 md:p-8 lg:p-12 overflow-hidden">
+                {/* About Tab */}
+                {activeTab === 'about' && (
+                  <div className="space-y-6 animate-fadeIn">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="p-6 rounded-xl border" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center"
+                               style={{ backgroundColor: 'rgba(244, 101, 48, 0.1)' }}>
+                            <Briefcase className="w-5 h-5" style={{ color: '#F46530' }} />
+                          </div>
+                          <h4 className="font-bold" style={{ color: '#2A2E30' }}>Background</h4>
+                        </div>
+                        <p className="text-sm leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
+                          Founded HelixCore Studio with a vision to deliver cutting-edge digital solutions. 
+                          With a {companyInfo.degree}, {member.name} brings deep technical expertise and 
+                          leadership to every project.
+                        </p>
+                      </div>
+
+                      <div className="p-6 rounded-xl border" style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center"
+                               style={{ backgroundColor: 'rgba(16, 185, 129, 0.1)' }}>
+                            <Globe className="w-5 h-5" style={{ color: '#10B981' }} />
+                          </div>
+                          <h4 className="font-bold" style={{ color: '#2A2E30' }}>Global Impact</h4>
+                        </div>
+                        <p className="text-sm leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
+                          Successfully delivered 50+ projects to clients across 10+ countries, establishing 
+                          HelixCore Studio as a trusted partner for businesses worldwide.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Expertise Tab */}
+                {activeTab === 'expertise' && (
+                  <div className="animate-fadeIn overflow-hidden">
+                    <p className="text-sm opacity-70 mb-6 text-center" style={{ color: '#2A2E30' }}>
+                      Specialized skills and technologies mastered over {companyInfo.experience}
+                    </p>
+                    <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
+                      {member.expertise.map((skill, idx) => (
+                        <div
+                          key={skill}
+                          onMouseEnter={() => setHoveredExpertise(idx)}
+                          onMouseLeave={() => setHoveredExpertise(null)}
+                          className={`group px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-xs md:text-sm transition-all duration-300 cursor-pointer ${
+                            hoveredExpertise === idx ? 'scale-105 md:scale-110 shadow-xl' : 'scale-100'
+                          }`}
+                          style={{
+                            backgroundColor: hoveredExpertise === idx 
+                              ? '#F46530'
+                              : idx % 3 === 0 
+                                ? 'rgba(244, 101, 48, 0.1)' 
+                                : idx % 3 === 1 
+                                  ? 'rgba(16, 185, 129, 0.1)'
+                                  : 'rgba(79, 70, 229, 0.1)',
+                            color: hoveredExpertise === idx 
+                              ? '#FFFFFF'
+                              : idx % 3 === 0 
+                                ? '#F46530' 
+                                : idx % 3 === 1 
+                                  ? '#10B981'
+                                  : '#4F46E5',
+                            border: `2px solid ${
+                              hoveredExpertise === idx 
+                                ? '#F46530'
+                                : idx % 3 === 0 
+                                  ? 'rgba(244, 101, 48, 0.3)' 
+                                  : idx % 3 === 1 
+                                    ? 'rgba(16, 185, 129, 0.3)'
+                                    : 'rgba(79, 70, 229, 0.3)'
+                            }`
+                          }}
+                        >
+                          {skill}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Achievements Tab */}
+                {activeTab === 'achievements' && (
+                  <div className="grid md:grid-cols-3 gap-6 animate-fadeIn">
+                    {achievements.map((achievement, idx) => (
+                      <div
+                        key={idx}
+                        className="group p-6 rounded-xl border transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer"
+                        style={{ borderColor: 'rgba(42, 46, 48, 0.1)' }}
+                      >
+                        <div 
+                          className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+                          style={{
+                            backgroundColor: `${achievement.color}15`,
+                            color: achievement.color
+                          }}
+                        >
+                          {achievement.icon}
+                        </div>
+                        <h4 className="font-bold mb-2" style={{ color: '#2A2E30' }}>
+                          {achievement.title}
+                        </h4>
+                        <p className="text-sm opacity-70 leading-relaxed" style={{ color: '#2A2E30' }}>
+                          {achievement.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Animated Stats Section */}
-        <div className="mb-16">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Stats Section */}
+        <div className={`mb-16 transition-all duration-700 delay-200 ${
+          inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                onMouseEnter={() => setActiveStat(index)}
-                className={`relative p-6 rounded-xl border transition-all duration-500 cursor-pointer ${
-                  activeStat === index ? 'scale-105 shadow-lg' : ''
-                }`}
-                style={{
-                  backgroundColor: activeStat === index ? 'rgba(244, 101, 48, 0.05)' : '#FFFFFF',
-                  borderColor: activeStat === index ? 'rgba(244, 101, 48, 0.2)' : 'rgba(42, 46, 48, 0.1)',
-                  transform: activeStat === index ? 'translateY(-4px)' : 'none'
-                }}
+                className="group relative bg-white p-6 rounded-xl border text-center transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden"
+                style={{ borderColor: 'rgba(42, 46, 48, 0.08)' }}
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="p-2 rounded-lg" style={{ 
-                    backgroundColor: activeStat === index ? stat.color : 'rgba(42, 46, 48, 0.05)',
-                    color: activeStat === index ? '#FFFFFF' : stat.color
-                  }}>
-                    {stat.icon}
-                  </div>
-                  <div className="text-xs font-semibold px-2 py-1 rounded-full" 
-                       style={{ 
-                         backgroundColor: 'rgba(42, 46, 48, 0.05)',
-                         color: '#2A2E30'
-                       }}>
-                    0{index + 1}
-                  </div>
-                </div>
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${stat.color}05 0%, transparent 100%)`
+                  }}
+                />
                 
-                <div className="text-lg font-bold mb-2" style={{ color: '#2A2E30' }}>
-                  {stat.value}
+                <div className="relative z-10">
+                  <div className="flex items-center justify-center mb-3">
+                    <div style={{ color: stat.color }}>
+                      {stat.icon}
+                    </div>
+                  </div>
+                  <div className="text-3xl font-bold mb-2" style={{ color: stat.color }}>
+                    {stat.value}
+                  </div>
+                  <div className="text-xs font-medium opacity-70" style={{ color: '#2A2E30' }}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-xs opacity-70" style={{ color: '#2A2E30' }}>
-                  {stat.label}
-                </div>
-
-                {/* Active Indicator */}
-                {activeStat === index && (
-                  <div className="absolute bottom-0 left-0 w-full h-1 rounded-b-xl" 
-                       style={{ backgroundColor: stat.color }} />
-                )}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Our Journey - Modern Design */}
-        <div className={`relative overflow-hidden rounded-2xl p-8 transition-all duration-700 ${
+        {/* CTA Section */}
+        <div className={`text-center transition-all duration-700 delay-300 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%)',
-          border: '1px solid rgba(42, 46, 48, 0.1)',
-          boxShadow: '0 20px 60px rgba(42, 46, 48, 0.08)'
-        }}>
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full" 
-                 style={{ background: 'radial-gradient(circle, #F46530 0%, transparent 70%)' }} />
-            <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full" 
-                 style={{ background: 'radial-gradient(circle, #2A2E30 0%, transparent 70%)' }} />
+        }`}>
+          <div className="max-w-2xl mx-auto mb-8 p-6 rounded-2xl border" 
+               style={{ 
+                 backgroundColor: 'rgba(244, 101, 48, 0.03)',
+                 borderColor: 'rgba(244, 101, 48, 0.2)'
+               }}>
+            <p className="text-base mb-2 font-semibold" style={{ color: '#2A2E30' }}>
+              Interested in working together on your next project?
+            </p>
+            <p className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
+              Let's discuss how we can bring your vision to life
+            </p>
           </div>
-
-          <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-xl" style={{ backgroundColor: 'rgba(244, 101, 48, 0.1)' }}>
-                <Sparkles className="w-5 h-5" style={{ color: '#F46530' }} />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: '#2A2E30' }}>
-                  Our Journey
-                </h3>
-                <p className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
-                  Building excellence through innovation
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4">
-                <p className="text-sm md:text-md leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
-                  Founded by <span className="font-semibold" style={{ color: '#F46530' }}>{companyInfo.ceo}</span>, HelixCore Studio 
-                  has established itself as a trusted partner for businesses seeking cutting-edge digital solutions. 
-                  With a proven track record of over 50 successful projects, we deliver excellence across game development, 
-                  web applications, and AI integration.
-                </p>
-                
-                <div className="flex items-center gap-4 pt-4">
-                  <div className="flex -space-x-3">
-                    <div className="w-10 h-10 rounded-full border-2 border-white" 
-                         style={{ backgroundColor: '#2A2E30' }} />
-                    <div className="w-10 h-10 rounded-full border-2 border-white" 
-                         style={{ backgroundColor: '#F46530' }} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold" style={{ color: '#2A2E30' }}>
-                      Expert Team
-                    </div>
-                    <div className="text-xs opacity-60" style={{ color: '#2A2E30' }}>
-                      Advanced Software Engineering
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative">
-                {/* Interactive Globe Element */}
-                <div className="relative w-48 h-48 mx-auto">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 rounded-full border-4 opacity-10" style={{ borderColor: '#F46530' }} />
-                    <div className="absolute w-24 h-24 rounded-full border-2 animate-spin-slow" 
-                         style={{ borderColor: '#2A2E30', borderTopColor: 'transparent' }} />
-                    
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center" 
-                           style={{ backgroundColor: 'rgba(244, 101, 48, 0.1)' }}>
-                        <Globe className="w-8 h-8" style={{ color: '#F46530' }} />
-                      </div>
-                    </div>
-
-                    {/* Orbiting Dots */}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-3 h-3 rounded-full animate-orbit"
-                        style={{
-                          backgroundColor: i % 2 === 0 ? '#F46530' : '#2A2E30',
-                          animationDelay: `${i * 0.5}s`,
-                          animationDuration: '8s',
-                          top: 'calc(50% - 64px * sin(45deg * ' + i + '))',
-                          left: 'calc(50% + 64px * cos(45deg * ' + i + '))'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="mt-12 text-center">
-              <p className="text-base mb-6 opacity-70" style={{ color: '#2A2E30' }}>
-                Interested in working together on your next project?
-              </p>
-              <a
-                href={companyInfo.calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
-                style={{ 
-                  backgroundColor: '#F46530', 
-                  color: '#FFFFFF'
-                }}
-              >
-                <Briefcase className="w-5 h-5" />
-                <span>Book a Meeting</span>
-              </a>
-            </div>
-          </div>
+          
+          <a
+            href={companyInfo.calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            style={{ 
+              backgroundColor: '#F46530', 
+              color: '#FFFFFF'
+            }}
+          >
+            <Calendar className="w-5 h-5" />
+            <span>Book a Meeting</span>
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes orbit {
-          0% {
-            transform: rotate(0deg) translateX(64px) rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg) translateX(64px) rotate(-360deg);
-          }
-        }
-        
-        .animate-orbit {
-          animation: orbit linear infinite;
-        }
-        
-        @keyframes spin-slow {
+        @keyframes fadeIn {
           from {
-            transform: rotate(0deg);
+            opacity: 0;
+            transform: translateY(20px);
           }
           to {
-            transform: rotate(360deg);
+            opacity: 1;
+            transform: translateY(0);
           }
         }
         
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-out;
         }
       `}</style>
     </section>

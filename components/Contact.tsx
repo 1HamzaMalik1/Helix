@@ -143,8 +143,8 @@ ${formData.message}
   ];
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="contact" className="py-16 md:py-24 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 lg:px-8 max-w-full">
         
         {/* Section Header */}
         <div className="text-center mb-16">

@@ -69,10 +69,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden mt-12 md:mt-24 bg-white">
+    <section className="relative min-h-screen flex items-center overflow-x-hidden mt-12 md:mt-24 bg-white">
       
       {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden w-full">
         <div 
           className="absolute top-0 left-0 w-64 h-64 opacity-5"
           style={{ background: `radial-gradient(circle at 30% 30%, #F46530, transparent 70%)` }}
@@ -92,8 +92,8 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container relative z-10 mx-auto px-4 lg:px-8 max-w-full">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center w-full">
           
           {/* Left Column - Content */}
           <div className={`transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>

@@ -42,9 +42,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#FFFFFF" />
       </head>
       <body className={`${poppins.className} bg-white text-primary overflow-x-hidden antialiased`}>
-        <div className="min-h-screen flex flex-col relative">
+        <div className="min-h-screen flex flex-col relative overflow-x-hidden">
           <Navbar />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow overflow-x-hidden">{children}</main>
           <Footer />
         </div>
       </body>

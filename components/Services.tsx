@@ -31,8 +31,8 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden">
+      <div className="container mx-auto px-4 lg:px-8 max-w-full">
 
         {/* Section Header */}
         <div className="mb-12 text-center" ref={ref}>
@@ -59,7 +59,7 @@ export default function Services() {
         </div>
 
         {/* Interactive Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 w-full">
           {services.map((service, index) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
             const isExpanded = expandedCard === index;
@@ -100,7 +100,7 @@ export default function Services() {
                   }}
                 />
 
-                <div className="relative z-10 p-6">
+                <div className="relative z-10 p-4 md:p-6">
                   {/* Icon with Pulsing Effect */}
                   <div className="mb-4 relative">
                     <div 
