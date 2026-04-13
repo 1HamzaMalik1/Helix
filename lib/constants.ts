@@ -75,7 +75,7 @@ export const teamMembers = [
   },
   {
     name: "Samran Shoukat",
-    role: "Senior Software Engineer & CTA",
+    role: "CTO & Senior Software Engineer",
     bio: "Senior engineer specializing in scalable application architecture, clean implementation, and reliable delivery across modern software stacks.",
     expertise: ["React/Next.js", "TypeScript", "Node.js", "API Development"],
     image: "/samran-shoukat-cto.png",

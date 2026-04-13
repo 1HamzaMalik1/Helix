@@ -135,7 +135,7 @@ export default function Team() {
                     {/* Member Badge */}
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shadow-lg"
                          style={{ backgroundColor: '#F46530', color: '#FFFFFF' }}>
-                      {isCeo ? '⭐ Founder & CEO' : '🚀 Senior Software Engineer & CTA'}
+                      {isCeo ? '⭐ Founder & CEO' : '🚀 CTO & Senior Software Engineer'}
                     </div>
                   </div>
 
@@ -223,7 +223,7 @@ export default function Team() {
                         <p className="text-sm leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
                           {isCeo
                             ? `Founded HelixCore Studio with a vision to deliver cutting-edge digital solutions. With a ${companyInfo.degree}, ${member.name} brings deep technical expertise and leadership to every project.`
-                            : `${member.name} contributes as a Senior Software Engineer & CTA, building robust software architecture and delivering high-quality features across projects.`}
+                            : `${member.name} contributes as CTO & Senior Software Engineer, building robust software architecture and delivering high-quality features across projects.`}
                         </p>
                       </div>
 
