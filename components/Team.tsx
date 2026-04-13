@@ -73,8 +73,12 @@ export default function Team() {
         </div>
 
         {/* CEO Profile Card */}
-        <div className="max-w-6xl mx-auto mb-16 w-full">
-          {teamMembers.map((member) => (
+        <div className="max-w-6xl mx-auto mb-16 w-full space-y-8">
+          {teamMembers.map((member) => {
+            const isCeo = member.name === companyInfo.ceo;
+            const memberHasSocials = Boolean(member.linkedin) || Boolean(member.github);
+
+            return (
             <div
               key={member.name}
               className={`bg-white rounded-3xl shadow-2xl overflow-hidden border-2 transition-all duration-700 ${
@@ -83,7 +87,11 @@ export default function Team() {
               style={{ borderColor: 'rgba(244, 101, 48, 0.2)' }}
             >
               {/* Top Section with Gradient Background */}
-              <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 md:p-8 lg:p-12 overflow-hidden">
+              <div className={`relative p-6 md:p-8 lg:p-12 overflow-hidden ${
+                isCeo
+                  ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900'
+                  : 'bg-gradient-to-br from-slate-800 via-indigo-900 to-slate-900'
+              }`}>
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
                   <div className="absolute inset-0 rounded-full" style={{ 
@@ -124,10 +132,10 @@ export default function Team() {
                       </div>
                     </div>
                     
-                    {/* Founder Badge */}
+                    {/* Member Badge */}
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shadow-lg"
                          style={{ backgroundColor: '#F46530', color: '#FFFFFF' }}>
-                      ⭐ Founder & CEO
+                      {isCeo ? '⭐ Founder & CEO' : '🚀 Senior Software Engineer & CTA'}
                     </div>
                   </div>
 
@@ -144,24 +152,30 @@ export default function Team() {
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex items-center gap-3 justify-center md:justify-start">
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
-                      >
-                        <Linkedin className="w-5 h-5 text-white group-hover:text-blue-600 transition-colors" />
-                      </a>
-                      <a
-                        href={member.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
-                      >
-                        <Github className="w-5 h-5 text-white group-hover:text-gray-900 transition-colors" />
-                      </a>
-                    </div>
+                    {memberHasSocials && (
+                      <div className="flex items-center gap-3 justify-center md:justify-start">
+                        {member.linkedin ? (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
+                          >
+                            <Linkedin className="w-5 h-5 text-white group-hover:text-blue-600 transition-colors" />
+                          </a>
+                        ) : null}
+                        {member.github ? (
+                          <a
+                            href={member.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110"
+                          >
+                            <Github className="w-5 h-5 text-white group-hover:text-gray-900 transition-colors" />
+                          </a>
+                        ) : null}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -207,9 +221,9 @@ export default function Team() {
                           <h4 className="font-bold" style={{ color: '#2A2E30' }}>Background</h4>
                         </div>
                         <p className="text-sm leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
-                          Founded HelixCore Studio with a vision to deliver cutting-edge digital solutions. 
-                          With a {companyInfo.degree}, {member.name} brings deep technical expertise and 
-                          leadership to every project.
+                          {isCeo
+                            ? `Founded HelixCore Studio with a vision to deliver cutting-edge digital solutions. With a ${companyInfo.degree}, ${member.name} brings deep technical expertise and leadership to every project.`
+                            : `${member.name} contributes as a Senior Software Engineer & CTA, building robust software architecture and delivering high-quality features across projects.`}
                         </p>
                       </div>
 
@@ -222,8 +236,9 @@ export default function Team() {
                           <h4 className="font-bold" style={{ color: '#2A2E30' }}>Global Impact</h4>
                         </div>
                         <p className="text-sm leading-relaxed opacity-70" style={{ color: '#2A2E30' }}>
-                          Successfully delivered 50+ projects to clients across 10+ countries, establishing 
-                          HelixCore Studio as a trusted partner for businesses worldwide.
+                          {isCeo
+                            ? 'Successfully delivered 50+ projects to clients across 10+ countries, establishing HelixCore Studio as a trusted partner for businesses worldwide.'
+                            : 'Focused on code quality, delivery velocity, and cross-team collaboration to transform requirements into reliable, production-ready solutions.'}
                         </p>
                       </div>
                     </div>
@@ -308,7 +323,8 @@ export default function Team() {
                 )}
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
 
         {/* Stats Section */}

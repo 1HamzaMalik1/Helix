@@ -146,13 +146,13 @@ export default function Process() {
         </div>
 
         {/* Interactive Timeline */}
-        <div className="mb-16 max-w-6xl mx-auto overflow-x-hidden">
+        <div className="mb-16 max-w-6xl mx-auto overflow-visible">
           {/* Progress Bar */}
-          <div className="relative mb-12 px-2 md:px-0">
-            <div className="absolute top-1/2 left-2 md:left-0 right-2 md:right-0 h-1 -translate-y-1/2" 
+          <div className="relative mb-12 px-4 md:px-6 py-4">
+            <div className="absolute top-1/2 left-4 md:left-6 right-4 md:right-6 h-1 -translate-y-1/2" 
                  style={{ backgroundColor: 'rgba(42, 46, 48, 0.1)' }} />
             <div 
-              className="absolute top-1/2 left-2 md:left-0 h-1 -translate-y-1/2 transition-all duration-1000"
+              className="absolute top-1/2 left-4 md:left-6 h-1 -translate-y-1/2 transition-all duration-1000"
               style={{ 
                 backgroundColor: '#F46530',
                 width: `${(activeStep / (processSteps.length - 1)) * 100}%`
@@ -160,7 +160,7 @@ export default function Process() {
             />
             
             {/* Step Indicators */}
-            <div className="relative flex justify-between px-2 md:px-0">
+            <div className="relative flex justify-between">
               {processSteps.map((step, index) => (
                 <button
                   key={step.id}
