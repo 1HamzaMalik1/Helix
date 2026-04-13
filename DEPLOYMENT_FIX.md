@@ -1,7 +1,7 @@
 # ✅ Vercel Deployment Fix - RESOLVED
 
 ## Problem
-Vercel deployment was failing with this error:
+Vercel deployment was failing with this error: 
 ```
 npm error Conflicting peer dependency: react@19.2.3
 npm error peer react@"^19" from @react-three/drei@10.7.7
