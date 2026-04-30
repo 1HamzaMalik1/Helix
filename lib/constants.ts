@@ -257,8 +257,8 @@ export const technologies = [
 ];
 
 export const seoContent = {
-  title: "HelixCore Studio | Professional Game & Web Development Services",
-  description: "HelixCore Studio delivers premium game development, AI-powered solutions, and full-stack web applications. 5+ years expertise in Unity, multiplayer games, and enterprise software.",
+  title: "HelixCore Studio | Game & Web Development Services",
+  description: "HelixCore Studio builds game development, AI automation, and full-stack web solutions with 5+ years of delivery experience.",
   keywords: "game development, Unity developers, web development, AI games, playable ads, mobile games, software house, Pakistan",
   ogImage: "/og-image.jpg"
 };

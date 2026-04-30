@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "Software Services | HelixCore Studio",
   description:
     "Explore HelixCore Studio services including game development, AI agents, automation, ecommerce, and full-stack web development.",
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: "/services",
   },

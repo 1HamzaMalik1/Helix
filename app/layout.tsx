@@ -12,11 +12,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://helixcorestudio.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.helixcorestudio.com"),
   title: seoContent.title,
   description: seoContent.description,
   keywords: seoContent.keywords,
   authors: [{ name: companyInfo.ceo }],
+  publisher: companyInfo.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: seoContent.title,
     description: seoContent.description,

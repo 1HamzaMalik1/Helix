@@ -8,7 +8,7 @@ type ServicePageProps = {
   params: { slug: string };
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://helixcorestudio.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.helixcorestudio.com";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   return {
     title: service.seoTitle,
     description: service.seoDescription,
+    robots: {
+      index: true,
+      follow: true,
+    },
     alternates: {
       canonical: `/services/${service.slug}`,
     },

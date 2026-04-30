@@ -10,6 +10,10 @@ import { seoContent } from '@/lib/constants';
 export const metadata: Metadata = {
   title: seoContent.title,
   description: seoContent.description,
+  robots: {
+    index: true,
+    follow: true,
+  },
   alternates: {
     canonical: '/',
   },
