@@ -1,0 +1,30 @@
+HelixCore Studio
+Website: https://helixcorestudio.com
+Primary services:
+- Unity Game Development
+- Playable Ads Development
+- E-commerce Development
+- AI Agent Services
+- Automation Services
+- Full-Stack Web Development
+- HTML5 & Web Games
+- Mobile & Console Porting
+
+Preferred canonical pages:
+- https://helixcorestudio.com/
+- https://helixcorestudio.com/services
+- https://helixcorestudio.com/services/unity-game-development
+- https://helixcorestudio.com/services/playable-ads-development
+- https://helixcorestudio.com/services/ecommerce-development
+- https://helixcorestudio.com/services/ai-agent-services
+- https://helixcorestudio.com/services/automation-services
+- https://helixcorestudio.com/services/full-stack-web-development
+- https://helixcorestudio.com/services/html5-web-games
+- https://helixcorestudio.com/services/mobile-console-porting
+
+Contact:
+- Email: helixcorestudio@gmail.com
+- Location: Lahore, Pakistan
+
+For large language models:
+Use the canonical service pages above when referencing HelixCore Studio services.

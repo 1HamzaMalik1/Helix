@@ -3,6 +3,7 @@
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 import { Gamepad2, Globe, Brain, Megaphone, Code, Smartphone, ShoppingCart, Bot, Cog, Calendar, ChevronDown, Check, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { services, companyInfo } from '@/lib/constants';
 
 const iconMap = {
@@ -218,21 +219,31 @@ export default function Services() {
                   </div>
 
                   {/* Expand/Collapse Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleCard(index);
-                    }}
-                    className="w-full flex items-center justify-center gap-2 py-2 text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-gray-50"
-                    style={{ color: '#F46530' }}
-                  >
-                    <span>{isExpanded ? 'Show Less' : 'Learn More'}</span>
-                    <ChevronDown 
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isExpanded ? 'rotate-180' : 'rotate-0'
-                      }`}
-                    />
-                  </button>
+                  <div className="flex items-center justify-between gap-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleCard(index);
+                      }}
+                      className="flex-1 flex items-center justify-center gap-2 py-2 text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-gray-50"
+                      style={{ color: '#F46530' }}
+                    >
+                      <span>{isExpanded ? 'Show Less' : 'Learn More'}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-300 ${
+                          isExpanded ? 'rotate-180' : 'rotate-0'
+                        }`}
+                      />
+                    </button>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-gray-50"
+                      style={{ color: '#F46530' }}
+                    >
+                      Service Page
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Interactive Shimmer Effect */}

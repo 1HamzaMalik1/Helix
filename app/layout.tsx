@@ -12,6 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://helixcorestudio.com"),
   title: seoContent.title,
   description: seoContent.description,
   keywords: seoContent.keywords,

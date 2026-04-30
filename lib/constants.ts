@@ -12,54 +12,97 @@ export const companyInfo = {
   calendlyUrl: "https://calendly.com/hamzahakim12235",
 };
 
-export const services = [
+export type Service = {
+  slug: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+  longDescription: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
+export const services: Service[] = [
   {
+    slug: "unity-game-development",
     title: "Unity Game Development",
     description: "2D/3D games for Android, iOS, PC, Steam with multiplayer capabilities",
     icon: "Gamepad2",
-    features: ["2D/3D Game Dev", "Multiplayer Games", "Cross-Platform", "Steam Integration"]
+    features: ["2D/3D Game Dev", "Multiplayer Games", "Cross-Platform", "Steam Integration"],
+    longDescription: "We build production-ready Unity games for startups, agencies, and game studios. From rapid prototyping to launch-ready builds, our team handles gameplay programming, optimization, and platform-specific publishing so your product reaches players faster.",
+    seoTitle: "Unity Game Development Services | HelixCore Studio",
+    seoDescription: "Professional Unity game development for mobile, PC, and Steam. Build 2D/3D multiplayer games with HelixCore Studio."
   },
   {
+    slug: "playable-ads-development",
     title: "Playable Ads Development",
     description: "Interactive ad experiences across all major platforms",
     icon: "Megaphone",
-    features: ["Mintegral", "AppLovin", "TikTok", "Meta", "IronSource", "Unity Ads"]
+    features: ["Mintegral", "AppLovin", "TikTok", "Meta", "IronSource", "Unity Ads"],
+    longDescription: "Our playable ad team creates lightweight, high-performance ad experiences designed to increase click-through and install rates. We tailor every ad to platform requirements while preserving your gameplay hook and brand identity.",
+    seoTitle: "Playable Ads Development Services | HelixCore Studio",
+    seoDescription: "High-converting playable ads for AppLovin, Meta, TikTok, Unity Ads, and more. Fast-loading ad creatives built to perform."
   },
   {
+    slug: "ecommerce-development",
     title: "E-commerce Development",
     description: "Custom online stores and shopping platforms",
     icon: "ShoppingCart",
-    features: ["Shopify", "WordPress", "Wix", "Webflow", "Custom Solutions"]
+    features: ["Shopify", "WordPress", "Wix", "Webflow", "Custom Solutions"],
+    longDescription: "We design and develop ecommerce experiences that convert visitors into customers. Whether you need a platform-based store or a custom commerce stack, we deliver secure checkouts, optimized product flows, and scalable integrations.",
+    seoTitle: "E-commerce Development Services | HelixCore Studio",
+    seoDescription: "Custom ecommerce development on Shopify, WordPress, Wix, Webflow, and bespoke stacks. Build faster, sell more."
   },
   {
+    slug: "ai-agent-services",
     title: "AI Agent Services",
     description: "Intelligent AI-powered automation and chatbot solutions",
     icon: "Bot",
-    features: ["Custom AI Agents", "ChatGPT Integration", "Smart Automation", "NLP Solutions"]
+    features: ["Custom AI Agents", "ChatGPT Integration", "Smart Automation", "NLP Solutions"],
+    longDescription: "We build AI agents that automate repetitive work, assist customers, and improve operations. Our implementations combine strong prompt design, reliable integrations, and practical guardrails for real business use cases.",
+    seoTitle: "AI Agent Development Services | HelixCore Studio",
+    seoDescription: "Custom AI agents, chatbot integrations, and NLP workflows that automate support, operations, and customer engagement."
   },
   {
+    slug: "automation-services",
     title: "Automation Services",
     description: "Streamline workflows with intelligent automation solutions",
     icon: "Cog",
-    features: ["Process Automation", "API Integration", "Data Pipeline", "Workflow Optimization"]
+    features: ["Process Automation", "API Integration", "Data Pipeline", "Workflow Optimization"],
+    longDescription: "Our automation services remove manual bottlenecks across product, marketing, and operations teams. We connect tools, orchestrate APIs, and build resilient workflows that reduce errors and save time.",
+    seoTitle: "Business Automation Services | HelixCore Studio",
+    seoDescription: "Workflow and process automation services with API integrations and data pipelines to improve speed, consistency, and ROI."
   },
   {
+    slug: "full-stack-web-development",
     title: "Full-Stack Web Development",
     description: "Enterprise-grade web applications with modern frameworks",
     icon: "Code",
-    features: ["React/Next.js", "Node.js", "Databases", "Cloud Deployment"]
+    features: ["React/Next.js", "Node.js", "Databases", "Cloud Deployment"],
+    longDescription: "We ship robust full-stack products using modern architectures and clean code standards. From frontend UX to backend APIs and deployment pipelines, we focus on performance, maintainability, and business outcomes.",
+    seoTitle: "Full-Stack Web Development Services | HelixCore Studio",
+    seoDescription: "Scalable full-stack web development with React, Next.js, Node.js, and cloud deployment for modern digital products."
   },
   {
+    slug: "html5-web-games",
     title: "HTML5 & Web Games",
     description: "Browser-based games with WebGL and Canvas optimization",
     icon: "Globe",
-    features: ["Browser Games", "WebGL", "Mobile Web", "Progressive Web Apps"]
+    features: ["Browser Games", "WebGL", "Mobile Web", "Progressive Web Apps"],
+    longDescription: "We create high-performance browser games that run smoothly across devices and screen sizes. Our team focuses on rendering optimization, responsive controls, and monetization-friendly implementations.",
+    seoTitle: "HTML5 & Web Game Development Services | HelixCore Studio",
+    seoDescription: "Browser game development with HTML5, WebGL, and mobile optimization. Launch fast-loading web games across devices."
   },
   {
+    slug: "mobile-console-porting",
     title: "Mobile & Console Porting",
     description: "Port games across platforms with optimized performance",
     icon: "Smartphone",
-    features: ["iOS/Android", "Console Porting", "Performance Opt", "Store Deployment"]
+    features: ["iOS/Android", "Console Porting", "Performance Opt", "Store Deployment"],
+    longDescription: "We port existing games to mobile and console environments while maintaining gameplay quality and performance. Our process includes control adaptation, optimization, and store submission support.",
+    seoTitle: "Mobile & Console Game Porting Services | HelixCore Studio",
+    seoDescription: "Game porting services for iOS, Android, and consoles with performance optimization and smooth deployment workflows."
   }
 ];
 
