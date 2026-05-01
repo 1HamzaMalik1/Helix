@@ -8,8 +8,6 @@ type ServicePageProps = {
   params: { slug: string };
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.helixcorestudio.com";
-
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -39,7 +37,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: service.seoTitle,
       description: service.seoDescription,
       type: "website",
-      url: `${siteUrl}/services/${service.slug}`,
+      url: `https://helixcorestudio.com/services/${service.slug}`,
       siteName: companyInfo.name,
     },
     twitter: {

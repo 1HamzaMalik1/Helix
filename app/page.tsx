@@ -17,6 +17,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  openGraph: {
+    title: seoContent.title,
+    description: seoContent.description,
+    url: 'https://helixcorestudio.com/',
+    type: 'website',
+    siteName: 'HelixCore Studio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: seoContent.title,
+    description: seoContent.description,
+  },
 };
 
 export default function HomePage() {

@@ -14,6 +14,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
+  openGraph: {
+    title: "Software Services | HelixCore Studio",
+    description:
+      "Explore HelixCore Studio services including game development, AI agents, automation, ecommerce, and full-stack web development.",
+    url: "https://helixcorestudio.com/services",
+    type: "website",
+    siteName: "HelixCore Studio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Software Services | HelixCore Studio",
+    description:
+      "Explore HelixCore Studio services including game development, AI agents, automation, ecommerce, and full-stack web development.",
+  },
 };
 
 export default function ServicesPage() {

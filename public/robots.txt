@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://helixcorestudio.com
+
+# Sitemaps
+Sitemap: https://helixcorestudio.com/sitemap.xml

@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "https://www.helixcorestudio.com/:path*",
+      "destination": "https://helixcorestudio.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://helixcore-studio.vercel.app/:path*",
+      "destination": "https://helixcorestudio.com/:path*",
+      "permanent": true
+    }
+  ]
+}
