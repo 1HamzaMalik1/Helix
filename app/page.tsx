@@ -5,6 +5,8 @@ import Team from '@/components/Team';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Process from '@/components/Process';
+import { PageJsonLd } from '@/components/seo/PageJsonLd';
+import { homePageJsonLdGraph } from '@/lib/page-jsonld';
 import { seoContent, siteUrl } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <PageJsonLd id="jsonld-home" graph={homePageJsonLdGraph()} />
       <Hero />
       <Testimonials />
       <Services />

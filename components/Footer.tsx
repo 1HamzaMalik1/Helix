@@ -54,6 +54,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/#team" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
                   About
                 </Link>

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Cpu, Heart, Code, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { Menu, X, ChevronRight, Cpu, Heart, Code, Zap, BookOpen } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Navbar() {
@@ -59,10 +60,7 @@ export default function Navbar() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo with slogan */}
-            <div 
-              className="flex items-center cursor-pointer group" 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
+            <Link href="/" className="flex items-center group">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <Image 
@@ -84,7 +82,7 @@ export default function Navbar() {
                   </div>
                 </div> */}
               </div>
-            </div>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
@@ -129,6 +127,15 @@ export default function Navbar() {
                   </button>
                 </div>
               ))}
+
+              <Link
+                href="/blog"
+                className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-gray-50 flex items-center gap-2"
+                style={{ color: 'var(--primary, #2A2E30)' }}
+              >
+                <BookOpen className="w-4 h-4" />
+                Blog
+              </Link>
               
               {/* CTA Button */}
               <div className="flex items-center gap-2 ml-4">
@@ -268,6 +275,21 @@ export default function Navbar() {
                     </div>
                   </button>
                 ))}
+                <Link
+                  href="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-left p-4 rounded-xl transition-all duration-200 hover:bg-gray-50 flex items-center gap-3 border-l-4 border-transparent"
+                  style={{ color: 'var(--primary, #2A2E30)' }}
+                >
+                  <div className="p-2 rounded-lg bg-gray-100">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold text-sm">Blog</div>
+                    <div className="text-xs font-medium opacity-70">Guides &amp; insights</div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-gray-400" />
+                </Link>
               </div>
               
               {/* Mobile CTA */}

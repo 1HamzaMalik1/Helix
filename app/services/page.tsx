@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { servicesIndexJsonLdGraph } from "@/lib/page-jsonld";
 import { services, siteUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -29,6 +31,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50">
+      <PageJsonLd id="jsonld-services-index" graph={servicesIndexJsonLdGraph()} />
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
         <h1 className="text-3xl lg:text-5xl font-bold mb-4" style={{ color: "#2A2E30" }}>
           Our Services

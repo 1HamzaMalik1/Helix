@@ -62,10 +62,10 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://helixcorestudio.com/#organization',
+      '@id': `${siteUrl}/#organization`,
       name: 'HelixCore Studio',
-      url: 'https://helixcorestudio.com',
-      logo: 'https://helixcorestudio.com/logo.png',
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
       alternateName: 'HelixCore',
       description: seoContent.description,
       sameAs: [
@@ -74,32 +74,22 @@ const structuredData = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://helixcorestudio.com/#website',
+      '@id': `${siteUrl}/#website`,
       name: 'HelixCore Studio',
-      url: 'https://helixcorestudio.com',
+      url: siteUrl,
+      inLanguage: 'en-US',
       publisher: {
-        '@id': 'https://helixcorestudio.com/#organization',
-      },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': 'https://helixcorestudio.com/#webpage',
-      name: 'HelixCore Studio – AI, Game & Web Development',
-      url: 'https://helixcorestudio.com',
-      isPartOf: {
-        '@id': 'https://helixcorestudio.com/#website',
-      },
-      about: {
-        '@id': 'https://helixcorestudio.com/#organization',
+        '@id': `${siteUrl}/#organization`,
       },
     },
     {
       '@type': 'LocalBusiness',
-      '@id': 'https://helixcorestudio.com/#localbusiness',
+      '@id': `${siteUrl}/#localbusiness`,
       name: 'HelixCore Studio',
-      url: 'https://helixcorestudio.com',
-      image: 'https://helixcorestudio.com/logo.png',
+      url: siteUrl,
+      image: `${siteUrl}/logo.png`,
       telephone: '+923201469571',
+      parentOrganization: { '@id': `${siteUrl}/#organization` },
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Lahore',
@@ -132,7 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: gtmScript }}
         />
         <Script
-          id="schema"
+          id="schema-global-entity"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, CheckCircle, ArrowLeft } from "lucide-react";
 import type { Service } from "@/lib/constants";
+import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { serviceDetailJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, services, siteUrl } from "@/lib/constants";
 
 type ServicePageProps = {
@@ -59,6 +61,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50">
+      <PageJsonLd id={`jsonld-service-${service.slug}`} graph={serviceDetailJsonLdGraph(service)} />
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold mb-8" aria-label="Breadcrumb">
           <Link href="/" className="hover:underline" style={{ color: "#F46530" }}>
