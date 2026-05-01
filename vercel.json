@@ -1,12 +1,24 @@
 {
   "redirects": [
     {
-      "source": "https://www.helixcorestudio.com/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.helixcorestudio.com"
+        }
+      ],
       "destination": "https://helixcorestudio.com/:path*",
       "permanent": true
     },
     {
-      "source": "https://helixcore-studio.vercel.app/:path*",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "helixcore-studio.vercel.app"
+        }
+      ],
       "destination": "https://helixcorestudio.com/:path*",
       "permanent": true
     }
