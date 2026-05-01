@@ -143,7 +143,7 @@ export default function Testimonials() {
                     <div className="flex items-center justify-center gap-2">
                       <img 
                         src={getCountryFlag(getCurrentTestimonial().countryCode)} 
-                        alt={getCurrentTestimonial().country}
+                        alt={`National flag of ${getCurrentTestimonial().country} — HelixCore Studio client location`}
                         className="w-4 h-3 object-cover rounded-sm"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';

@@ -5,22 +5,18 @@ import Team from '@/components/Team';
 import Testimonials from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Process from '@/components/Process';
-import { seoContent } from '@/lib/constants';
+import { seoContent, siteUrl } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: seoContent.title,
   description: seoContent.description,
-  robots: {
-    index: true,
-    follow: true,
-  },
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: seoContent.title,
     description: seoContent.description,
-    url: 'https://helixcorestudio.com/',
+    url: `${siteUrl}/`,
     type: 'website',
     siteName: 'HelixCore Studio',
   },

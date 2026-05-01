@@ -112,7 +112,7 @@ export default function Team() {
                       {member.image ? (
                         <Image
                           src={member.image}
-                          alt={member.name}
+                          alt={`${member.name}, ${member.role} — HelixCore Studio leadership team photo`}
                           width={192}
                           height={192}
                           className="w-full h-full object-cover"

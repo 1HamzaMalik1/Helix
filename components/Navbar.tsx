@@ -67,7 +67,7 @@ export default function Navbar() {
                 <div className="relative">
                   <Image 
                     src="/logo.svg" 
-                    alt="Company Logo" 
+                    alt="HelixCore Studio logo — AI, game and web development company" 
                     width={180} 
                     height={60} 
                     className="h-14 w-auto transition-transform group-hover:scale-105 duration-300"

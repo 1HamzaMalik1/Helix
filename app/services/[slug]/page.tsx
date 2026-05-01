@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar, CheckCircle, ArrowLeft } from "lucide-react";
-import { companyInfo, services } from "@/lib/constants";
+import type { Service } from "@/lib/constants";
+import { companyInfo, services, siteUrl } from "@/lib/constants";
 
 type ServicePageProps = {
   params: { slug: string };
@@ -26,10 +27,6 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   return {
     title: service.seoTitle,
     description: service.seoDescription,
-    robots: {
-      index: true,
-      follow: true,
-    },
     alternates: {
       canonical: `/services/${service.slug}`,
     },
@@ -37,7 +34,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: service.seoTitle,
       description: service.seoDescription,
       type: "website",
-      url: `https://helixcorestudio.com/services/${service.slug}`,
+      url: `${siteUrl}/services/${service.slug}`,
       siteName: companyInfo.name,
     },
     twitter: {
@@ -56,16 +53,34 @@ export default async function ServicePage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const related = (service.relatedSlugs ?? [])
+    .map((s) => services.find((item) => item.slug === s))
+    .filter((item): item is Service => item != null && item.slug !== service.slug);
+
   return (
     <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold mb-8" aria-label="Breadcrumb">
+          <Link href="/" className="hover:underline" style={{ color: "#F46530" }}>
+            Home
+          </Link>
+          <span className="opacity-40" style={{ color: "#2A2E30" }}>/</span>
+          <Link href="/services" className="hover:underline" style={{ color: "#F46530" }}>
+            Services
+          </Link>
+          <span className="opacity-40" style={{ color: "#2A2E30" }}>/</span>
+          <Link href="/#contact" className="hover:underline" style={{ color: "#F46530" }}>
+            Contact
+          </Link>
+        </nav>
+
         <Link
-          href="/#services"
-          className="inline-flex items-center gap-2 text-sm font-semibold mb-8"
+          href="/services"
+          className="inline-flex items-center gap-2 text-sm font-semibold mb-6"
           style={{ color: "#F46530" }}
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to services
+          All services
         </Link>
 
         <h1 className="text-3xl lg:text-5xl font-bold mb-4" style={{ color: "#2A2E30" }}>
@@ -89,6 +104,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </ul>
         </div>
 
+        {related.length > 0 ? (
+          <div className="bg-white border rounded-2xl p-6 md:p-8 mb-10" style={{ borderColor: "rgba(42, 46, 48, 0.1)" }}>
+            <h2 className="text-xl font-semibold mb-4" style={{ color: "#2A2E30" }}>
+              Related services
+            </h2>
+            <ul className="space-y-2">
+              {related.map((item) => (
+                <li key={item.slug}>
+                  <Link href={`/services/${item.slug}`} className="text-sm font-semibold hover:underline" style={{ color: "#F46530" }}>
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
         <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: "rgba(244, 101, 48, 0.06)" }}>
           <h2 className="text-xl font-semibold mb-2" style={{ color: "#2A2E30" }}>
             Need this service for your project?
@@ -96,16 +128,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <p className="text-sm md:text-base opacity-80 mb-5" style={{ color: "#2A2E30" }}>
             Book a strategy call and get a tailored implementation plan from HelixCore Studio.
           </p>
-          <a
-            href={companyInfo.calendlyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold"
-            style={{ backgroundColor: "#F46530", color: "#FFFFFF" }}
-          >
-            <Calendar className="w-5 h-5" />
-            Book a meeting
-          </a>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <a
+              href={companyInfo.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold"
+              style={{ backgroundColor: "#F46530", color: "#FFFFFF" }}
+            >
+              <Calendar className="w-5 h-5" />
+              Book a meeting
+            </a>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold border-2 bg-white"
+              style={{ borderColor: "#F46530", color: "#F46530" }}
+            >
+              Contact us
+            </Link>
+          </div>
         </div>
       </div>
     </section>

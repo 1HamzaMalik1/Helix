@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import { companyInfo, seoContent } from '@/lib/constants';
+import { companyInfo, seoContent, siteUrl } from '@/lib/constants';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -13,9 +13,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://helixcorestudio.com'),
-  title: 'HelixCore Studio – AI, Game & Web Development Company',
-  description: 'HelixCore Studio delivers AI-powered game development and scalable web solutions.',
+  metadataBase: new URL(siteUrl),
+  title: seoContent.title,
+  description: seoContent.description,
   keywords: seoContent.keywords,
   authors: [{ name: companyInfo.ceo }],
   publisher: companyInfo.name,
@@ -35,21 +35,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: seoContent.title,
     description: seoContent.description,
-    url: 'https://helixcorestudio.com',
+    url: siteUrl,
     type: 'website',
     locale: 'en_US',
     siteName: companyInfo.name,
-    images: [
-      {
-        url: 'https://helixcorestudio.com/og-image.jpg',
-      },
-    ],
+    images: [{ url: `${siteUrl}/og-image.jpg` }],
   },
   twitter: {
     card: 'summary_large_image',
     title: seoContent.title,
     description: seoContent.description,
-    images: ['https://helixcorestudio.com/og-image.jpg'],
+    images: [`${siteUrl}/og-image.jpg`],
   },
 };
 
@@ -71,7 +67,7 @@ const structuredData = {
       url: 'https://helixcorestudio.com',
       logo: 'https://helixcorestudio.com/logo.png',
       alternateName: 'HelixCore',
-      description: 'AI-powered game and web development company',
+      description: seoContent.description,
       sameAs: [
         'https://www.linkedin.com/company/helixcore-studio/',
       ],

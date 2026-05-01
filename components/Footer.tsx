@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
 import { companyInfo } from '@/lib/constants';
 import Image from 'next/image';
@@ -15,7 +16,7 @@ export default function Footer() {
             <div className="mb-6">
               <Image 
                 src="/logo.svg" 
-                alt="Company Logo" 
+                alt="HelixCore Studio logo — AI, game and web development company" 
                 width={160} 
                 height={50} 
                 className="h-14 w-auto"
@@ -42,17 +43,26 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Quick Links</h3>
             <ul className="space-y-3">
-              {['Services', 'Our Work', 'Team', 'Contact'].map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => document.getElementById(item.toLowerCase().replace(' ', '-'))?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-sm opacity-70 transition-colors"
-                    style={{ color: '#2A2E30' }}
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
+              <li>
+                <Link href="/" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/#team" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/#contact" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -60,11 +70,18 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Services</h3>
             <ul className="space-y-3">
-              {['Unity Development', 'Web Games', 'AI Integration', 'Playable Ads', 'Mobile Apps', 'Web Development'].map((service) => (
-                <li key={service}>
-                  <span className="text-sm opacity-70 transition-colors cursor-default" style={{ color: '#2A2E30' }}>
-                    {service}
-                  </span>
+              {[
+                { label: 'Unity game development', href: '/services/unity-game-development' },
+                { label: 'HTML5 & web games', href: '/services/html5-web-games' },
+                { label: 'AI development', href: '/services/ai-development' },
+                { label: 'Playable ads', href: '/services/playable-ads-development' },
+                { label: 'Mobile & console porting', href: '/services/mobile-console-porting' },
+                { label: 'Web development', href: '/services/web-development' },
+              ].map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href} className="text-sm opacity-70 transition-colors hover:opacity-100 hover:underline" style={{ color: '#2A2E30' }}>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>

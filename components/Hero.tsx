@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronRight, Sparkles, Code2, Cpu, Zap, Globe, Smartphone, Brain, CheckCircle } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronRight, Code2, Zap, Globe, Smartphone, Brain, CheckCircle } from 'lucide-react';
 import { companyInfo } from '@/lib/constants';
 
 export default function Hero() {
@@ -138,10 +139,21 @@ export default function Hero() {
             {/* Description */}
             <div className="mb-10">
               <p className="text-sm md:text-md mb-6 leading-relaxed" style={{ color: '#2A2E30' }}>
-                {companyInfo.name} delivers 
-                <span className="font-semibold" style={{ color: '#F46530' }}> production-ready solutions</span> for 
-                businesses worldwide. Our team of seasoned engineers specializes in game development, 
-                web applications, and AI integration.
+                {companyInfo.name} delivers{' '}
+                <span className="font-semibold" style={{ color: '#F46530' }}>production-ready solutions</span> for
+                businesses worldwide. Our team of seasoned engineers specializes in{' '}
+                <Link href="/services/game-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
+                  game development
+                </Link>
+                ,{' '}
+                <Link href="/services/web-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
+                  scalable web platforms
+                </Link>
+                , and{' '}
+                <Link href="/services/ai-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
+                  AI solutions
+                </Link>
+                .
               </p>
 
               {/* Key Points */}
@@ -161,7 +173,7 @@ export default function Hero() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 onClick={() => scrollToSection('contact')}
                 className="group relative px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
@@ -172,6 +184,30 @@ export default function Hero() {
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-12">
+              <Link
+                href="/services/ai-development"
+                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
+                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
+              >
+                AI development
+              </Link>
+              <Link
+                href="/services/game-development"
+                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
+                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
+              >
+                Game development
+              </Link>
+              <Link
+                href="/services/web-development"
+                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
+                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
+              >
+                Web development
+              </Link>
             </div>
           </div>
 
