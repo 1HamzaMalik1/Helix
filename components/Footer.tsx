@@ -68,6 +68,11 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href="/privacy-policy" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
