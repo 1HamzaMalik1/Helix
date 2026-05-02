@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
-import { companyInfo } from '@/lib/constants';
+import { companyInfo, siteUrl } from '@/lib/constants';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
               and enterprise-grade solutions to clients worldwide since 2019.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/in/hamza-hakim1/" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }}>
+              <a href={companyInfo.linkedInCompany} target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }} title="HelixCore Studio on LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://github.com/1HamzaMalik1" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }}>
@@ -76,12 +76,14 @@ export default function Footer() {
             <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Services</h3>
             <ul className="space-y-3">
               {[
-                { label: 'Unity game development', href: '/services/unity-game-development' },
-                { label: 'HTML5 & web games', href: '/services/html5-web-games' },
                 { label: 'AI development', href: '/services/ai-development' },
-                { label: 'Playable ads', href: '/services/playable-ads-development' },
-                { label: 'Mobile & console porting', href: '/services/mobile-console-porting' },
+                { label: 'Game development', href: '/services/game-development' },
                 { label: 'Web development', href: '/services/web-development' },
+                { label: 'Unity game development', href: '/services/unity-game-development' },
+                { label: 'Playable ads', href: '/services/playable-ads-development' },
+                { label: 'E-commerce', href: '/services/ecommerce-development' },
+                { label: 'HTML5 & web games', href: '/services/html5-web-games' },
+                { label: 'Mobile & console porting', href: '/services/mobile-console-porting' },
               ].map((service) => (
                 <li key={service.href}>
                   <Link href={service.href} className="text-sm opacity-70 transition-colors hover:opacity-100 hover:underline" style={{ color: '#2A2E30' }}>
@@ -105,8 +107,14 @@ export default function Footer() {
                 <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>{companyInfo.phone}</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5" style={{ color: '#F46530' }} />
-                <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>{companyInfo.location}</span>
+                <MapPin className="h-5 w-5 mt-0.5 shrink-0" style={{ color: '#F46530' }} />
+                <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
+                  {companyInfo.addressLine}, {companyInfo.addressLocality}, {companyInfo.addressRegion} {companyInfo.postalCode},{' '}
+                  Pakistan ·{' '}
+                  <a href={`${siteUrl}/services`} className="underline decoration-[#F46530]/40 hover:decoration-[#F46530]" style={{ color: '#F46530' }}>
+                    Services
+                  </a>
+                </span>
               </li>
             </ul>
           </div>

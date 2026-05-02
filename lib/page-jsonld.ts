@@ -42,9 +42,9 @@ export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
       "@type": "WebPage",
       "@id": `${siteUrl}/services#webpage`,
       url: `${siteUrl}/services`,
-      name: "Software Services | HelixCore Studio",
+      name: "Software Development Services | HelixCore Studio",
       description:
-        "Explore HelixCore Studio services including game development, AI agents, automation, ecommerce, and full-stack web development.",
+        "AI development, game production, web apps, Unity, playables, ecommerce, and automation—detailed service pages from HelixCore Studio.",
       isPartOf: { "@id": websiteId },
       about: { "@id": orgId },
       inLanguage: "en-US",
@@ -80,9 +80,14 @@ export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
   ];
 }
 
-export function serviceDetailJsonLdGraph(service: Service): Record<string, unknown>[] {
+export type ServiceFaqItem = { question: string; answer: string };
+
+export function serviceDetailJsonLdGraph(
+  service: Service,
+  faqs: ServiceFaqItem[] = []
+): Record<string, unknown>[] {
   const pageUrl = `${siteUrl}/services/${service.slug}`;
-  return [
+  const base: Record<string, unknown>[] = [
     {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
@@ -102,10 +107,10 @@ export function serviceDetailJsonLdGraph(service: Service): Record<string, unkno
       url: pageUrl,
       serviceType: service.title,
       provider: { "@id": orgId },
-      areaServed: {
-        "@type": "Place",
-        name: "Worldwide",
-      },
+      areaServed: [
+        { "@type": "City", name: "Lahore", containedInPlace: { "@type": "Country", name: "Pakistan" } },
+        { "@type": "Place", name: "Worldwide" },
+      ],
     },
     {
       "@type": "BreadcrumbList",
@@ -116,6 +121,25 @@ export function serviceDetailJsonLdGraph(service: Service): Record<string, unkno
       ],
     },
   ];
+
+  if (faqs.length === 0) return base;
+
+  const faqPage: Record<string, unknown> = {
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    url: pageUrl,
+    isPartOf: { "@id": `${pageUrl}#webpage` },
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
+  return [...base, faqPage];
 }
 
 export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
@@ -125,7 +149,7 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
       "@type": "Blog",
       "@id": `${blogUrl}#blog`,
       name: `Insights & Guides | ${companyInfo.name}`,
-      description: `${companyInfo.name} articles on Unity, playable ads, mobile games, and related services.`,
+      description: `${companyInfo.name} articles on AI adoption, game budgets, and modern web apps—with links to professional services.`,
       url: blogUrl,
       publisher: { "@id": orgId },
       blogPost: blogPosts.map((p) => ({

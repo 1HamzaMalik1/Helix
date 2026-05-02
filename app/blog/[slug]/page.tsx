@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return { title: "Post not found" };
   }
   return {
-    title: `${post.title} | ${companyInfo.name}`,
+    title: post.metaTitle ?? `${post.title} | ${companyInfo.name}`,
     description: post.description,
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },

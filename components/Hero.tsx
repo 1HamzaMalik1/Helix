@@ -186,7 +186,7 @@ export default function Hero() {
               </button>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-12">
+            <div className="flex flex-wrap gap-2 mb-6">
               <Link
                 href="/services/ai-development"
                 className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
@@ -209,6 +209,17 @@ export default function Hero() {
                 Web development
               </Link>
             </div>
+            <p className="text-sm opacity-80 mb-12" style={{ color: '#2A2E30' }}>
+              <Link
+                href="/blog"
+                className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]"
+                style={{ color: '#F46530' }}
+              >
+                Read our blog
+              </Link>
+              {' '}
+              — AI, game budgets, and modern web apps.
+            </p>
           </div>
 
           {/* Right Column - Unity / C# Visual */}

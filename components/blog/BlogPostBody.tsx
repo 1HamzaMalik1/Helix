@@ -1,6 +1,6 @@
-import UnityGameDevelopmentArticle from "@/components/blog/articles/UnityGameDevelopmentArticle";
-import PlayableAdsDevelopmentArticle from "@/components/blog/articles/PlayableAdsDevelopmentArticle";
-import MobileGameDevelopmentArticle from "@/components/blog/articles/MobileGameDevelopmentArticle";
+import HowAiTransformsBusinessesArticle from "@/components/blog/articles/HowAiTransformsBusinessesArticle";
+import CostOfGameDevelopment2026Article from "@/components/blog/articles/CostOfGameDevelopment2026Article";
+import WhyModernWebAppsArticle from "@/components/blog/articles/WhyModernWebAppsArticle";
 
 type BlogPostBodyProps = {
   slug: string;
@@ -8,12 +8,12 @@ type BlogPostBodyProps = {
 
 export default function BlogPostBody({ slug }: BlogPostBodyProps) {
   switch (slug) {
-    case "unity-game-development-guide":
-      return <UnityGameDevelopmentArticle />;
-    case "playable-ads-development-guide":
-      return <PlayableAdsDevelopmentArticle />;
-    case "mobile-game-development-strategy":
-      return <MobileGameDevelopmentArticle />;
+    case "how-ai-transforms-businesses":
+      return <HowAiTransformsBusinessesArticle />;
+    case "cost-of-game-development-2026":
+      return <CostOfGameDevelopment2026Article />;
+    case "why-businesses-need-modern-web-apps":
+      return <WhyModernWebAppsArticle />;
     default:
       return null;
   }

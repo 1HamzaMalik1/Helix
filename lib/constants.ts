@@ -6,8 +6,15 @@ export const companyInfo = {
   experience: "5+ years",
   email: "helixcorestudio@gmail.com",
   adminEmail: "hamzahakim12235@gmail.com",
-  phone: "+923164935823",
+  phone: "+923201469571",
   location: "Lahore, Pakistan",
+  /** Full postal address for schema and footer (Ichra, Lahore) */
+  addressLine: "16 E Sultan Ahmed Road, Ichra",
+  addressLocality: "Lahore",
+  addressRegion: "Punjab",
+  postalCode: "54000",
+  addressCountry: "PK",
+  linkedInCompany: "https://www.linkedin.com/company/helixcore-studio/",
   degree: "Masters in Software Engineering",
   calendlyUrl: "https://calendly.com/hamzahakim12235",
 };
@@ -35,8 +42,9 @@ export const services: Service[] = [
     features: ["Custom AI agents", "LLM integrations", "Workflow automation", "NLP & chatbots"],
     longDescription: "We build AI solutions that automate support, operations, and internal processes. Our team delivers agent architectures, secure third-party integrations, and measurable efficiency gains for startups and enterprises.",
     seoTitle: "AI Development Services | HelixCore Studio",
-    seoDescription: "HelixCore Studio builds custom AI agents, LLM integrations, and automation pipelines so your business scales faster with lower operating cost.",
-    relatedSlugs: ["ai-agent-services", "automation-services", "web-development"],
+    seoDescription:
+      "Custom AI development in Lahore: LLM integrations, AI agents, and workflow automation. HelixCore Studio ships secure, measurable AI for global clients.",
+    relatedSlugs: ["game-development", "web-development", "ai-agent-services", "automation-services"],
   },
   {
     slug: "game-development",
@@ -45,9 +53,10 @@ export const services: Service[] = [
     icon: "Gamepad2",
     features: ["Unity 2D/3D", "Playable ads", "HTML5 / WebGL", "Porting & launch"],
     longDescription: "From Unity titles and high-performing playable ads to browser games and platform ports, we ship engaging experiences optimized for acquisition, retention, and store compliance.",
-    seoTitle: "Game Development Studio | HelixCore Studio",
-    seoDescription: "Professional game development: Unity, playable ads, HTML5 web games, and cross-platform porting by HelixCore Studio.",
-    relatedSlugs: ["unity-game-development", "playable-ads-development", "html5-web-games", "mobile-console-porting"],
+    seoTitle: "Game Development Company | HelixCore Studio",
+    seoDescription:
+      "Game development company based in Lahore: Unity, playable ads, HTML5, and porting. HelixCore Studio builds and ships games for studios worldwide.",
+    relatedSlugs: ["ai-development", "web-development", "unity-game-development", "playable-ads-development"],
   },
   {
     slug: "web-development",
@@ -57,8 +66,9 @@ export const services: Service[] = [
     features: ["React & Next.js", "APIs & backends", "Ecommerce", "Cloud DevOps"],
     longDescription: "We engineer fast, maintainable web platforms—from marketing sites to complex SaaS and ecommerce. Our stack prioritizes performance, SEO-friendly structure, and reliable release pipelines.",
     seoTitle: "Web Development Services | HelixCore Studio",
-    seoDescription: "Scalable full-stack and ecommerce web development with React, Next.js, and modern cloud infrastructure from HelixCore Studio.",
-    relatedSlugs: ["full-stack-web-development", "ecommerce-development", "automation-services"],
+    seoDescription:
+      "Web development services with Next.js and cloud DevOps. HelixCore Studio in Lahore builds fast SaaS, ecommerce, and enterprise web apps for international clients.",
+    relatedSlugs: ["ai-development", "game-development", "full-stack-web-development", "ecommerce-development"],
   },
   {
     slug: "unity-game-development",
@@ -67,8 +77,9 @@ export const services: Service[] = [
     icon: "Gamepad2",
     features: ["2D/3D Game Dev", "Multiplayer Games", "Cross-Platform", "Steam Integration"],
     longDescription: "We build production-ready Unity games for startups, agencies, and game studios. From rapid prototyping to launch-ready builds, our team handles gameplay programming, optimization, and platform-specific publishing so your product reaches players faster.",
-    seoTitle: "Unity Game Development Services | HelixCore Studio",
-    seoDescription: "Professional Unity game development for mobile, PC, and Steam. Build 2D/3D multiplayer games with HelixCore Studio.",
+    seoTitle: "Unity Game Development Services | HelixCore",
+    seoDescription:
+      "Unity game development for mobile, PC, and Steam from Lahore. 2D/3D, multiplayer, and store-ready builds with HelixCore Studio.",
     relatedSlugs: ["game-development", "playable-ads-development", "mobile-console-porting"],
   },
   {
@@ -78,8 +89,9 @@ export const services: Service[] = [
     icon: "Megaphone",
     features: ["Mintegral", "AppLovin", "TikTok", "Meta", "IronSource", "Unity Ads"],
     longDescription: "Our playable ad team creates lightweight, high-performance ad experiences designed to increase click-through and install rates. We tailor every ad to platform requirements while preserving your gameplay hook and brand identity.",
-    seoTitle: "Playable Ads Development Services | HelixCore Studio",
-    seoDescription: "High-converting playable ads for AppLovin, Meta, TikTok, Unity Ads, and more. Fast-loading ad creatives built to perform.",
+    seoTitle: "Playable Ads Development | HelixCore Studio",
+    seoDescription:
+      "Playable ads for Meta, TikTok, AppLovin, and Unity Ads. Lightweight HTML5 creatives engineered for UA performance by HelixCore Studio.",
     relatedSlugs: ["game-development", "unity-game-development", "html5-web-games"],
   },
   {
@@ -89,8 +101,9 @@ export const services: Service[] = [
     icon: "ShoppingCart",
     features: ["Shopify", "WordPress", "Wix", "Webflow", "Custom Solutions"],
     longDescription: "We design and develop ecommerce experiences that convert visitors into customers. Whether you need a platform-based store or a custom commerce stack, we deliver secure checkouts, optimized product flows, and scalable integrations.",
-    seoTitle: "E-commerce Development Services | HelixCore Studio",
-    seoDescription: "Custom ecommerce development on Shopify, WordPress, Wix, Webflow, and bespoke stacks. Build faster, sell more.",
+    seoTitle: "E-commerce Development Services | HelixCore",
+    seoDescription:
+      "Custom ecommerce on Shopify, WooCommerce, Webflow, and headless stacks. Secure checkout, SEO-friendly storefronts from HelixCore Studio.",
     relatedSlugs: ["web-development", "full-stack-web-development"],
   },
   {
@@ -100,8 +113,9 @@ export const services: Service[] = [
     icon: "Bot",
     features: ["Custom AI Agents", "ChatGPT Integration", "Smart Automation", "NLP Solutions"],
     longDescription: "We build AI agents that automate repetitive work, assist customers, and improve operations. Our implementations combine strong prompt design, reliable integrations, and practical guardrails for real business use cases.",
-    seoTitle: "AI Agent Development Services | HelixCore Studio",
-    seoDescription: "Custom AI agents, chatbot integrations, and NLP workflows that automate support, operations, and customer engagement.",
+    seoTitle: "AI Agent Development Services | HelixCore",
+    seoDescription:
+      "Custom AI agents and ChatGPT-style integrations for support and ops. Secure prompts, APIs, and monitoring from HelixCore Studio.",
     relatedSlugs: ["ai-development", "automation-services", "full-stack-web-development"],
   },
   {
@@ -112,7 +126,8 @@ export const services: Service[] = [
     features: ["Process Automation", "API Integration", "Data Pipeline", "Workflow Optimization"],
     longDescription: "Our automation services remove manual bottlenecks across product, marketing, and operations teams. We connect tools, orchestrate APIs, and build resilient workflows that reduce errors and save time.",
     seoTitle: "Business Automation Services | HelixCore Studio",
-    seoDescription: "Workflow and process automation services with API integrations and data pipelines to improve speed, consistency, and ROI.",
+    seoDescription:
+      "Business automation with APIs, webhooks, and data pipelines. Reduce manual work and errors with workflows built by HelixCore Studio.",
     relatedSlugs: ["ai-development", "web-development", "ai-agent-services"],
   },
   {
@@ -122,8 +137,9 @@ export const services: Service[] = [
     icon: "Code",
     features: ["React/Next.js", "Node.js", "Databases", "Cloud Deployment"],
     longDescription: "We ship robust full-stack products using modern architectures and clean code standards. From frontend UX to backend APIs and deployment pipelines, we focus on performance, maintainability, and business outcomes.",
-    seoTitle: "Full-Stack Web Development Services | HelixCore Studio",
-    seoDescription: "Scalable full-stack web development with React, Next.js, Node.js, and cloud deployment for modern digital products.",
+    seoTitle: "Full-Stack Web Development | HelixCore Studio",
+    seoDescription:
+      "Full-stack apps with React, Next.js, Node.js, and PostgreSQL. APIs, auth, and cloud deploys—engineered in Lahore by HelixCore Studio.",
     relatedSlugs: ["web-development", "ecommerce-development", "ai-development"],
   },
   {
@@ -133,8 +149,9 @@ export const services: Service[] = [
     icon: "Globe",
     features: ["Browser Games", "WebGL", "Mobile Web", "Progressive Web Apps"],
     longDescription: "We create high-performance browser games that run smoothly across devices and screen sizes. Our team focuses on rendering optimization, responsive controls, and monetization-friendly implementations.",
-    seoTitle: "HTML5 & Web Game Development Services | HelixCore Studio",
-    seoDescription: "Browser game development with HTML5, WebGL, and mobile optimization. Launch fast-loading web games across devices.",
+    seoTitle: "HTML5 & Web Game Development | HelixCore",
+    seoDescription:
+      "HTML5 and WebGL browser games tuned for load time and mobile web. PWA-friendly builds and ad-ready mechanics from HelixCore Studio.",
     relatedSlugs: ["game-development", "playable-ads-development", "unity-game-development"],
   },
   {
@@ -144,8 +161,9 @@ export const services: Service[] = [
     icon: "Smartphone",
     features: ["iOS/Android", "Console Porting", "Performance Opt", "Store Deployment"],
     longDescription: "We port existing games to mobile and console environments while maintaining gameplay quality and performance. Our process includes control adaptation, optimization, and store submission support.",
-    seoTitle: "Mobile & Console Game Porting Services | HelixCore Studio",
-    seoDescription: "Game porting services for iOS, Android, and consoles with performance optimization and smooth deployment workflows.",
+    seoTitle: "Mobile & Console Game Porting | HelixCore Studio",
+    seoDescription:
+      "Port games to iOS, Android, and console with control mapping and perf tuning. Store submission support from HelixCore Studio, Lahore.",
     relatedSlugs: ["game-development", "unity-game-development", "html5-web-games"],
   }
 ];
@@ -301,8 +319,10 @@ export const technologies = [
 ];
 
 export const seoContent = {
-  title: "HelixCore Studio – AI, Game & Web Development Company",
-  description: "HelixCore Studio builds AI solutions, games, and scalable web platforms to help startups and businesses grow faster and reduce costs.",
-  keywords: "game development, Unity developers, web development, AI games, playable ads, mobile games, software house, Pakistan",
-  ogImage: "/og-image.jpg"
+  title: "HelixCore Studio | AI, Game & Web Development Lahore",
+  description:
+    "HelixCore Studio in Lahore delivers AI development, game production, and modern web apps for startups and enterprises worldwide. Book a call.",
+  keywords:
+    "AI development services, game development company, web development Lahore, Unity Pakistan, HelixCore Studio, playable ads",
+  ogImage: "/og-image.jpg",
 };

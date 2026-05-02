@@ -8,11 +8,11 @@ import { companyInfo, siteUrl, seoContent } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `Insights & Guides | ${companyInfo.name}`,
-  description: `${companyInfo.name} shares practical guides on Unity development, playable ads, and mobile games—with links to our professional services.`,
+  description: `${companyInfo.name} blog: AI in business, game dev costs, and modern web apps—written for founders, with links to our Lahore-based services.`,
   alternates: { canonical: "/blog" },
   openGraph: {
     title: `Insights & Guides | ${companyInfo.name}`,
-    description: `Expert articles on game development, UA creatives, and mobile strategy from ${companyInfo.name}.`,
+    description: `AI adoption, game economics, and modern web apps—actionable articles from ${companyInfo.name} with links to services.`,
     url: `${siteUrl}/blog`,
     type: "website",
     siteName: companyInfo.name,
@@ -34,10 +34,10 @@ export default function BlogIndexPage() {
           <span>Blog</span>
         </div>
         <h1 className="text-3xl lg:text-5xl font-bold mb-4" style={{ color: "#2A2E30" }}>
-          Game development insights
+          Insights on AI, games &amp; the modern web
         </h1>
         <p className="text-base md:text-lg opacity-80 max-w-2xl mb-12 leading-relaxed" style={{ color: "#2A2E30" }}>
-          Deep dives on Unity, playable ads, and mobile strategy—each article links to our{" "}
+          Practical articles for growing businesses—each post links to our{" "}
           <Link href="/services" className="font-semibold underline decoration-[#F46530]/40" style={{ color: "#F46530" }}>
             services
           </Link>{" "}

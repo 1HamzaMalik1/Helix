@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import { companyInfo, seoContent, siteUrl } from '@/lib/constants';
+import { companyInfo, seoContent, siteUrl } from "@/lib/constants";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -58,43 +58,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 
 const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      '@type': 'Organization',
-      '@id': `${siteUrl}/#organization`,
-      name: 'HelixCore Studio',
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: companyInfo.name,
       url: siteUrl,
       logo: `${siteUrl}/logo.png`,
-      alternateName: 'HelixCore',
+      alternateName: "HelixCore",
       description: seoContent.description,
-      sameAs: [
-        'https://www.linkedin.com/company/helixcore-studio/',
-      ],
+      sameAs: [companyInfo.linkedInCompany],
     },
     {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      name: 'HelixCore Studio',
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      name: companyInfo.name,
       url: siteUrl,
-      inLanguage: 'en-US',
+      inLanguage: "en-US",
       publisher: {
-        '@id': `${siteUrl}/#organization`,
+        "@id": `${siteUrl}/#organization`,
       },
     },
     {
-      '@type': 'LocalBusiness',
-      '@id': `${siteUrl}/#localbusiness`,
-      name: 'HelixCore Studio',
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#localbusiness`,
+      name: companyInfo.name,
       url: siteUrl,
       image: `${siteUrl}/logo.png`,
-      telephone: '+923201469571',
-      parentOrganization: { '@id': `${siteUrl}/#organization` },
+      telephone: companyInfo.phone,
+      priceRange: "$$",
+      parentOrganization: { "@id": `${siteUrl}/#organization` },
       address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Lahore',
-        addressCountry: 'PK',
+        "@type": "PostalAddress",
+        streetAddress: companyInfo.addressLine,
+        addressLocality: companyInfo.addressLocality,
+        addressRegion: companyInfo.addressRegion,
+        postalCode: companyInfo.postalCode,
+        addressCountry: companyInfo.addressCountry,
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 31.5204,
+        longitude: 74.3587,
+      },
+      areaServed: [
+        { "@type": "City", name: "Lahore" },
+        { "@type": "Country", name: "Pakistan" },
+      ],
+      sameAs: [companyInfo.linkedInCompany],
     },
   ],
 };

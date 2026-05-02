@@ -3,6 +3,8 @@ import { services } from "@/lib/constants";
 export type BlogPostMeta = {
   slug: string;
   title: string;
+  /** SEO title ~50–60 characters when set */
+  metaTitle?: string;
   description: string;
   publishedAt: string;
   readingTimeMinutes: number;
@@ -11,37 +13,37 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
-    slug: "unity-game-development-guide",
-    title:
-      "Unity Game Development: Production-Ready 2D/3D Games for Mobile, PC & Steam",
+    slug: "how-ai-transforms-businesses",
+    title: "How AI is Transforming Businesses",
+    metaTitle: "How AI Is Transforming Businesses | HelixCore",
     description:
-      "How studios plan, build, and ship Unity games with performance, multiplayer, and store compliance—plus when to pair Unity with playable ads, web games, and porting.",
-    publishedAt: "2026-05-01",
-    readingTimeMinutes: 11,
+      "Discover how practical AI adoption—from automation to copilots—is reshaping operations, customer experience, and competitive advantage in 2026, with guidance tied to real delivery.",
+    publishedAt: "2026-05-02",
+    readingTimeMinutes: 9,
     keywords:
-      "Unity game development, mobile Unity games, Steam, multiplayer, HelixCore Studio",
+      "AI transforming business, AI adoption, AI development services Lahore, automation, HelixCore Studio",
   },
   {
-    slug: "playable-ads-development-guide",
-    title:
-      "Playable Ads Development: High-Converting Creatives for UA Channels",
+    slug: "cost-of-game-development-2026",
+    title: "Cost of Game Development in 2026",
+    metaTitle: "Cost of Game Development in 2026 | HelixCore",
     description:
-      "What makes playable ads succeed on Meta, TikTok, AppLovin, and Unity Ads—file size, hooks, MRAID, and how they connect to full game builds.",
-    publishedAt: "2026-05-01",
+      "A realistic look at game budgets in 2026: milestones, platforms, UA creatives, and hidden costs—plus how studios stretch runway without sacrificing quality.",
+    publishedAt: "2026-05-02",
     readingTimeMinutes: 10,
     keywords:
-      "playable ads, HTML5 playable, user acquisition, mobile games, HelixCore Studio",
+      "game development cost 2026, Unity budget, playable ads cost, game development company, HelixCore Studio",
   },
   {
-    slug: "mobile-game-development-strategy",
-    title:
-      "Mobile Game Development & Porting: From First Build to Global Stores",
+    slug: "why-businesses-need-modern-web-apps",
+    title: "Why Businesses Need Modern Web Apps",
+    metaTitle: "Why Businesses Need Modern Web Apps | HelixCore",
     description:
-      "Mobile-first design, performance budgets, store requirements, and how porting and cross-platform strategy reduce cost and time to market.",
-    publishedAt: "2026-05-01",
-    readingTimeMinutes: 10,
+      "Modern web apps combine SEO, speed, and integrations businesses rely on. Learn what “modern” means in 2026 and how to prioritize investments.",
+    publishedAt: "2026-05-02",
+    readingTimeMinutes: 9,
     keywords:
-      "mobile game development, iOS Android games, game porting, HelixCore Studio",
+      "modern web apps, Next.js business, web development services Lahore, SaaS, HelixCore Studio",
   },
 ];
 
@@ -54,28 +56,24 @@ export function getOtherPosts(currentSlug: string): BlogPostMeta[] {
 }
 
 const sidebarServiceSlugs: Record<string, string[]> = {
-  "unity-game-development-guide": [
-    "unity-game-development",
-    "game-development",
-    "playable-ads-development",
-    "mobile-console-porting",
-    "html5-web-games",
-    "full-stack-web-development",
-  ],
-  "playable-ads-development-guide": [
-    "playable-ads-development",
-    "game-development",
-    "unity-game-development",
-    "html5-web-games",
-    "mobile-console-porting",
+  "how-ai-transforms-businesses": [
+    "ai-development",
     "automation-services",
+    "web-development",
+    "full-stack-web-development",
+    "ai-agent-services",
   ],
-  "mobile-game-development-strategy": [
-    "mobile-console-porting",
+  "cost-of-game-development-2026": [
     "game-development",
     "unity-game-development",
     "playable-ads-development",
+    "html5-web-games",
+    "mobile-console-porting",
+  ],
+  "why-businesses-need-modern-web-apps": [
     "web-development",
+    "full-stack-web-development",
+    "ecommerce-development",
     "ai-development",
   ],
 };
