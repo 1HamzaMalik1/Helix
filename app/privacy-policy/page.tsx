@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     type: "website",
     siteName: companyInfo.name,
   },
-  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPolicyPage() {
