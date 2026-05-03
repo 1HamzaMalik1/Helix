@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   authors: [{ name: companyInfo.ceo }],
   publisher: companyInfo.name,
   creator: companyInfo.name,
-  alternates: { canonical: "/" },
   category: "technology",
   robots: {
     index: true,
@@ -50,17 +49,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: seoContent.title,
-    description: seoContent.description,
-    url: siteUrl,
     type: "website",
     locale: "en_US",
     siteName: companyInfo.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seoContent.title,
-    description: seoContent.description,
   },
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
