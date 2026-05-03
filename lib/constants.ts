@@ -323,6 +323,5 @@ export const seoContent = {
   description:
     "HelixCore Studio in Lahore delivers AI development, game production, and modern web apps for startups and enterprises worldwide. Book a call.",
   keywords:
-    "AI development services, game development company, web development Lahore, Unity Pakistan, HelixCore Studio, playable ads",
-  ogImage: "/og-image.jpg",
+    "HelixCore Studio, AI development company Lahore, game development studio Pakistan, Unity developers, playable ads agency, Next.js web development, software house Lahore, AI agents, mobile game porting",
 };

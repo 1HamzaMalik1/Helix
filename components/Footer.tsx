@@ -73,6 +73,11 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <a href={`${siteUrl}/llms.txt`} className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
+                  LLMs.txt (for AI crawlers)
+                </a>
+              </li>
             </ul>
           </div>
 

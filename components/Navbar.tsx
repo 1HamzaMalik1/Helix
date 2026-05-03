@@ -63,14 +63,16 @@ export default function Navbar() {
             <Link href="/" className="flex items-center group">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <Image 
-                    src="/logo.svg" 
-                    alt="HelixCore Studio logo — AI, game and web development company" 
-                    width={180} 
-                    height={60} 
+                  <Image
+                    src="/logo.svg"
+                    alt="HelixCore Studio logo — AI, game and web development company"
+                    width={180}
+                    height={60}
                     className="h-14 w-auto transition-transform group-hover:scale-105 duration-300"
                     priority
-                    style={{ filter: 'brightness(0.9)' }}
+                    fetchPriority="high"
+                    sizes="180px"
+                    style={{ filter: "brightness(0.9)" }}
                   />
                 </div>
                 {/* <div className="hidden md:block pl-3 border-l border-gray-200">

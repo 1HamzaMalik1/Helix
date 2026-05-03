@@ -1,26 +1,43 @@
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
-import Script from 'next/script';
+import type { Metadata, Viewport } from "next";
+import { Poppins } from "next/font/google";
+import Script from "next/script";
 import './globals.css';
-import { companyInfo, seoContent, siteUrl } from "@/lib/constants";
+import { companyInfo, seoContent, siteUrl, services } from "@/lib/constants";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const poppins = Poppins({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  adjustFontFallback: true,
+  preload: true,
+  fallback: ["system-ui", "Segoe UI", "Arial", "sans-serif"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#2A2E30" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: seoContent.title,
+  title: {
+    default: seoContent.title,
+    template: `%s | ${companyInfo.name}`,
+  },
+  applicationName: companyInfo.name,
   description: seoContent.description,
   keywords: seoContent.keywords,
   authors: [{ name: companyInfo.ceo }],
   publisher: companyInfo.name,
-  alternates: { canonical: '/' },
-  icons: { icon: '/favicon.ico' },
+  creator: companyInfo.name,
+  alternates: { canonical: "/" },
+  category: "technology",
   robots: {
     index: true,
     follow: true,
@@ -36,16 +53,14 @@ export const metadata: Metadata = {
     title: seoContent.title,
     description: seoContent.description,
     url: siteUrl,
-    type: 'website',
-    locale: 'en_US',
+    type: "website",
+    locale: "en_US",
     siteName: companyInfo.name,
-    images: [{ url: `${siteUrl}/og-image.jpg` }],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: seoContent.title,
     description: seoContent.description,
-    images: [`${siteUrl}/og-image.jpg`],
   },
 };
 
@@ -57,6 +72,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 
+const iconUrl = `${siteUrl}/icon`;
+const logoSvgUrl = `${siteUrl}/logo.svg`;
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -65,9 +83,48 @@ const structuredData = {
       "@id": `${siteUrl}/#organization`,
       name: companyInfo.name,
       url: siteUrl,
-      logo: `${siteUrl}/logo.png`,
-      alternateName: "HelixCore",
-      description: seoContent.description,
+      logo: {
+        "@type": "ImageObject",
+        url: iconUrl,
+        contentUrl: iconUrl,
+        caption: `${companyInfo.name} logo`,
+      },
+      alternateName: ["HelixCore", "HelixCore Studio Lahore"],
+      description: companyInfo.description,
+      slogan: companyInfo.tagline,
+      email: companyInfo.email,
+      telephone: companyInfo.phone,
+      foundingLocation: {
+        "@type": "Place",
+        name: "Lahore, Pakistan",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Pakistan" },
+        { "@type": "Place", name: "Worldwide" },
+      ],
+      knowsAbout: [
+        "Artificial intelligence software development",
+        "Video game development",
+        "Unity engine",
+        "Playable ads",
+        "Web application development",
+        "Next.js",
+        "Mobile game porting",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: `${companyInfo.name} professional services`,
+        itemListElement: services.map((s, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Service",
+            name: s.title,
+            description: s.description,
+            url: `${siteUrl}/services/${s.slug}`,
+          },
+        })),
+      },
       sameAs: [companyInfo.linkedInCompany],
     },
     {
@@ -76,6 +133,7 @@ const structuredData = {
       name: companyInfo.name,
       url: siteUrl,
       inLanguage: "en-US",
+      description: seoContent.description,
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },
@@ -85,7 +143,7 @@ const structuredData = {
       "@id": `${siteUrl}/#localbusiness`,
       name: companyInfo.name,
       url: siteUrl,
-      image: `${siteUrl}/logo.png`,
+      image: [iconUrl, logoSvgUrl],
       telephone: companyInfo.phone,
       priceRange: "$$",
       parentOrganization: { "@id": `${siteUrl}/#organization` },
@@ -130,7 +188,7 @@ export default function RootLayout({
         </noscript>
         <Script
           id="gtm"
-          strategy="beforeInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{ __html: gtmScript }}
         />
         <Script
