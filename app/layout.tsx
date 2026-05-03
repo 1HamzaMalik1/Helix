@@ -62,6 +62,10 @@ export const metadata: Metadata = {
     title: seoContent.title,
     description: seoContent.description,
   },
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/favicon.ico", sizes: "180x180", type: "image/x-icon" }],
+  },
 };
 
 const GTM_ID = 'GTM-MM5DXNVF';
@@ -72,7 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
 
-const iconUrl = `${siteUrl}/icon`;
+const faviconUrl = `${siteUrl}/favicon.ico`;
 const logoSvgUrl = `${siteUrl}/logo.svg`;
 
 const structuredData = {
@@ -85,8 +89,8 @@ const structuredData = {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: iconUrl,
-        contentUrl: iconUrl,
+        url: logoSvgUrl,
+        contentUrl: logoSvgUrl,
         caption: `${companyInfo.name} logo`,
       },
       alternateName: ["HelixCore", "HelixCore Studio Lahore"],
@@ -143,7 +147,7 @@ const structuredData = {
       "@id": `${siteUrl}/#localbusiness`,
       name: companyInfo.name,
       url: siteUrl,
-      image: [iconUrl, logoSvgUrl],
+      image: [logoSvgUrl, faviconUrl],
       telephone: companyInfo.phone,
       priceRange: "$$",
       parentOrganization: { "@id": `${siteUrl}/#organization` },

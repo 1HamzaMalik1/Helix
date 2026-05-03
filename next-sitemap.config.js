@@ -5,7 +5,7 @@ module.exports = {
   generateIndexSitemap: false,
   changefreq: "weekly",
   priority: 0.7,
-  exclude: ["/api/*", "/icon", "/apple-icon", "/opengraph-image", "/twitter-image", "/manifest.webmanifest"],
+  exclude: ["/api/*", "/opengraph-image", "/twitter-image", "/manifest.webmanifest", "/favicon.ico"],
   robotsTxtOptions: {
     policies: [
       { userAgent: "*", allow: "/", disallow: ["/api/"] },
