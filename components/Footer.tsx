@@ -1,145 +1,167 @@
-'use client'
+'use client';
+
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from 'lucide-react';
-import { companyInfo, siteUrl } from '@/lib/constants';
 import Image from 'next/image';
+import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { companyInfo, siteUrl } from '@/lib/constants';
+import { getNavServiceGroups } from '@/lib/site-nav';
+
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const footerLinkRow: FooterLink[] = [
+  { label: 'Services', href: '/services' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Privacy', href: '/privacy-policy' },
+  { label: 'LLMs.txt', href: `${siteUrl}/llms.txt`, external: true },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  const groups = getNavServiceGroups();
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto px-4 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Company Info */}
-          <div>
-            <div className="mb-6">
-              <Image 
-                src="/logo.svg" 
-                alt="HelixCore Studio logo — AI, game and web development company" 
-                width={160} 
-                height={50} 
-                className="h-14 w-auto"
+    <footer className="relative overflow-x-hidden bg-[#0b0e12] text-white">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F46530]/40 to-transparent" />
+
+      <div className="container mx-auto px-4 lg:px-8 py-14 md:py-16">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-4">
+            <Link href="/" className="inline-block">
+              <Image
+                src="/logo-footer.svg"
+                alt={`${companyInfo.name} logo`}
+                width={180}
+                height={56}
+                className="h-12 w-auto"
               />
-            </div>
-            <p className="text-sm opacity-70 mb-6" style={{ color: '#2A2E30' }}>
-              A premier software development studio delivering innovative game development 
-              and enterprise-grade solutions to clients worldwide since 2019.
+            </Link>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
+              {companyInfo.description}
             </p>
-            <div className="flex space-x-4">
-              <a href={companyInfo.linkedInCompany} target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }} title="HelixCore Studio on LinkedIn">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">Find us elsewhere</p>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a
+                href={companyInfo.linkedInCompany}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white/70 transition hover:border-[#F46530]/50 hover:text-[#F46530]"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://github.com/1HamzaMalik1" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }}>
+              <a
+                href="https://github.com/1HamzaMalik1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white/70 transition hover:border-[#F46530]/50 hover:text-[#F46530]"
+                aria-label="GitHub"
+              >
                 <Github className="h-5 w-5" />
-              </a>
-              <a href="#" className="transition-colors hover:opacity-80" style={{ color: 'rgba(42, 46, 48, 0.6)' }}>
-                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/#team" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/#contact" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <a href={`${siteUrl}/llms.txt`} className="text-sm opacity-70 transition-colors hover:opacity-100" style={{ color: '#2A2E30' }}>
-                  LLMs.txt (for AI crawlers)
-                </a>
-              </li>
-            </ul>
-          </div>
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+            {groups.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#F46530]">{group.title}</h3>
+                <ul className="mt-4 space-y-2.5">
+                  {group.items.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="text-sm text-white/70 transition hover:text-white inline-flex items-center gap-1 group"
+                      >
+                        {s.title}
+                        <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 transition" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
 
-          {/* Services */}
-          <div>
-            <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Services</h3>
-            <ul className="space-y-3">
-              {[
-                { label: 'AI development', href: '/services/ai-development' },
-                { label: 'Game development', href: '/services/game-development' },
-                { label: 'Web development', href: '/services/web-development' },
-                { label: 'Unity game development', href: '/services/unity-game-development' },
-                { label: 'Playable ads', href: '/services/playable-ads-development' },
-                { label: 'E-commerce', href: '/services/ecommerce-development' },
-                { label: 'HTML5 & web games', href: '/services/html5-web-games' },
-                { label: 'Mobile & console porting', href: '/services/mobile-console-porting' },
-              ].map((service) => (
-                <li key={service.href}>
-                  <Link href={service.href} className="text-sm opacity-70 transition-colors hover:opacity-100 hover:underline" style={{ color: '#2A2E30' }}>
-                    {service.label}
+            <div>
+              <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#F46530]">Studio</h3>
+              <ul className="mt-4 space-y-2.5 text-sm text-white/70">
+                <li>
+                  <Link href="/" className="transition hover:text-white">
+                    Home
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+                <li>
+                  <Link href="/services" className="transition hover:text-white">
+                    All services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="transition hover:text-white">
+                    Insights &amp; guides
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/team" className="transition hover:text-white">
+                    Team & story
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#contact" className="transition hover:text-white">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-semibold mb-6 text-sm" style={{ color: '#2A2E30' }}>Contact Info</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 mt-0.5" style={{ color: '#F46530' }} />
-                <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>{companyInfo.email}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 mt-0.5" style={{ color: '#F46530' }} />
-                <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>{companyInfo.phone}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 shrink-0" style={{ color: '#F46530' }} />
-                <span className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
-                  {companyInfo.addressLine}, {companyInfo.addressLocality}, {companyInfo.addressRegion} {companyInfo.postalCode},{' '}
-                  Pakistan ·{' '}
-                  <a href={`${siteUrl}/services`} className="underline decoration-[#F46530]/40 hover:decoration-[#F46530]" style={{ color: '#F46530' }}>
-                    Services
+              <h3 className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#F46530]">Contact</h3>
+              <ul className="mt-4 space-y-4 text-sm text-white/70">
+                <li className="flex gap-3">
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#F46530]" />
+                  <a href={`mailto:${companyInfo.email}`} className="hover:text-white transition break-all">
+                    {companyInfo.email}
                   </a>
-                </span>
-              </li>
-            </ul>
+                </li>
+                <li className="flex gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#F46530]" />
+                  <a href={`tel:${companyInfo.phone.replace(/\s/g, '')}`} className="hover:text-white transition">
+                    {companyInfo.phone}
+                  </a>
+                </li>
+                <li className="flex gap-3">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#F46530]" />
+                  <span>
+                    {companyInfo.addressLine}, {companyInfo.addressLocality}, {companyInfo.addressRegion}{' '}
+                    {companyInfo.postalCode}, {companyInfo.addressCountry}
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm opacity-70 mb-4 md:mb-0" style={{ color: '#2A2E30' }}>
-              © {currentYear} {companyInfo.name}. All rights reserved.
-            </div>
-            <div className="text-xs opacity-70" style={{ color: '#2A2E30' }}>
-              Professional Software Development Studio • Trusted by Businesses Worldwide
-            </div>
-          </div>
+        <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm text-white/45">
+            © {year} {companyInfo.name}. All rights reserved.
+          </p>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
+            {footerLinkRow.map((item) =>
+              item.external ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-white/55 hover:text-white transition"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-white/55 hover:text-white transition"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
+          </nav>
         </div>
       </div>
     </footer>

@@ -61,6 +61,60 @@
     @apply bg-white backdrop-blur-sm border border-gray-200 rounded-2xl 
            hover:border-secondary/50 transition-all duration-300 shadow-lg;
   }
+
+  /* Service detail longform (pillar + secondary content) */
+  .service-longform {
+    @apply text-sm md:text-base leading-relaxed text-zinc-700;
+  }
+
+  .service-longform > section > h2 {
+    @apply text-xl font-bold tracking-tight text-zinc-950 mb-4 border-b border-zinc-200 pb-3 md:text-2xl;
+  }
+
+  .service-longform p {
+    @apply mb-4 last:mb-0;
+  }
+
+  .service-longform ol {
+    @apply list-decimal pl-5 space-y-4;
+  }
+
+  .service-longform ul {
+    @apply list-disc pl-5 space-y-2;
+  }
+
+  .service-longform li {
+    @apply leading-relaxed;
+  }
+
+  .service-longform strong {
+    @apply font-semibold text-zinc-950;
+  }
+
+  .service-longform a {
+    @apply font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 transition hover:decoration-[#F46530];
+  }
+
+  /* Blog article body */
+  .blog-longform > p {
+    @apply text-base leading-relaxed text-zinc-700;
+  }
+
+  .blog-longform > p:first-of-type {
+    @apply mb-6 text-base leading-relaxed text-zinc-800 md:text-lg;
+  }
+
+  .blog-longform > p + p {
+    @apply mt-4;
+  }
+
+  .blog-longform > h2 {
+    @apply mb-4 mt-12 border-b border-zinc-200 pb-3 text-xl font-bold tracking-tight text-zinc-950 md:text-2xl;
+  }
+
+  .blog-longform > h2:first-of-type {
+    @apply mt-10 md:mt-12;
+  }
 }
 
 /* Custom Scrollbar */

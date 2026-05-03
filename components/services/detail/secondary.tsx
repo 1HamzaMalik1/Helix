@@ -267,7 +267,7 @@ function LongformShell({
 }: {
   children: ReactNode;
 }) {
-  return <div className="service-longform space-y-10 text-[#2A2E30]">{children}</div>;
+  return <div className="service-longform space-y-12">{children}</div>;
 }
 
 export function SecondaryServiceContent({ slug }: { slug: string }) {
@@ -276,7 +276,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Unity remains the backbone of countless mobile and PC titles because it balances artist-friendly tooling with
               engineer-level control. HelixCore Studio delivers Unity game development focused on stable frame rates, clean
@@ -298,7 +298,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Engagements may cover prototyping, vertical slices, production milestones, hardening passes, and submission
               support. Art pipelines integrate with your directors or external studios; engineering owns prefab discipline,
@@ -310,7 +310,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Mechanics &amp; risk review.</strong> Validate fun before scaling content volume.
@@ -330,7 +330,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm md:text-base opacity-90 mb-4">
               <li>Unity2022+ pipelines; URP/HDRP choices tied to art direction</li>
               <li>C# gameplay frameworks—composition over brittle inheritance</li>
@@ -350,7 +350,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Predictable milestones with playable checkpoints—not opaque percentages.</li>
               <li>Engineering practices that survive content scaling and staff changes.</li>
@@ -359,7 +359,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Our portfolio spans shipped titles and high-stakes deadlines; communication cadence and documentation reduce
               thrash when priorities shift. Teams trust us to say no to risky scope creep with data—not ego.
@@ -375,7 +375,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Playable ads compress your game’s hook into seconds—often under tight megabyte ceilings—while satisfying network
               QA. HelixCore Studio engineers creatives that respect MRAID constraints, device fragmentation, and iteration
@@ -392,7 +392,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Services span concept storyboards, mechanical prototypes, asset optimization, audio prioritization, end-card
               variants, and technical submission per partner. We document known limitations—shader support, audio autoplay
@@ -404,7 +404,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Hook definition.</strong> Identify the single interaction proving fun within seconds.
@@ -424,7 +424,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               HTML5 canvas/WebGL exports, Unity lightweight builds, custom minifiers, and texture atlasing tuned for mobile
               GPUs. Analytics bridges vary by network—we adapt rather than force one toolkit.
@@ -438,7 +438,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Faster creative learning cycles without ballooning headcount.</li>
               <li>Technical credibility with network reviewers—fewer rejections.</li>
@@ -447,7 +447,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               We blend engineering rigor with marketing empathy—understanding that the prettiest creative fails if latency
               spikes or tutorials confuse. Partner with us alongside <LinkAI>AI solutions</LinkAI> when dynamic creative
@@ -460,7 +460,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Ecommerce is where brand storytelling meets conversion discipline: fast pages, trustworthy checkout, and
               integrations that keep finance and fulfillment accurate. HelixCore Studio designs storefronts that scale—from
@@ -478,7 +478,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Platform implementations, headless architectures, subscription billing, marketplace feeds, and ERP connectors.
               We inventory SKUs, variants, and edge cases—bundles, preorders, back-in-stock—before theming drives deadlines.
@@ -489,7 +489,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Catalog &amp; journey mapping.</strong> Personas, channels, fulfillment assumptions.
@@ -509,7 +509,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm md:text-base opacity-90 mb-4">
               <li>Shopify Liquid and Hydrogen where headless fits</li>
               <li>WooCommerce, Webflow commerce, or custom Next.js stacks</li>
@@ -524,7 +524,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Higher conversion via performance and trust-forward UX patterns.</li>
               <li>Reduced manual reconciliation through integrations.</li>
@@ -533,7 +533,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               We speak merchant economics—AOV, returns, and inventory risk—not only pixels. Coupled with{" "}
               <LinkGame>game development</LinkGame> partnerships, we understand seasonal spikes when IPs launch bundles or
@@ -546,7 +546,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               AI agents turn brittle scripts into adaptive workflows—triaging tickets, updating records, or coordinating
               approvals—while staying inside policies you define. HelixCore Studio focuses on reliability: tool schemas,
@@ -563,7 +563,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Offerings include agent design workshops, tool integrations (CRM, helpdesk, bespoke APIs), evaluation harnesses,
               red-teaming for misuse, and production rollout with canaries. We distinguish between user-facing agents and
@@ -575,7 +575,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Workflow archaeology.</strong> Map states, actors, and exceptions today.
@@ -595,7 +595,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               LLM providers, structured outputs, vector stores when retrieval helps, workflow runners, and queue systems.
               On-prem or VPC deployments evaluated when contracts demand data locality.
@@ -609,7 +609,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Lower handle times without sacrificing quality on edge cases.</li>
               <li>Consistency across shifts—agents do not fatigue.</li>
@@ -618,7 +618,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               Pragmatic ethics: we highlight uncertainty, log rationales where appropriate, and train staff on hybrid
               workflows—especially for Lahore-based enterprises expanding internationally where expectations on disclosure
@@ -631,7 +631,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Automation eliminates repetitive swivel-chair work—copying fields between SaaS apps, compiling weekly reports,
               or chasing approvals—so skilled staff focus on judgment-intensive tasks. HelixCore Studio maps brittle processes
@@ -647,7 +647,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Engagements include workflow discovery, integration architecture, monitoring, and documentation for NOC-style
               ownership. We prioritize API-first approaches; screen scraping remains a labeled fallback with maintenance
@@ -659,7 +659,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Shadow &amp; document.</strong> Capture exceptions—not only happy paths.
@@ -679,7 +679,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Event buses, serverless functions, containerized workers, idempotent databases, and workflow DSLs where teams
               prefer visual ops ownership—chosen per client maturity, not fashion.
@@ -693,7 +693,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Predictable operational capacity without linear hiring.</li>
               <li>Fewer human errors on high-volume transactions.</li>
@@ -702,7 +702,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               Honest scoping: we say when manual review must remain—automating the wrong process simply scales mistakes.
               Remote-first delivery from Lahore fits global teams needing overlap windows—not expensive on-site retainers.
@@ -714,7 +714,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Full-stack delivery means owning user experience, API contracts, persistence, and deployment—so features do
               not stall at handoffs. HelixCore Studio builds products where frontend polish matches backend rigor: typed APIs,
@@ -731,7 +731,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Roadmaps span authentication patterns (SSO, MFA), authorization matrices, background jobs, file ingestion,
               exports, and admin auditing. We embed SEO and performance considerations when surfaces are public-facing,
@@ -743,7 +743,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Domain modeling.</strong> Entities, invariants, and state machines before screens attach.
@@ -763,7 +763,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <ul className="list-disc pl-5 space-y-2 text-sm md:text-base opacity-90 mb-4">
               <li>React / Next.js, Node services, PostgreSQL, Redis where caching fits</li>
               <li>Infra-as-code patterns and secrets managers</li>
@@ -778,7 +778,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Faster feature throughput with fewer integration defects.</li>
               <li>Operational clarity—logs and metrics align to user journeys.</li>
@@ -787,7 +787,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               We optimize for maintainability: boring tech when possible, exciting tech when justified—documented ADRs,
               code review norms, and empathetic handoffs for your internal team takeover if desired.
@@ -799,7 +799,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               HTML5 games deliver instant play—critical for education markets, publisher portals, and creative campaigns—without
               store friction. HelixCore Studio engineers browser titles that respect GPU diversity, audio unlock rules, and
@@ -818,7 +818,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Services include engine selection (custom Canvas/WebGL vs frameworks), asset budgeting, input abstraction,
               localization hooks, and deployment to CDNs with cache semantics tuned for updates.
@@ -829,7 +829,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Mechanics prototype.</strong> Validate input feel on phones early.
@@ -849,7 +849,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               WebGL, Canvas, audio sprites, physics tuned for JS runtimes, bundlers with tree-shaking, and optional WASM
               modules when hotspots demand it—without locking small teams into unmaintainable stacks.
@@ -862,7 +862,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Lower acquisition friction via instant play links.</li>
               <li>Cross-platform reach without duplicating native teams prematurely.</li>
@@ -871,7 +871,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               We respect constraints—CPU throttling, autoplay policies, and offline ambiguity—rather than promising desktop
               fidelity everywhere. Optional <LinkAI>AI solutions</LinkAI> can personalize tutorials when datasets justify
@@ -884,7 +884,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
       return (
         <LongformShell>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+            <h2>Introduction</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Porting is more than recompiling—controls, performance envelopes, certification suites, and platform UX norms
               shift materially between ecosystems. HelixCore Studio plans parity gaps explicitly: what stays identical, what
@@ -900,7 +900,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+            <h2>Services overview</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Offerings include control remapping, shader refactors for GPU deltas, save migration, achievement mapping,
               localization revalidation, and submission cycles with fix-forward discipline when cert failures arise.
@@ -911,7 +911,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our process</h2>
+            <h2>Our process</h2>
             <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
               <li>
                 <strong>Asset &amp; engine audit.</strong> Identify risk areas early—physics, networking, third-party SDKs.
@@ -931,7 +931,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ol>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+            <h2>Technologies we use</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
               Platform SDKs, shader variants, symbol servers for crash triage, CI build matrices, and staging kits matched to
               retail hardware classes—not developer-only rigs.
@@ -945,7 +945,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </p>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+            <h2>Benefits for businesses</h2>
             <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
               <li>Revenue expansion without greenfield production risk.</li>
               <li>Brand consistency through coordinated releases.</li>
@@ -954,7 +954,7 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             </ul>
           </section>
           <section>
-            <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+            <h2>Why choose HelixCore Studio</h2>
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               Transparent communication when platforms move goalposts—TDs documented, decisions logged, stakeholders aligned
               before burn rates spike. Trusted by teams who cannot afford a silent port that misses holiday windows.

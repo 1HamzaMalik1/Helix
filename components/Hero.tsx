@@ -1,304 +1,306 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { ChevronRight, Code2, Zap, Globe, Smartphone, Brain, CheckCircle } from 'lucide-react';
-import { companyInfo } from '@/lib/constants';
+import { ChevronRight, Sparkles, Code2, Zap, ArrowUpRight } from 'lucide-react';
+import { companyInfo, technologies, homePageStats } from '@/lib/constants';
+
+const unityCode = [
+  'using UnityEngine;',
+  '',
+  'public class GameController : MonoBehaviour',
+  '{',
+  '    void Start()',
+  '    {',
+  '        Debug.Log("Game Initialized");',
+  '    }',
+  '',
+  '    void Update()',
+  '    {',
+  '        transform.Rotate(Vector3.up * Time.deltaTime * 30f);',
+  '    }',
+  '}',
+];
 
 export default function Hero() {
-  const [textIndex, setTextIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
   const [visibleLines, setVisibleLines] = useState(0);
+  const [pointer, setPointer] = useState({ x: 0.5, y: 0.5 });
+  const [codeDone, setCodeDone] = useState(false);
 
-  const services = [
-    { text: 'Unity Games', icon: <Code2 className="w-5 h-5" />, desc: 'Immersive gaming experiences' },
-    { text: 'Web Development', icon: <Globe className="w-5 h-5" />, desc: 'Scalable digital solutions' },
-    { text: 'AI Solutions', icon: <Brain className="w-5 h-5" />, desc: 'Intelligent automation' },
-    { text: 'Mobile Apps', icon: <Smartphone className="w-5 h-5" />, desc: 'Native & cross-platform' },
-  ];
-
-  // Unity C# code preview
-  const unityCode = [
-    'using UnityEngine;',
-    '',
-    'public class GameController : MonoBehaviour',
-    '{',
-    '    void Start()',
-    '    {',
-    '        Debug.Log("Game Initialized");',
-    '    }',
-    '',
-    '    void Update()',
-    '    {',
-    '        transform.Rotate(Vector3.up * Time.deltaTime * 30f);',
-    '    }',
-    '}'
-  ];
-
-  // Cycle services in left column
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTextIndex((prev) => (prev + 1) % services.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    setMounted(true);
   }, []);
 
-  // Animate hero visibility
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  // Animate Unity code typing line by line
-  useEffect(() => {
-    if (!isVisible) return;
-
+    if (!mounted) return;
+    setVisibleLines(0);
+    setCodeDone(false);
     const interval = setInterval(() => {
       setVisibleLines((prev) => {
         if (prev >= unityCode.length) {
           clearInterval(interval);
+          setCodeDone(true);
           return prev;
         }
         return prev + 1;
       });
-    }, 300);
+    }, 240);
     return () => clearInterval(interval);
-  }, [isVisible]);
+  }, [mounted]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const onPointerMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    setPointer({
+      x: (e.clientX - r.left) / r.width,
+      y: (e.clientY - r.top) / r.height,
+    });
+  }, []);
+
+  const onPointerLeave = useCallback(() => {
+    setPointer({ x: 0.5, y: 0.5 });
+  }, []);
+
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const techPills = technologies.slice(0, 7);
+  const driftX = (pointer.x - 0.5) * 28;
+  const driftY = (pointer.y - 0.5) * 22;
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-x-hidden mt-12 md:mt-24 bg-white">
-      
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 overflow-hidden w-full">
-        <div 
-          className="absolute top-0 left-0 w-64 h-64 opacity-5"
-          style={{ background: `radial-gradient(circle at 30% 30%, #F46530, transparent 70%)` }}
-        />
-        <div 
-          className="absolute bottom-0 right-0 w-96 h-96 opacity-5"
-          style={{ background: `radial-gradient(circle at 70% 70%, #2A2E30, transparent 70%)` }}
-        />
-        <div className="absolute inset-0 opacity-[0.02]"
+    <section
+      ref={sectionRef}
+      onMouseMove={onPointerMove}
+      onMouseLeave={onPointerLeave}
+      className="relative flex min-h-[min(100dvh,920px)] items-center overflow-hidden bg-[#030305] pt-24 pb-20 md:pt-28 md:pb-28"
+    >
+      {/* Ambient layers */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute inset-0 opacity-[0.5]"
           style={{
-            backgroundImage: `
-              linear-gradient(#2A2E30 1px, transparent 1px),
-              linear-gradient(90deg, #2A2E30 1px, transparent 1px)
+            background: `
+              radial-gradient(ellipse 85% 50% at 50% -15%, rgba(255,255,255,0.06), transparent 50%),
+              radial-gradient(ellipse 60% 45% at 100% 35%, rgba(244, 101, 48, 0.06), transparent 45%),
+              radial-gradient(ellipse 55% 40% at 0% 75%, rgba(24, 24, 27, 0.5), transparent 50%)
             `,
-            backgroundSize: '50px 50px',
+            transform: `translate(${driftX * 0.4}px, ${driftY * 0.35}px)`,
+            transition: 'transform 0.35s ease-out',
           }}
         />
+        <div
+          className="absolute -left-32 top-1/4 h-[420px] w-[420px] rounded-full bg-white/[0.04] blur-[100px] animate-float"
+          style={{
+            transform: `translate(${driftX}px, ${driftY}px)`,
+            transition: 'transform 0.45s ease-out',
+          }}
+        />
+        <div
+          className="absolute -right-24 bottom-0 h-[380px] w-[380px] rounded-full bg-zinc-800/30 blur-[90px] animate-float-delayed"
+          style={{
+            transform: `translate(${-driftX * 0.8}px, ${-driftY * 0.6}px)`,
+            transition: 'transform 0.5s ease-out',
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '64px 64px',
+            maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 20%, transparent 75%)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030305]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 lg:px-8 max-w-full">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center w-full">
-          
-          {/* Left Column - Content */}
-          <div className={`transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            
-            {/* Slogan Badge */}
-            <div className="inline-flex items-center mb-8">
-              <div className="flex items-center space-x-2 px-3 py-2 rounded-full border"
-                   style={{ borderColor: '#F46530', backgroundColor: 'rgba(244, 101, 48, 0.05)' }}>
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F46530' }}></div>
-                <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
-                  Professional Development • Proven Results
-                </span>
-              </div>
+      <div className="container relative z-10 mx-auto max-w-full px-4 lg:px-8">
+        <div
+          className={`grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-20 transition-all duration-1000 ease-out ${
+            mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}
+        >
+          <div className="relative">
+            <div
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3.5 py-2 backdrop-blur-md"
+              style={{ animationDelay: '0.1s' }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/40 opacity-50" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+              </span>
+              <Sparkles className="h-3.5 w-3.5 text-zinc-400" aria-hidden />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75">
+                Lahore · Remote-first · Global clients
+              </span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-              <span className="block" style={{ color: '#2A2E30' }}>Enterprise-Grade</span>
-              <span className="block mt-2" style={{ color: '#2A2E30' }}>
-                Digital Solutions <span style={{ color: '#F46530' }}>That Scale</span>
+            <h1 className="max-w-[16ch] text-4xl font-bold leading-[1.05] tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
+              <span className="block bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-transparent">
+                Engineering
+              </span>
+              <span className="mt-2 block text-white/95">
+                the future,{' '}
+                <span className="text-[#F46530]">together.</span>
               </span>
             </h1>
 
-            {/* Animated Service Display */}
-            <div className="mb-8">
-              <div className="flex items-center space-x-3 h-12">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg"
-                     style={{ backgroundColor: '#F46530', color: '#FFFFFF' }}>
-                  {services[textIndex].icon}
-                </div>
-                <div>
-                  <div className="text-lg font-semibold" style={{ color: '#2A2E30' }}>
-                    Professional {services[textIndex].text}
-                  </div>
-                  <div className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
-                    {services[textIndex].desc}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Description */}
-            <div className="mb-10">
-              <p className="text-sm md:text-md mb-6 leading-relaxed" style={{ color: '#2A2E30' }}>
-                {companyInfo.name} delivers{' '}
-                <span className="font-semibold" style={{ color: '#F46530' }}>production-ready solutions</span> for
-                businesses worldwide. Our team of seasoned engineers specializes in{' '}
-                <Link href="/services/game-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
-                  game development
-                </Link>
-                ,{' '}
-                <Link href="/services/web-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
-                  scalable web platforms
-                </Link>
-                , and{' '}
-                <Link href="/services/ai-development" className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]">
-                  AI solutions
-                </Link>
-                .
-              </p>
-
-              {/* Key Points */}
-              <div className="space-y-3">
-                {[
-                  '5+ years of proven expertise',
-                  'Industry veteran leadership',
-                  '50+ successful project deliveries',
-                  'Trusted by global clients'
-                ].map((point, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5" style={{ color: '#F46530' }} />
-                    <span style={{ color: '#2A2E30' }} className="text-sm font-medium">{point}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="group relative px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg"
-                style={{ backgroundColor: '#F46530', color: '#FFFFFF' }}
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <span>Request Consultation</span>
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <Link
-                href="/services/ai-development"
-                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
-                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
-              >
-                AI development
-              </Link>
-              <Link
-                href="/services/game-development"
-                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
-                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
-              >
-                Game development
-              </Link>
-              <Link
-                href="/services/web-development"
-                className="text-xs font-semibold px-3 py-2 rounded-lg border transition-colors hover:bg-[rgba(244,101,48,0.08)]"
-                style={{ borderColor: 'rgba(42, 46, 48, 0.12)', color: '#2A2E30' }}
-              >
-                Web development
-              </Link>
-            </div>
-            <p className="text-sm opacity-80 mb-12" style={{ color: '#2A2E30' }}>
-              <Link
-                href="/blog"
-                className="font-semibold underline decoration-[#F46530]/40 underline-offset-2 hover:decoration-[#F46530]"
-                style={{ color: '#F46530' }}
-              >
-                Read our blog
-              </Link>
-              {' '}
-              — AI, game budgets, and modern web apps.
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+              <span className="text-white/90">{companyInfo.name}</span> ships{' '}
+              <span className="font-medium text-white/90">games, web platforms, and AI</span> with the same rigor
+              whether you are a startup or an established product team.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#F46530] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-black/25 transition hover:bg-[#e85e2d]"
+              >
+                Let&apos;s talk
+                <ChevronRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
+              </button>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-transparent px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/40 hover:bg-white/[0.06]"
+              >
+                Explore services
+                <ArrowUpRight className="h-4 w-4 opacity-80" aria-hidden />
+              </Link>
+              <a
+                href={companyInfo.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-zinc-300 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-[#F46530]"
+              >
+                Book a call
+              </a>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-8">
+              {homePageStats.map((s) => (
+                <div
+                  key={s.line1}
+                  className="min-w-[100px] flex-1 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 backdrop-blur-sm sm:min-w-0 sm:flex-none"
+                >
+                  <p className="text-2xl font-bold tabular-nums text-white">{s.value}</p>
+                  <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                    {s.line1} <span className="text-white/25">·</span> {s.line2}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/35">Stack &amp; tools</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {techPills.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-white/25 hover:text-white"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Right Column - Unity / C# Visual */}
-          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+          <div
+            className={`relative transition-all delay-200 duration-1000 ${
+              mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+            }`}
+          >
+            <div
+              className={`absolute -inset-3 rounded-3xl bg-gradient-to-br from-white/[0.06] via-transparent to-zinc-800/20 blur-2xl transition-opacity duration-1000 ${
+                codeDone ? 'opacity-90' : 'opacity-50'
+              }`}
+              aria-hidden
+            />
             <div className="relative">
-
-              {/* Code Preview Card */}
-              <div className="relative bg-[#0F172A] rounded-2xl overflow-hidden shadow-xl">
-                
-                {/* Header */}
-                <div className="flex items-center gap-3 p-4 opacity-80 border-b border-[#2A2E30]/20">
-                  <span className="px-2 py-0.5 rounded bg-[#222] text-xs text-green-400">Unity C#</span>
-                  <span className="text-xs text-slate-400">GameController.cs</span>
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0c12] shadow-2xl shadow-black/60 ring-1 ring-white/[0.06]">
+                <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] bg-black/30 px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <span className="flex gap-1.5">
+                      <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                    </span>
+                    <span className="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-400">
+                      Unity C#
+                    </span>
+                    <span className="text-xs text-zinc-500">GameController.cs</span>
+                  </div>
+                  <span className="hidden text-[10px] font-mono text-zinc-600 sm:inline">Live preview</span>
                 </div>
-
-                {/* Code Lines */}
-                <div className="p-6 font-mono text-sm text-slate-200 space-y-2 relative overflow-hidden">
+                <div className="relative min-h-[300px] overflow-hidden p-5 font-mono text-[13px] leading-relaxed text-zinc-200 sm:min-h-[320px] sm:p-6 sm:text-sm">
+                  <div
+                    className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-transparent via-white/[0.08] to-transparent opacity-35 animate-scan"
+                    aria-hidden
+                  />
                   {unityCode.slice(0, visibleLines).map((line, index) => (
                     <div
                       key={index}
-                      className={`flex gap-4 transition-all duration-300 ${index === visibleLines - 1 ? 'bg-white/5 rounded px-2' : ''}`}
+                      className={`relative z-10 flex gap-3 ${index === visibleLines - 1 ? '-mx-1 rounded bg-white/[0.06] px-1' : ''}`}
                     >
-                      <span className="opacity-30 w-6 text-right">{index + 1}</span>
-                      <span>{highlightCSharp(line)}
-                        {index === visibleLines - 1 && (
-                          <span className="ml-1 animate-pulse text-orange-400">▋</span>
+                      <span className="w-7 shrink-0 select-none text-right text-zinc-600 tabular-nums">{index + 1}</span>
+                      <span className="min-w-0 break-all">
+                        {highlightCSharp(line)}
+                        {index === visibleLines - 1 && visibleLines < unityCode.length && (
+                          <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-[#F46530]" />
                         )}
                       </span>
                     </div>
                   ))}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-white/5 to-transparent animate-scan" />
+                  <div
+                    className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-transparent via-transparent to-[#0a0c12]"
+                    aria-hidden
+                  />
                 </div>
               </div>
-
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-16 h-16 rounded-xl flex items-center justify-center shadow-lg bg-[#F46530] text-white">
-                <Zap className="w-6 h-6" />
+              <div className="absolute -right-2 -top-2 flex h-14 w-14 items-center justify-center rounded-xl border border-white/15 bg-zinc-950 text-white shadow-xl ring-2 ring-[#030305]">
+                <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-[#F46530]" aria-hidden />
+                <Zap className="relative h-6 w-6 text-zinc-100" aria-hidden />
               </div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg border bg-white border-[#2A2E30]/10 text-[#2A2E30]">
-                <Code2 className="w-5 h-5" />
+              <div className="absolute -bottom-2 -left-2 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-zinc-900 text-white shadow-xl ring-2 ring-[#030305]">
+                <Code2 className="h-5 w-5" aria-hidden />
               </div>
             </div>
+            <p className="mt-4 text-center text-xs text-zinc-500">
+              Representative snippet — your architecture, your conventions.
+            </p>
           </div>
-
         </div>
       </div>
 
-      {/* Scan line animation */}
-      <style jsx>{`
-        @keyframes scan {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100%); }
-        }
-        .animate-scan {
-          animation: scan 6s linear infinite;
-        }
-      `}</style>
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
     </section>
   );
 }
-// C# syntax highlighting
+
 function highlightCSharp(line: string) {
+  const parts = line
+    .replace(/using/g, '§using§')
+    .replace(/public|class|void/g, '§$&§')
+    .replace(/MonoBehaviour/g, '¤MonoBehaviour¤')
+    .replace(/Debug\.Log/g, '¤Debug.Log¤')
+    .replace(/Start|Update/g, '¤$&¤')
+    .replace(/"(.*?)"/g, '¢"$1"¢')
+    .split(/(§.*?§|¤.*?¤|¢.*?¢)/g);
+
   return (
     <>
-      {line
-        .replace(/using/g, '§using§')
-        .replace(/public|class|void/g, '§$&§')
-        .replace(/MonoBehaviour/g, '¤MonoBehaviour¤')
-        .replace(/Debug\.Log/g, '¤Debug.Log¤')
-        .replace(/Start|Update/g, '¤$&¤')
-        .replace(/"(.*?)"/g, '¢"$1"¢')
-        .split(/(§.*?§|¤.*?¤|¢.*?¢)/g)
-        .map((part, i) => {
-          if (part.startsWith('§')) return <span key={i} className="text-blue-400">{part.slice(1, -1)}</span>;
-          if (part.startsWith('¤')) return <span key={i} className="text-emerald-400">{part.slice(1, -1)}</span>;
-          if (part.startsWith('¢')) return <span key={i} className="text-amber-300">{part.slice(1, -1)}</span>;
-          return <span key={i}>{part}</span>;
-        })}
+      {parts.map((part, i) => {
+        if (part.startsWith('§')) return <span key={i} className="text-sky-400">{part.slice(1, -1)}</span>;
+        if (part.startsWith('¤')) return <span key={i} className="text-emerald-400">{part.slice(1, -1)}</span>;
+        if (part.startsWith('¢')) return <span key={i} className="text-amber-300">{part.slice(1, -1)}</span>;
+        return <span key={i}>{part}</span>;
+      })}
     </>
   );
 }
-

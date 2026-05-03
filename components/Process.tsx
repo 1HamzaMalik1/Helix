@@ -1,414 +1,263 @@
 'use client';
 
 import { useInView } from 'react-intersection-observer';
-import { useState, useEffect } from 'react';
-import { 
-  Search, Palette, Code, TestTube2, Rocket, Settings,
-  Calendar, Clock, CheckCircle, Target, BarChart3, Shield, ArrowRight, Zap
+import { useState } from 'react';
+import {
+  Search,
+  Palette,
+  Code,
+  TestTube2,
+  Rocket,
+  Settings,
+  Calendar,
+  Clock,
+  ArrowRight,
+  Check,
 } from 'lucide-react';
 import { companyInfo } from '@/lib/constants';
 
+const processSteps = [
+  {
+    id: 1,
+    icon: Search,
+    title: 'Discovery',
+    summary: 'Requirements, constraints, and technical approach.',
+    duration: '1–2 weeks',
+    deliverables: ['Scope & milestones', 'Architecture notes', 'Risk register'],
+  },
+  {
+    id: 2,
+    icon: Palette,
+    title: 'Design',
+    summary: 'UX flows and UI aligned to your brand and users.',
+    duration: '2–3 weeks',
+    deliverables: ['Wireframes', 'UI kit', 'Clickable prototype'],
+  },
+  {
+    id: 3,
+    icon: Code,
+    title: 'Development',
+    summary: 'Iterative builds with reviews, CI, and transparent progress.',
+    duration: '4–12 weeks',
+    deliverables: ['Working increments', 'Repo access', 'Release notes'],
+  },
+  {
+    id: 4,
+    icon: TestTube2,
+    title: 'Quality',
+    summary: 'Functional, performance, and security checks before release.',
+    duration: '1–2 weeks',
+    deliverables: ['Test plan', 'Defect triage', 'Sign-off criteria'],
+  },
+  {
+    id: 5,
+    icon: Rocket,
+    title: 'Launch',
+    summary: 'Production deploy, monitoring, and handover documentation.',
+    duration: '~1 week',
+    deliverables: ['Go-live checklist', 'Runbooks', 'Training session'],
+  },
+  {
+    id: 6,
+    icon: Settings,
+    title: 'Evolve',
+    summary: 'Support, tuning, and roadmap for the next iteration.',
+    duration: 'Ongoing',
+    deliverables: ['SLAs', 'Backlog grooming', 'Metrics review'],
+  },
+] as const;
+
+const principles = [
+  {
+    title: 'Clear ownership',
+    body: 'A single lead engineer stays accountable from kickoff through delivery.',
+  },
+  {
+    title: 'Documented decisions',
+    body: 'Key trade-offs and assumptions are captured so your team can maintain the system.',
+  },
+  {
+    title: 'Predictable rhythm',
+    body: 'Weekly demos and written updates — no black-box development.',
+  },
+  {
+    title: 'Production mindset',
+    body: 'We ship with observability, rollback paths, and operational readiness in mind.',
+  },
+] as const;
+
 export default function Process() {
-  const { ref, inView } = useInView({
-    threshold: 0.05,
-    triggerOnce: true
-  });
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
-
-  const processSteps = [
-    {
-      id: 1,
-      icon: <Search className="w-5 h-5" />,
-      title: 'Discovery',
-      description: 'Analysis of requirements, goals, and technical architecture planning.',
-      duration: '1-2 Weeks',
-      color: '#4F46E5',
-      deliverables: ['Project Scope', 'Technical Specs', 'Timeline'],
-      benefit: 'Clear roadmap and expectations'
-    },
-    {
-      id: 2,
-      icon: <Palette className="w-5 h-5" />,
-      title: 'Design',
-      description: 'Creating intuitive interfaces and experiences aligned with brand vision.',
-      duration: '2-3 Weeks',
-      color: '#10B981',
-      deliverables: ['UI/UX Design', 'Prototypes', 'Style Guide'],
-      benefit: 'Visual blueprint for development'
-    },
-    {
-      id: 3,
-      icon: <Code className="w-5 h-5" />,
-      title: 'Development',
-      description: 'Agile development with clean code practices and continuous integration.',
-      duration: '4-12 Weeks',
-      color: '#F46530',
-      deliverables: ['MVP', 'Weekly Updates', 'Code Repository'],
-      benefit: 'High-quality, scalable code'
-    },
-    {
-      id: 4,
-      icon: <TestTube2 className="w-5 h-5" />,
-      title: 'Testing',
-      description: 'Comprehensive testing for performance, security, and reliability.',
-      duration: '1-2 Weeks',
-      color: '#8B5CF6',
-      deliverables: ['Test Reports', 'Bug Fixes', 'Performance Metrics'],
-      benefit: 'Bug-free, optimized product'
-    },
-    {
-      id: 5,
-      icon: <Rocket className="w-5 h-5" />,
-      title: 'Deployment',
-      description: 'Seamless deployment with monitoring, documentation, and training.',
-      duration: '1 Week',
-      color: '#EC4899',
-      deliverables: ['Live Product', 'Documentation', 'Client Training'],
-      benefit: 'Smooth go-live experience'
-    },
-    {
-      id: 6,
-      icon: <Settings className="w-5 h-5" />,
-      title: 'Maintenance',
-      description: 'Ongoing support, optimization, and feature enhancements.',
-      duration: 'Ongoing',
-      color: '#06B6D4',
-      deliverables: ['Support', 'Updates', 'Analytics'],
-      benefit: 'Continuous improvement'
-    }
-  ];
-
-  // Auto-rotate active step
-  useEffect(() => {
-    if (inView) {
-      const interval = setInterval(() => {
-        setActiveStep((prev) => (prev + 1) % processSteps.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [inView, processSteps.length]);
-
-  const benefits = [
-    {
-      icon: <Target className="w-5 h-5" />,
-      title: 'Transparent Communication',
-      description: 'Regular updates and full project visibility',
-      color: '#F46530'
-    },
-    {
-      icon: <Shield className="w-5 h-5" />,
-      title: 'Quality Assurance',
-      description: 'Comprehensive testing at every stage',
-      color: '#10B981'
-    },
-    {
-      icon: <Zap className="w-5 h-5" />,
-      title: 'Agile Approach',
-      description: 'Flexible and iterative development',
-      color: '#4F46E5'
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: 'On-Time Delivery',
-      description: '96% of projects delivered on schedule',
-      color: '#EC4899'
-    }
-  ];
+  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
+  const [active, setActive] = useState(0);
+  const step = processSteps[active];
+  const StepIcon = step.icon;
 
   return (
-    <section id="process" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
-      <div className="container mx-auto px-4 lg:px-8 max-w-full">
-        
-        {/* Section Header */}
-        <div className="mb-12 text-center" ref={ref}>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
-            <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: '#2A2E30' }}>
-              Our Process
-            </span>
-            <div className="w-6 h-[1px]" style={{ backgroundColor: '#F46530' }} />
-          </div>
-          
-          <h2 className={`text-3xl lg:text-4xl font-bold mb-6 leading-tight transition-all duration-700 ${
-            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{ color: '#2A2E30' }}>
-            Structured Development
-            <span className="block mt-2" style={{ color: '#F46530' }}>Methodology</span>
+    <section
+      id="process"
+      className="relative overflow-hidden border-t border-white/10 bg-zinc-950 py-20 text-white md:py-28"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_-30%,rgba(255,255,255,0.04),transparent_50%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+      <div className="container relative mx-auto max-w-full px-4 lg:px-8">
+        <header className="mx-auto max-w-2xl text-center" ref={ref}>
+          <p
+            className={`text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500 transition-all duration-700 ${
+              inView ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            Process
+          </p>
+          <h2
+            className={`mt-3 text-3xl font-bold tracking-tight md:text-4xl transition-all delay-75 duration-700 ${
+              inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+          >
+            Delivery methodology
           </h2>
-          
-          <p className={`text-sm md:text-md opacity-70 max-w-3xl mx-auto transition-all duration-700 delay-100 ${
-            inView ? 'opacity-70 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{ color: '#2A2E30' }}>
-            A proven approach ensuring quality, transparency, and successful project delivery
+          <p
+            className={`mt-4 text-sm leading-relaxed text-zinc-400 md:text-base transition-all delay-100 duration-700 ${
+              inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+          >
+            Six connected phases — tap a step to see what you get at each stage.
+          </p>
+        </header>
+
+        {/* Horizontal stepper */}
+        <div
+          className={`mx-auto mt-12 max-w-5xl transition-all delay-100 duration-700 md:mt-14 ${
+            inView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+          }`}
+        >
+          <div className="relative overflow-x-auto pb-2 md:overflow-visible md:pb-0">
+            <div className="flex min-w-max items-center gap-0 px-2 md:min-w-0 md:justify-between md:px-0">
+              {processSteps.map((s, i) => {
+                const Icon = s.icon;
+                const isActive = i === active;
+                const isPast = i < active;
+                return (
+                  <div key={s.id} className="flex items-center md:flex-1 md:min-w-0">
+                    <button
+                      type="button"
+                      onClick={() => setActive(i)}
+                      className="group flex flex-col items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F46530] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                    >
+                      <span
+                        className={`relative z-[1] flex h-11 w-11 items-center justify-center rounded-full border-2 transition md:h-12 md:w-12 ${
+                          isActive
+                            ? 'border-[#F46530] bg-[#F46530] text-white shadow-[0_0_20px_-4px_rgba(244,101,48,0.5)]'
+                            : isPast
+                              ? 'border-white/25 bg-white/10 text-white'
+                              : 'border-white/15 bg-zinc-900 text-zinc-500 group-hover:border-white/30 group-hover:text-zinc-300'
+                        }`}
+                      >
+                        {isPast && !isActive ? (
+                          <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+                        ) : (
+                          <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                        )}
+                      </span>
+                      <span
+                        className={`mt-2 hidden max-w-[5.5rem] text-center text-[10px] font-semibold uppercase leading-tight tracking-wide sm:block md:max-w-none md:text-[11px] ${
+                          isActive ? 'text-white' : 'text-zinc-600'
+                        }`}
+                      >
+                        {s.title}
+                      </span>
+                    </button>
+                    {i < processSteps.length - 1 ? (
+                      <div
+                        className="mx-1 h-0.5 w-6 shrink-0 rounded-full md:mx-2 md:flex-1 md:min-w-[1rem]"
+                        style={{
+                          background:
+                            active > i
+                              ? 'linear-gradient(90deg, rgba(244,101,48,0.85), rgba(244,101,48,0.35))'
+                              : 'rgba(255,255,255,0.1)',
+                        }}
+                        aria-hidden
+                      />
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <p className="mt-3 text-center text-xs text-zinc-500 sm:hidden">
+            {processSteps[active].title} · {processSteps[active].duration}
           </p>
         </div>
 
-        {/* Interactive Timeline */}
-        <div className="mb-16 max-w-6xl mx-auto overflow-visible">
-          {/* Progress Bar */}
-          <div className="relative mb-12 px-4 md:px-6 py-4">
-            <div className="absolute top-1/2 left-4 md:left-6 right-4 md:right-6 h-1 -translate-y-1/2" 
-                 style={{ backgroundColor: 'rgba(42, 46, 48, 0.1)' }} />
-            <div 
-              className="absolute top-1/2 left-4 md:left-6 h-1 -translate-y-1/2 transition-all duration-1000"
-              style={{ 
-                backgroundColor: '#F46530',
-                width: `${(activeStep / (processSteps.length - 1)) * 100}%`
-              }}
-            />
-            
-            {/* Step Indicators */}
-            <div className="relative flex justify-between">
-              {processSteps.map((step, index) => (
-                <button
-                  key={step.id}
-                  onClick={() => setActiveStep(index)}
-                  onMouseEnter={() => setHoveredStep(index)}
-                  onMouseLeave={() => setHoveredStep(null)}
-                  className={`group relative flex flex-col items-center transition-all duration-300 ${
-                    index <= activeStep ? 'scale-100' : 'scale-90'
-                  }`}
-                >
-                  {/* Icon Circle */}
-                  <div 
-                    className={`w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-2 md:mb-3 transition-all duration-500 cursor-pointer ${
-                      index === activeStep ? 'scale-110 md:scale-125 shadow-2xl' : 'scale-100 shadow-lg'
-                    } ${hoveredStep === index ? 'scale-105 md:scale-110' : ''}`}
-                    style={{
-                      backgroundColor: index <= activeStep ? step.color : '#FFFFFF',
-                      color: index <= activeStep ? '#FFFFFF' : step.color,
-                      border: `3px solid ${index <= activeStep ? step.color : 'rgba(42, 46, 48, 0.2)'}`
-                    }}
-                  >
-                    {step.icon}
-                    
-                    {/* Pulse Animation for Active Step */}
-                    {index === activeStep && (
-                      <div 
-                        className="absolute inset-0 rounded-full animate-ping"
-                        style={{ backgroundColor: step.color, opacity: 0.3 }}
-                      />
-                    )}
-                  </div>
-                  
-                  {/* Step Number */}
-                  <span 
-                    className="text-xs font-bold mb-1 hidden md:block"
-                    style={{ color: index <= activeStep ? step.color : '#2A2E30' }}
-                  >
-                    Step {index + 1}
-                  </span>
-                  
-                  {/* Step Title */}
-                  <span 
-                    className={`text-[10px] md:text-xs lg:text-sm font-semibold transition-all duration-300 text-center ${
-                      index === activeStep ? 'opacity-100 scale-100 md:scale-110' : 'opacity-70 scale-100'
-                    }`}
-                    style={{ color: '#2A2E30' }}
-                  >
-                    {step.title}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Active Step Details */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-2 transition-all duration-500"
-               style={{ borderColor: processSteps[activeStep].color }}>
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Left: Main Info */}
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center"
-                    style={{
-                      backgroundColor: `${processSteps[activeStep].color}15`,
-                      color: processSteps[activeStep].color
-                    }}
-                  >
-                    {processSteps[activeStep].icon}
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold" style={{ color: '#2A2E30' }}>
-                      {processSteps[activeStep].title}
-                    </h3>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Clock className="w-4 h-4" style={{ color: processSteps[activeStep].color }} />
-                      <span className="text-sm font-semibold" style={{ color: processSteps[activeStep].color }}>
-                        {processSteps[activeStep].duration}
-                      </span>
-                    </div>
-                  </div>
+        {/* Detail */}
+        <div
+          className={`mx-auto mt-10 max-w-5xl transition-all delay-150 duration-700 md:mt-12 ${
+            inView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+          }`}
+        >
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-transparent p-6 md:p-10">
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs font-medium text-zinc-400">
+                  <span className="font-mono text-[#F46530]">0{active + 1}</span>
+                  <span className="text-zinc-500">/</span>
+                  <span>06</span>
                 </div>
-                
-                <p className="text-base leading-relaxed mb-6 opacity-70" style={{ color: '#2A2E30' }}>
-                  {processSteps[activeStep].description}
+                <h3 className="mt-4 text-2xl font-bold md:text-3xl">{step.title}</h3>
+                <p className="mt-2 flex items-center gap-2 text-sm text-zinc-500">
+                  <Clock className="h-4 w-4" aria-hidden />
+                  Typical duration: {step.duration}
                 </p>
-
-                {/* Benefit Badge */}
-                <div 
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg mb-6"
-                  style={{ 
-                    backgroundColor: `${processSteps[activeStep].color}10`,
-                    border: `1px solid ${processSteps[activeStep].color}30`
-                  }}
-                >
-                  <CheckCircle className="w-4 h-4" style={{ color: processSteps[activeStep].color }} />
-                  <span className="text-sm font-semibold" style={{ color: processSteps[activeStep].color }}>
-                    {processSteps[activeStep].benefit}
-                  </span>
-                </div>
+                <p className="mt-6 text-sm leading-relaxed text-zinc-400 md:text-base">{step.summary}</p>
               </div>
-
-              {/* Right: Deliverables */}
-              <div className="md:w-64">
-                <h4 className="text-sm font-bold mb-4 uppercase tracking-wide opacity-60" style={{ color: '#2A2E30' }}>
-                  Deliverables
-                </h4>
-                <div className="space-y-3">
-                  {processSteps[activeStep].deliverables.map((item, idx) => (
-                    <div 
-                      key={idx}
-                      className="flex items-center gap-3 p-3 rounded-lg transition-all duration-300 hover:translate-x-2"
-                      style={{ backgroundColor: 'rgba(42, 46, 48, 0.03)' }}
+              <div className="w-full border-t border-white/10 pt-8 lg:w-80 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">Deliverables</p>
+                <ul className="mt-4 space-y-3">
+                  {step.deliverables.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-sm text-zinc-200"
                     >
-                      <div 
-                        className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: processSteps[activeStep].color }}
-                      >
-                        <CheckCircle className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-sm font-medium" style={{ color: '#2A2E30' }}>
-                        {item}
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#F46530]/15 text-[#F46530]">
+                        <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
                       </span>
-                    </div>
+                      {item}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold mb-8 text-center" style={{ color: '#2A2E30' }}>
-            Why Our Process Works
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className={`group relative bg-white p-6 rounded-xl border transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer ${
-                  inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
-                style={{ 
-                  borderColor: 'rgba(42, 46, 48, 0.08)',
-                  transitionDelay: `${index * 100}ms`
-                }}
+        <div className="mx-auto mt-16 max-w-5xl border-t border-white/10 pt-14 md:mt-20 md:pt-16">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            How we operate
+          </p>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {principles.map((p) => (
+              <li
+                key={p.title}
+                className="rounded-xl border border-white/10 bg-black/25 p-5 backdrop-blur-sm transition hover:border-white/20"
               >
-                {/* Hover Gradient */}
-                <div 
-                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, ${benefit.color}05 0%, transparent 100%)`
-                  }}
-                />
-                
-                <div className="relative z-10">
-                  <div 
-                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
-                    style={{
-                      backgroundColor: `${benefit.color}15`,
-                      color: benefit.color
-                    }}
-                  >
-                    {benefit.icon}
-                  </div>
-                  
-                  <h4 className="text-sm font-bold mb-2" style={{ color: '#2A2E30' }}>
-                    {benefit.title}
-                  </h4>
-                  
-                  <p className="text-xs opacity-70 leading-relaxed" style={{ color: '#2A2E30' }}>
-                    {benefit.description}
-                  </p>
-                </div>
-              </div>
+                <p className="text-sm font-bold text-white">{p.title}</p>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{p.body}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        {/* Stats */}
-        <div className="mb-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {[
-              { value: '98%', label: 'Success Rate', icon: <Target className="w-5 h-5" />, color: '#F46530' },
-              { value: '4.9/5', label: 'Client Rating', icon: <BarChart3 className="w-5 h-5" />, color: '#10B981' },
-              { value: '96%', label: 'On Time', icon: <Clock className="w-5 h-5" />, color: '#4F46E5' },
-              { value: '50+', label: 'Projects', icon: <Shield className="w-5 h-5" />, color: '#EC4899' },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="group relative bg-white p-6 rounded-xl border text-center transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden"
-                style={{ borderColor: 'rgba(42, 46, 48, 0.08)' }}
-              >
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, ${stat.color}05 0%, transparent 100%)`
-                  }}
-                />
-                
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center mb-3">
-                    <div style={{ color: stat.color }}>
-                      {stat.icon}
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold mb-2" style={{ color: stat.color }}>
-                    {stat.value}
-                  </div>
-                  <div className="text-xs font-medium opacity-70" style={{ color: '#2A2E30' }}>
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <div className="max-w-2xl mx-auto mb-8 p-6 rounded-2xl border" 
-               style={{ 
-                 backgroundColor: 'rgba(244, 101, 48, 0.03)',
-                 borderColor: 'rgba(244, 101, 48, 0.2)'
-               }}>
-            <p className="text-base mb-2 font-semibold" style={{ color: '#2A2E30' }}>
-              Ready to start your project with our proven methodology?
-            </p>
-            <p className="text-sm opacity-70" style={{ color: '#2A2E30' }}>
-              Schedule a consultation to discuss your requirements
-            </p>
-          </div>
-          
+        <div className="mx-auto mt-14 max-w-lg text-center md:mt-16">
+          <p className="text-sm text-zinc-500">We will map these phases to your timeline and risk profile.</p>
           <a
             href={companyInfo.calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-2xl hover:scale-105"
-            style={{ 
-              backgroundColor: '#F46530', 
-              color: '#FFFFFF'
-            }}
+            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#F46530] px-8 py-3.5 text-sm font-bold text-white transition hover:bg-[#e85e2d]"
           >
-            <Calendar className="w-5 h-5" />
-            <span>Book a Meeting</span>
-            <ArrowRight className="w-5 h-5" />
+            <Calendar className="h-4 w-4" aria-hidden />
+            Schedule consultation
+            <ArrowRight className="h-4 w-4" aria-hidden />
           </a>
         </div>
       </div>

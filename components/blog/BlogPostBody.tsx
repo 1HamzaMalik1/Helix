@@ -7,14 +7,16 @@ type BlogPostBodyProps = {
 };
 
 export default function BlogPostBody({ slug }: BlogPostBodyProps) {
-  switch (slug) {
-    case "how-ai-transforms-businesses":
-      return <HowAiTransformsBusinessesArticle />;
-    case "cost-of-game-development-2026":
-      return <CostOfGameDevelopment2026Article />;
-    case "why-businesses-need-modern-web-apps":
-      return <WhyModernWebAppsArticle />;
-    default:
-      return null;
-  }
+  const inner =
+    slug === "how-ai-transforms-businesses" ? (
+      <HowAiTransformsBusinessesArticle />
+    ) : slug === "cost-of-game-development-2026" ? (
+      <CostOfGameDevelopment2026Article />
+    ) : slug === "why-businesses-need-modern-web-apps" ? (
+      <WhyModernWebAppsArticle />
+    ) : null;
+
+  if (!inner) return null;
+
+  return <div className="blog-longform max-w-none">{inner}</div>;
 }

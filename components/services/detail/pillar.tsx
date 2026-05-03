@@ -103,9 +103,9 @@ export const pillarFaqs: Record<string, ServiceFaqItem[]> = {
 
 export function AiDevelopmentContent() {
   return (
-    <div className="service-longform space-y-10 text-[#2A2E30]">
+    <div className="service-longform space-y-12">
       <section>
-        <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+        <h2>Introduction</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Organizations across Lahore, Pakistan, and global markets are adopting{" "}
           <strong>AI development services</strong> to reduce manual work, improve customer response times, and unlock
@@ -128,7 +128,7 @@ export function AiDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+        <h2>Services overview</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Our AI offering spans discovery, integration, and production hardening. We help you choose between fine-tuning,
           prompt programs, and retrieval pipelines; connect models to your CRM, warehouse, or ticketing stack; and define
@@ -147,33 +147,33 @@ export function AiDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Our process</h2>
+        <h2>Our process</h2>
         <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">Discovery &amp; use-case design.</strong> We document actors, data sources,
+            <strong>Discovery &amp; use-case design.</strong> We document actors, data sources,
             success metrics, and failure modes. Where helpful we benchmark against non-AI baselines so ROI stays honest.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Architecture &amp; data readiness.</strong> We specify embeddings,
+            <strong>Architecture &amp; data readiness.</strong> We specify embeddings,
             connectors, rate limits, and caching. If retrieval is involved, we structure documents and access policies.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Build &amp; integration.</strong> Implement prompts, tools, and APIs with
+            <strong>Build &amp; integration.</strong> Implement prompts, tools, and APIs with
             staging environments that mirror production constraints.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Evaluation &amp; safety.</strong> Automated and human review loops,
+            <strong>Evaluation &amp; safety.</strong> Automated and human review loops,
             regression suites for critical intents, and monitoring hooks for drift or abuse.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Launch &amp; iterate.</strong> Gradual rollouts, dashboards, and backlog
+            <strong>Launch &amp; iterate.</strong> Gradual rollouts, dashboards, and backlog
             grooming driven by real usage—not vanity accuracy scores.
           </li>
         </ol>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+        <h2>Technologies we use</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Stacks vary by client, but we commonly integrate OpenAI and other LLM APIs, vector databases or managed retrieval
           services, Python and Node orchestration layers, and observability tools. Frontends may include React or Next.js
@@ -191,29 +191,29 @@ export function AiDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+        <h2>Benefits for businesses</h2>
         <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">Operational leverage:</strong> automate repetitive tickets, summarize
+            <strong>Operational leverage:</strong> automate repetitive tickets, summarize
             meetings, or accelerate internal search without hiring linearly.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Faster experimentation:</strong> ship assistants and copilots behind
+            <strong>Faster experimentation:</strong> ship assistants and copilots behind
             feature flags to learn what users actually value.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Vendor-neutral guidance:</strong> we recommend models and hosting patterns
+            <strong>Vendor-neutral guidance:</strong> we recommend models and hosting patterns
             suited to latency, budget, and residency—not hype cycles.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Cross-functional alignment:</strong> shared specs with product, legal, and IT
+            <strong>Cross-functional alignment:</strong> shared specs with product, legal, and IT
             reduce rework before models touch production data.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+        <h2>Why choose HelixCore Studio</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Based in Lahore with global delivery experience, we combine hands-on engineering with pragmatic project
           governance. You work directly with builders who understand failure domains—hallucinations, quota spikes, prompt
@@ -232,9 +232,9 @@ export function AiDevelopmentContent() {
 
 export function GameDevelopmentContent() {
   return (
-    <div className="service-longform space-y-10 text-[#2A2E30]">
+    <div className="service-longform space-y-12">
       <section>
-        <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+        <h2>Introduction</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Choosing a <strong>game development company</strong> means matching creative ambition with engineering discipline:
           frame budgets, platform certification, and live service realities. HelixCore Studio, headquartered in Lahore with
@@ -256,7 +256,7 @@ export function GameDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+        <h2>Services overview</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Core offerings include full-cycle Unity development, rapid playable ad production for major networks, HTML5 and
           WebGL titles for browser distribution, and porting to mobile or console with performance profiling. We scope work in
@@ -284,33 +284,33 @@ export function GameDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Our process</h2>
+        <h2>Our process</h2>
         <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">Creative &amp; technical discovery.</strong> Core loop, audience, monetization
+            <strong>Creative &amp; technical discovery.</strong> Core loop, audience, monetization
             model, and platform matrix drive architecture—not the other way around.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Production planning.</strong> Backlogs, art dependencies, and milestone
+            <strong>Production planning.</strong> Backlogs, art dependencies, and milestone
             definitions aligned to publisher or UA milestones.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Implementation &amp; profiling.</strong> Gameplay, UI, audio integration,
+            <strong>Implementation &amp; profiling.</strong> Gameplay, UI, audio integration,
             and early performance passes on target hardware classes.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">QA &amp; compliance.</strong> Store guidelines, ad network file-size tests,
+            <strong>QA &amp; compliance.</strong> Store guidelines, ad network file-size tests,
             memory ceilings, and crash triage.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Submission &amp; live readiness.</strong> Build pipelines, symbolication,
+            <strong>Submission &amp; live readiness.</strong> Build pipelines, symbolication,
             analytics hooks, and update channels for post-launch patches.
           </li>
         </ol>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+        <h2>Technologies we use</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Unity and C# anchor most shipped titles; ad creatives often combine lightweight WebGL or Unity exports tuned for
           MRAID and network-specific SDK expectations. We integrate analytics and remote configuration where your stack
@@ -326,29 +326,29 @@ export function GameDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+        <h2>Benefits for businesses</h2>
         <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">Faster time-to-market:</strong> vertical slices de-risk design before you sink
+            <strong>Faster time-to-market:</strong> vertical slices de-risk design before you sink
             full art budgets.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">UA-ready creatives:</strong> playable ads engineered for conversion within
+            <strong>UA-ready creatives:</strong> playable ads engineered for conversion within
             strict load constraints.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Scalable codebases:</strong> patterns that survive updates, seasons, and new
+            <strong>Scalable codebases:</strong> patterns that survive updates, seasons, and new
             SKUs.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Transparent milestones:</strong> you see builds early and often—not a black box
+            <strong>Transparent milestones:</strong> you see builds early and often—not a black box
             until launch week.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+        <h2>Why choose HelixCore Studio</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           We combine indie agility with production hygiene: source control discipline, documented handoffs, and honest
           scoping conversations when trade-offs appear. Reviews from global clients reflect communication cadence and
@@ -367,9 +367,9 @@ export function GameDevelopmentContent() {
 
 export function WebDevelopmentContent() {
   return (
-    <div className="service-longform space-y-10 text-[#2A2E30]">
+    <div className="service-longform space-y-12">
       <section>
-        <h2 className="text-2xl font-bold mb-4">Introduction</h2>
+        <h2>Introduction</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Modern <strong>web development services</strong> span marketing sites, SaaS platforms, ecommerce, and internal
           tools—all expected to load fast, rank well, and integrate with analytics and payments. HelixCore Studio, operating
@@ -391,7 +391,7 @@ export function WebDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Services overview</h2>
+        <h2>Services overview</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           Engagements cover discovery, information architecture, implementation, and launch hardening. We deliver accessible
           UI components, API layers with versioning, role-based access, and observability basics—logs, metrics, and alerts—so
@@ -412,33 +412,33 @@ export function WebDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Our process</h2>
+        <h2>Our process</h2>
         <ol className="list-decimal pl-5 space-y-4 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">Product &amp; content modeling.</strong> Routes, roles, entities, and analytics
+            <strong>Product &amp; content modeling.</strong> Routes, roles, entities, and analytics
             events defined before pixels lock.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">UX &amp; technical architecture.</strong> Rendering strategy (SSR/SSG),
+            <strong>UX &amp; technical architecture.</strong> Rendering strategy (SSR/SSG),
             caching layers, and edge vs origin responsibilities.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Iterative delivery.</strong> Shippable increments behind feature flags with
+            <strong>Iterative delivery.</strong> Shippable increments behind feature flags with
             staging parity.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Quality gates.</strong> Accessibility checks, performance budgets, and SEO
+            <strong>Quality gates.</strong> Accessibility checks, performance budgets, and SEO
             regressions on critical templates.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Launch &amp; measurement.</strong> Redirect maps, Search Console validation,
+            <strong>Launch &amp; measurement.</strong> Redirect maps, Search Console validation,
             uptime monitors, and rollback paths.
           </li>
         </ol>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Technologies we use</h2>
+        <h2>Technologies we use</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           React and Next.js appear frequently for hybrid rendering and route-level control; APIs may run on Node or align
           with your preferred cloud functions. Data layers commonly include PostgreSQL or managed equivalents, with caching
@@ -454,29 +454,29 @@ export function WebDevelopmentContent() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Benefits for businesses</h2>
+        <h2>Benefits for businesses</h2>
         <ul className="list-disc pl-5 space-y-3 text-sm md:text-base leading-relaxed opacity-90">
           <li>
-            <strong className="text-[#2A2E30]">SEO resilience:</strong> structured routes, metadata discipline, and fast LCP
+            <strong>SEO resilience:</strong> structured routes, metadata discipline, and fast LCP
             support ranking and conversion.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Operational clarity:</strong> admin tools and logs that help teams debug
+            <strong>Operational clarity:</strong> admin tools and logs that help teams debug
             without engineering heroics.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Integration readiness:</strong> APIs designed for partners, mobile apps, or
+            <strong>Integration readiness:</strong> APIs designed for partners, mobile apps, or
             future AI features.
           </li>
           <li>
-            <strong className="text-[#2A2E30]">Cost-aware scaling:</strong> right-size hosting and background workers as
+            <strong>Cost-aware scaling:</strong> right-size hosting and background workers as
             traffic grows.
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Why choose HelixCore Studio</h2>
+        <h2>Why choose HelixCore Studio</h2>
         <p className="text-sm md:text-base leading-relaxed opacity-90 mb-4">
           We speak both marketing and engineering: copy and schema matter as much as uptime. Clients choose us for explicit
           communication, documented trade-offs, and shipping discipline across time zones—essential when{" "}

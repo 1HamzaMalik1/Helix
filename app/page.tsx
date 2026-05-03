@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
+import HomeStatsStrip from "@/components/home/HomeStatsStrip";
+import HomeServicesOverview from "@/components/home/HomeServicesOverview";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { homePageJsonLdGraph } from "@/lib/page-jsonld";
 import { seoContent, siteUrl } from "@/lib/constants";
@@ -34,17 +36,6 @@ const Process = dynamic(() => import("@/components/Process"), {
       className="min-h-[32rem] py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden"
       aria-busy="true"
       aria-label="Loading process"
-    />
-  ),
-});
-
-const Team = dynamic(() => import("@/components/Team"), {
-  loading: () => (
-    <section
-      id="team"
-      className="min-h-[36rem] py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden"
-      aria-busy="true"
-      aria-label="Loading team"
     />
   ),
 });
@@ -85,10 +76,11 @@ export default function HomePage() {
     <>
       <PageJsonLd id="jsonld-home" graph={homePageJsonLdGraph()} />
       <Hero />
+      <HomeStatsStrip />
+      <HomeServicesOverview />
       <Testimonials />
       <Services />
       <Process />
-      <Team />
       <Contact />
     </>
   );

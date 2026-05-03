@@ -1,12 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Calendar, CheckCircle, ArrowLeft } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Bot,
+  Brain,
+  Calendar,
+  Check,
+  Code,
+  Cog,
+  Gamepad2,
+  Globe,
+  Megaphone,
+  ShoppingCart,
+  Smartphone,
+} from "lucide-react";
 import type { Service } from "@/lib/constants";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { serviceDetailJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, services, siteUrl } from "@/lib/constants";
 import { getServiceFaqs, ServiceDetailBody } from "@/components/services/detail/registry";
+
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  Gamepad2,
+  Globe,
+  Brain,
+  Megaphone,
+  Code,
+  Smartphone,
+  ShoppingCart,
+  Bot,
+  Cog,
+};
 
 type ServicePageProps = {
   params: { slug: string };
@@ -61,153 +89,223 @@ export default async function ServicePage({ params }: ServicePageProps) {
     .filter((item): item is Service => item != null && item.slug !== service.slug);
 
   const faqs = getServiceFaqs(service.slug);
+  const Icon = SERVICE_ICONS[service.icon];
 
   return (
-    <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50">
-      <PageJsonLd
-        id={`jsonld-service-${service.slug}`}
-        graph={serviceDetailJsonLdGraph(service, faqs)}
-      />
-      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-        <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:underline" style={{ color: "#F46530" }}>
-            Home
-          </Link>
-          <span className="opacity-40" style={{ color: "#2A2E30" }}>/</span>
-          <Link href="/services" className="hover:underline" style={{ color: "#F46530" }}>
-            Services
-          </Link>
-          <span className="opacity-40" style={{ color: "#2A2E30" }}>/</span>
-          <Link href="/#contact" className="hover:underline" style={{ color: "#F46530" }}>
-            Contact
-          </Link>
-        </nav>
+    <>
+      <PageJsonLd id={`jsonld-service-${service.slug}`} graph={serviceDetailJsonLdGraph(service, faqs)} />
 
-        <Link
-          href="/services"
-          className="inline-flex items-center gap-2 text-sm font-semibold mb-6"
-          style={{ color: "#F46530" }}
-        >
-          <ArrowLeft className="w-4 h-4" />
-          All services
-        </Link>
+      <section
+        className="relative overflow-hidden border-b border-white/10 bg-zinc-950 pt-28 text-white md:pt-32"
+        aria-labelledby="service-hero-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F46530]/40 to-transparent" />
+        <div className="pointer-events-none absolute -right-20 top-1/3 h-72 w-72 rounded-full bg-[#F46530]/12 blur-[100px]" />
 
-        <h1 className="text-3xl lg:text-5xl font-bold mb-4" style={{ color: "#2A2E30" }}>
-          {service.title}
-        </h1>
-        <p className="text-base md:text-lg opacity-80 mb-10 leading-relaxed" style={{ color: "#2A2E30" }}>
-          {service.longDescription}
-        </p>
-
-        <div className="mb-12">
-          <ServiceDetailBody slug={service.slug} />
-        </div>
-
-        <div className="bg-white border rounded-2xl p-6 md:p-8 mb-10" style={{ borderColor: "rgba(42, 46, 48, 0.1)" }}>
-          <h2 className="text-xl font-semibold mb-4" style={{ color: "#2A2E30" }}>
-            What you get
-          </h2>
-          <ul className="space-y-3">
-            {service.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-3 text-sm md:text-base" style={{ color: "#2A2E30" }}>
-                <CheckCircle className="w-5 h-5 mt-0.5 text-emerald-500" />
-                <span>{feature}</span>
+        <div className="container relative mx-auto max-w-6xl px-4 pb-14 md:pb-16 lg:px-8">
+          <nav className="text-sm text-zinc-500" aria-label="Breadcrumb">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li>
+                <Link href="/" className="transition hover:text-white">
+                  Home
+                </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+              <li className="text-zinc-600" aria-hidden>
+                /
+              </li>
+              <li>
+                <Link href="/services" className="transition hover:text-white">
+                  Services
+                </Link>
+              </li>
+              <li className="text-zinc-600" aria-hidden>
+                /
+              </li>
+              <li className="max-w-[min(100%,14rem)] truncate font-medium text-zinc-300 md:max-w-none">{service.title}</li>
+            </ol>
+          </nav>
 
-        {related.length > 0 ? (
-          <div className="bg-white border rounded-2xl p-6 md:p-8 mb-10" style={{ borderColor: "rgba(42, 46, 48, 0.1)" }}>
-            <h2 className="text-xl font-semibold mb-4" style={{ color: "#2A2E30" }}>
-              Related services
-            </h2>
-            <ul className="space-y-2">
-              {related.map((item) => (
-                <li key={item.slug}>
-                  <Link href={`/services/${item.slug}`} className="text-sm font-semibold hover:underline" style={{ color: "#F46530" }}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
+          <Link
+            href="/services"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#F46530] transition hover:text-[#ff7a4d]"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            All services
+          </Link>
 
-        {faqs.length > 0 ? (
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-6" style={{ color: "#2A2E30" }}>
-              Frequently asked questions
-            </h2>
-            <div className="space-y-6">
-              {faqs.map((item) => (
-                <div
-                  key={item.question}
-                  className="bg-white border rounded-2xl p-5 md:p-6"
-                  style={{ borderColor: "rgba(42, 46, 48, 0.1)" }}
+          <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+            <div className="flex shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur-sm lg:p-5">
+              {Icon ? (
+                <Icon className="h-10 w-10 text-[#F46530] md:h-12 md:w-12" strokeWidth={1.5} aria-hidden />
+              ) : (
+                <span className="flex h-10 w-10 items-center justify-center font-mono text-lg font-bold text-[#F46530] md:h-12 md:w-12">
+                  H
+                </span>
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Service detail</p>
+              <h1 id="service-hero-heading" className="mt-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.5rem] lg:leading-tight">
+                {service.title}
+              </h1>
+              <p className="mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base">{service.longDescription}</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={companyInfo.calendlyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#F46530] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#F46530]/20 transition hover:bg-[#e85e2d]"
                 >
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: "#2A2E30" }}>
-                    {item.question}
-                  </h3>
-                  <p className="text-sm md:text-base opacity-85 leading-relaxed" style={{ color: "#2A2E30" }}>
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
+                  <Calendar className="h-4 w-4" aria-hidden />
+                  Book a strategy call
+                </a>
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/25"
+                >
+                  Contact
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </div>
             </div>
           </div>
-        ) : null}
+        </div>
+      </section>
 
-        <div className="rounded-2xl p-6 md:p-8 mb-10" style={{ backgroundColor: "rgba(244, 101, 48, 0.04)", border: "1px solid rgba(244, 101, 48, 0.15)" }}>
-          <h2 className="text-xl font-semibold mb-2" style={{ color: "#2A2E30" }}>
-            Start your project in Lahore or remotely
+      <div className="border-b border-zinc-200/80 bg-gradient-to-b from-zinc-100 to-white pb-16 pt-10 md:pb-24 md:pt-12">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <article className="lg:col-span-8">
+              <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
+                <ServiceDetailBody slug={service.slug} />
+              </div>
+            </article>
+
+            <aside className="flex flex-col gap-6 lg:col-span-4">
+              <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-7 lg:sticky lg:top-28">
+                <div className="mb-4 h-1 w-10 rounded-full bg-[#F46530]" />
+                <h2 className="text-lg font-bold text-zinc-950">What you get</h2>
+                <ul className="mt-5 space-y-3">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex gap-3 text-sm leading-snug text-zinc-700">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#F46530]/12 text-[#F46530]">
+                        <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
+                      </span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {related.length > 0 ? (
+                <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-7">
+                  <h2 className="text-lg font-bold text-zinc-950">Related services</h2>
+                  <p className="mt-2 text-sm text-zinc-600">Explore adjacent work we often pair with this offering.</p>
+                  <ul className="mt-5 space-y-2">
+                    {related.map((item) => {
+                      const RIcon = SERVICE_ICONS[item.icon];
+                      return (
+                        <li key={item.slug}>
+                          <Link
+                            href={`/services/${item.slug}`}
+                            className="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-900/20 hover:bg-white"
+                          >
+                            <span className="flex min-w-0 items-center gap-3">
+                              {RIcon ? (
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-zinc-950 text-white">
+                                  <RIcon className="h-4 w-4" strokeWidth={1.6} aria-hidden />
+                                </span>
+                              ) : null}
+                              <span className="truncate">{item.title}</span>
+                            </span>
+                            <ArrowRight
+                              className="h-4 w-4 shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-[#F46530]"
+                              aria-hidden
+                            />
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
+            </aside>
+          </div>
+
+          {faqs.length > 0 ? (
+            <div className="mx-auto mt-14 max-w-3xl md:mt-16 lg:mx-0">
+              <div className="mb-8 max-w-2xl lg:mb-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">FAQ</p>
+                <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 md:text-3xl">Frequently asked questions</h2>
+              </div>
+              <div className="space-y-4">
+                {faqs.map((item) => (
+                  <div
+                    key={item.question}
+                    className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-7"
+                  >
+                    <h3 className="text-base font-bold leading-snug text-zinc-950 md:text-lg">{item.question}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-600 md:text-base">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+
+      <section className="border-t border-white/10 bg-zinc-950 py-14 text-white md:py-20" aria-labelledby="service-cta-heading">
+        <div className="container mx-auto max-w-4xl px-4 text-center lg:px-8">
+          <h2 id="service-cta-heading" className="text-2xl font-bold tracking-tight md:text-3xl">
+            Start in {companyInfo.addressLocality} or remotely
           </h2>
-          <p className="text-sm md:text-base opacity-80 mb-0 leading-relaxed" style={{ color: "#2A2E30" }}>
-            Book a strategy call to align scope, timeline, and success metrics. We serve clients in Pakistan and worldwide
-            with the same delivery standards—whether you need a focused sprint or a multi-quarter roadmap spanning{" "}
-            <Link href="/services/ai-development" className="font-semibold" style={{ color: "#F46530" }}>
-              AI solutions
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
+            Book a strategy call to align scope, timeline, and success metrics. We work with teams in Pakistan and
+            worldwide with the same delivery standards — whether you need{" "}
+            <Link href="/services/ai-development" className="font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 hover:decoration-[#F46530]">
+              AI
             </Link>
             ,{" "}
-            <Link href="/services/game-development" className="font-semibold" style={{ color: "#F46530" }}>
-              game development
+            <Link href="/services/game-development" className="font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 hover:decoration-[#F46530]">
+              games
             </Link>
-            , and{" "}
-            <Link href="/services/web-development" className="font-semibold" style={{ color: "#F46530" }}>
-              web development
-            </Link>
-            .
+            , or{" "}
+            <Link href="/services/web-development" className="font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 hover:decoration-[#F46530]">
+              web
+            </Link>{" "}
+            (or a mix).
           </p>
-        </div>
-
-        <div className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: "rgba(244, 101, 48, 0.06)" }}>
-          <h2 className="text-xl font-semibold mb-2" style={{ color: "#2A2E30" }}>
-            Need this service for your project?
-          </h2>
-          <p className="text-sm md:text-base opacity-80 mb-5" style={{ color: "#2A2E30" }}>
-            Book a strategy call and get a tailored implementation plan from HelixCore Studio.
-          </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={companyInfo.calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold"
-              style={{ backgroundColor: "#F46530", color: "#FFFFFF" }}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#F46530] px-8 py-3.5 text-sm font-bold text-white transition hover:bg-[#e85e2d] sm:w-auto"
             >
-              <Calendar className="w-5 h-5" />
+              <Calendar className="h-4 w-4" aria-hidden />
               Book a meeting
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </a>
             <Link
               href="/#contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold border-2 bg-white"
-              style={{ borderColor: "#F46530", color: "#F46530" }}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.06] px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/30 sm:w-auto"
             >
               Contact us
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

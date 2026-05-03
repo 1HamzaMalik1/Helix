@@ -17,6 +17,8 @@ export const companyInfo = {
   linkedInCompany: "https://www.linkedin.com/company/helixcore-studio/",
   degree: "Masters in Software Engineering",
   calendlyUrl: "https://calendly.com/hamzahakim12235",
+  /** Full-time builders in our Lahore studio (design, engineering, QA, ops) */
+  inHouseTeamCount: 10,
 };
 
 export const siteUrl = "https://helixcorestudio.com";
@@ -317,6 +319,16 @@ export const technologies = [
   "Python", "TensorFlow", "WebGL", "Three.js", "MongoDB",
   "PostgreSQL", "AWS", "Docker", "Git", "Agile/Scrum"
 ];
+
+/** Shown on the homepage stats band, team page, testimonials bar, and anywhere else we quote volume. */
+export const projectsDeliveredCountDisplay = "150+" as const;
+
+/** Homepage stats band — values and labels are editable in one place. */
+export const homePageStats = [
+  { value: "5+", line1: "YEARS", line2: "ON THE MARKET" },
+  { value: projectsDeliveredCountDisplay, line1: "PROJECTS", line2: "DELIVERED GLOBALLY" },
+  { value: "2", line1: "SENIOR", line2: "LEADS ON DELIVERY" },
+] as const;
 
 export const seoContent = {
   title: "HelixCore Studio | AI, Game & Web Development Lahore",
