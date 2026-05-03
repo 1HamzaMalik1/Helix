@@ -132,15 +132,16 @@ export default function TeamPage() {
             </div>
 
             <div className="relative lg:col-span-5">
-              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#F46530]/25 to-transparent blur-2xl" aria-hidden />
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-2 shadow-2xl backdrop-blur-sm">
-                <div className="relative aspect-[4/5] max-h-[22rem] overflow-hidden rounded-xl bg-zinc-900 sm:mx-auto sm:max-w-sm lg:max-w-none">
-                  {ceo.image ? (
-                    <Image
-                      src={ceo.image}
-                      alt={`${ceo.name}, ${ceo.role}`}
-                      fill
-                      className="object-cover object-top"
+              <div className="relative mx-auto w-full max-w-sm lg:mx-0 lg:max-w-none">
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#F46530]/25 to-transparent blur-2xl" aria-hidden />
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-2 shadow-2xl backdrop-blur-sm">
+                  <div className="relative aspect-[4/5] max-h-[22rem] w-full overflow-hidden rounded-xl bg-zinc-900">
+                    {ceo.image ? (
+                      <Image
+                        src={ceo.image}
+                        alt={`${ceo.name}, ${ceo.role}`}
+                        fill
+                        className="object-cover object-center sm:object-top"
                       sizes="(max-width: 1024px) 100vw, 400px"
                       priority
                     />
@@ -149,6 +150,7 @@ export default function TeamPage() {
                 <div className="px-4 py-4 text-center sm:px-5">
                   <p className="text-lg font-bold text-white">{ceo.name}</p>
                   <p className="text-sm text-[#F46530]">{ceo.role}</p>
+                </div>
                 </div>
               </div>
             </div>

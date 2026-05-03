@@ -142,11 +142,11 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="max-w-[16ch] text-4xl font-bold leading-[1.05] tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
-              <span className="block bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-transparent">
+            <h1 className="max-w-[16ch] text-4xl font-bold leading-snug tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
+              <span className="inline-block w-full max-w-full bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text pb-[0.18em] text-transparent [-webkit-text-fill-color:transparent] [-webkit-background-clip:text]">
                 Engineering
               </span>
-              <span className="mt-2 block text-white/95">
+              <span className="mt-1.5 block text-white/95">
                 the future,{' '}
                 <span className="text-[#F46530]">together.</span>
               </span>
