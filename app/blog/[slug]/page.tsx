@@ -161,7 +161,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <footer className="mt-10 rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-8">
                 <div className="mb-4 h-1 w-10 rounded-full bg-[#F46530]" />
                 <h2 className="text-lg font-bold text-zinc-950">More articles</h2>
-                <ul className="mt-5 divide-y divide-zinc-100">
+                <ul className="mt-5 divide-y space-y-4 divide-zinc-100">
                   {otherPosts.map((p) => (
                     <li key={p.slug}>
                       <Link

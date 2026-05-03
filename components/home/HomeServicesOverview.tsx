@@ -60,7 +60,7 @@ export default function HomeServicesOverview() {
               <div className="mb-5 h-1 w-10 rounded-full bg-[#F46530]" />
               <h3 className="pr-16 text-lg font-bold text-white md:text-xl">{group.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">{group.description}</p>
-              <ul className="mt-6 flex flex-1 flex-col gap-0 border-t border-white/10 pt-5">
+              <ul className="mt-6 flex flex-1 flex-col gap-4 border-t border-white/10 pt-5">
                 {group.items.map((item) => (
                   <li key={item.slug} className="border-b border-white/[0.06] last:border-0">
                     <Link
