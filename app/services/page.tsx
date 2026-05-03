@@ -19,6 +19,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { servicesIndexJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, services, siteUrl } from "@/lib/constants";
 import { getNavServiceGroups } from "@/lib/site-nav";
+import { metaDescription } from "@/lib/seo-meta";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   Gamepad2,
@@ -34,15 +35,17 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
 
 export const metadata: Metadata = {
   title: "Software Development Services | HelixCore",
-  description:
+  description: metaDescription(
     "HelixCore Studio services: AI development, game development, web apps, Unity, playables, ecommerce, and automation—delivered from Lahore for global clients.",
+  ),
   alternates: {
     canonical: "/services",
   },
   openGraph: {
     title: "Software Development Services | HelixCore",
-    description:
+    description: metaDescription(
       "AI, games, and web services with clear milestones. Explore all offerings and book a strategy call with HelixCore Studio.",
+    ),
     url: `${siteUrl}/services`,
     type: "website",
     siteName: "HelixCore Studio",
@@ -50,8 +53,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Software Development Services | HelixCore",
-    description:
+    description: metaDescription(
       "AI development, game development, and web services from HelixCore Studio. Based in Lahore, shipping worldwide.",
+    ),
   },
 };
 

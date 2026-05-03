@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import Script from "next/script";
 import './globals.css';
 import { companyInfo, seoContent, siteUrl, services } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     template: `%s | ${companyInfo.name}`,
   },
   applicationName: companyInfo.name,
-  description: seoContent.description,
+  description: metaDescription(seoContent.description),
   keywords: seoContent.keywords,
   authors: [{ name: companyInfo.ceo }],
   publisher: companyInfo.name,
@@ -88,7 +89,7 @@ const structuredData = {
         caption: `${companyInfo.name} logo`,
       },
       alternateName: ["HelixCore", "HelixCore Studio Lahore"],
-      description: companyInfo.description,
+      description: metaDescription(companyInfo.description),
       slogan: companyInfo.tagline,
       email: companyInfo.email,
       telephone: companyInfo.phone,
@@ -118,7 +119,7 @@ const structuredData = {
           item: {
             "@type": "Service",
             name: s.title,
-            description: s.description,
+            description: metaDescription(s.description),
             url: `${siteUrl}/services/${s.slug}`,
           },
         })),
@@ -131,7 +132,7 @@ const structuredData = {
       name: companyInfo.name,
       url: siteUrl,
       inLanguage: "en-US",
-      description: seoContent.description,
+      description: metaDescription(seoContent.description),
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },

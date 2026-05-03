@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { companyInfo, siteUrl } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: companyInfo.name,
     short_name: "HelixCore",
-    description: companyInfo.description,
+    description: metaDescription(companyInfo.description),
     id: siteUrl,
     start_url: "/",
     scope: "/",

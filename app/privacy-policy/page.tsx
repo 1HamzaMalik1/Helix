@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { companyInfo, siteUrl } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 const contactEmail = "helixcorestudio@gmail.com";
 
 export const metadata: Metadata = {
   title: "Privacy Policy (Children’s Apps) | HelixCore Studio",
-  description:
+  description: metaDescription(
     "Privacy Policy for HelixCore Studio’s child-directed apps on Google Play (under 13): COPPA-aligned practices, limited data, non-personalized ads, and parental contact.",
+  ),
   alternates: { canonical: "/privacy-policy" },
   openGraph: {
     title: "Privacy Policy (Children’s Apps) | HelixCore Studio",
-    description:
+    description: metaDescription(
       "How we protect kids’ privacy in our Play Store apps—COPPA, Families Policy, ads, analytics, and parental rights.",
+    ),
     url: `${siteUrl}/privacy-policy`,
     type: "website",
     siteName: companyInfo.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy (Children’s Apps) | HelixCore Studio",
+    description: metaDescription(
+      "How we protect kids’ privacy in our Play Store apps—COPPA, Families Policy, ads, analytics, and parental rights.",
+    ),
   },
 };
 

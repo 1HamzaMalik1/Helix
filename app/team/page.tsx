@@ -3,19 +3,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Calendar, Github, Heart, Linkedin, MapPin, Shield, Users } from "lucide-react";
 import { companyInfo, projectsDeliveredCountDisplay, siteUrl, teamMembers } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 const [ceo, cto] = teamMembers;
 
 export const metadata: Metadata = {
   title: `Our team & story | ${companyInfo.name}`,
-  description: `Meet ${ceo.name}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person Lahore studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
+  description: metaDescription(
+    `Meet ${ceo.name}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person Lahore studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
+  ),
   alternates: { canonical: "/team" },
   openGraph: {
     title: `Our team & story | ${companyInfo.name}`,
-    description: `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
+    description: metaDescription(
+      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
+    ),
     url: `${siteUrl}/team`,
     type: "website",
     siteName: companyInfo.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Our team & story | ${companyInfo.name}`,
+    description: metaDescription(
+      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
+    ),
   },
 };
 

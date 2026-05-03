@@ -8,10 +8,12 @@ import { blogPostJsonLdGraph } from "@/lib/page-jsonld";
 import {
   blogPosts,
   getBlogPost,
+  getBlogPostFaqs,
   getBlogSidebarServiceLinks,
   getOtherPosts,
 } from "@/lib/blog";
 import { companyInfo, siteUrl } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 function formatPostDate(iso: string) {
   try {
@@ -36,12 +38,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
   return {
     title: post.metaTitle ?? `${post.title} | ${companyInfo.name}`,
-    description: post.description,
+    description: metaDescription(post.description),
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: metaDescription(post.description),
       type: "article",
       publishedTime: post.publishedAt,
       url: `${siteUrl}/blog/${post.slug}`,
@@ -50,7 +52,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
+      description: metaDescription(post.description),
     },
   };
 }
@@ -63,10 +65,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   const sidebarLinks = getBlogSidebarServiceLinks(post.slug);
   const otherPosts = getOtherPosts(post.slug);
+  const faqs = getBlogPostFaqs(post.slug);
 
   return (
     <>
-      <PageJsonLd id={`jsonld-blog-${post.slug}`} graph={blogPostJsonLdGraph(post)} />
+      <PageJsonLd id={`jsonld-blog-${post.slug}`} graph={blogPostJsonLdGraph(post, faqs)} />
 
       <section
         className="relative overflow-hidden border-b border-white/10 bg-zinc-950 pt-28 text-white md:pt-32"

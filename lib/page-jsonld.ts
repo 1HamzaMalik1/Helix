@@ -1,7 +1,8 @@
 import type { BlogPostMeta } from "@/lib/blog";
 import type { Service } from "@/lib/constants";
-import { blogPosts } from "@/lib/blog";
+import { getSortedBlogPosts } from "@/lib/blog";
 import { companyInfo, services, siteUrl, seoContent } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 const orgId = `${siteUrl}/#organization`;
 const websiteId = `${siteUrl}/#website`;
@@ -13,7 +14,7 @@ export function homePageJsonLdGraph(): Record<string, unknown>[] {
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
       name: seoContent.title,
-      description: seoContent.description,
+      description: metaDescription(seoContent.description),
       isPartOf: { "@id": websiteId },
       about: { "@id": orgId },
       primaryImageOfPage: {
@@ -43,8 +44,9 @@ export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
       "@id": `${siteUrl}/services#webpage`,
       url: `${siteUrl}/services`,
       name: "Software Development Services | HelixCore Studio",
-      description:
+      description: metaDescription(
         "AI development, game production, web apps, Unity, playables, ecommerce, and automation—detailed service pages from HelixCore Studio.",
+      ),
       isPartOf: { "@id": websiteId },
       about: { "@id": orgId },
       inLanguage: "en-US",
@@ -93,7 +95,7 @@ export function serviceDetailJsonLdGraph(
       "@id": `${pageUrl}#webpage`,
       url: pageUrl,
       name: service.seoTitle,
-      description: service.seoDescription,
+      description: metaDescription(service.seoDescription),
       isPartOf: { "@id": websiteId },
       about: { "@id": orgId },
       mainEntity: { "@id": `${pageUrl}#service` },
@@ -149,13 +151,15 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
       "@type": "Blog",
       "@id": `${blogUrl}#blog`,
       name: `Insights & Guides | ${companyInfo.name}`,
-      description: `${companyInfo.name} articles on AI adoption, game budgets, and modern web apps—with links to professional services.`,
+      description: metaDescription(
+        `${companyInfo.name} articles on AI, games, web apps, MVPs, offshore delivery, Unity hiring, and chatbots—with links to professional services.`,
+      ),
       url: blogUrl,
       publisher: { "@id": orgId },
-      blogPost: blogPosts.map((p) => ({
+      blogPost: getSortedBlogPosts().map((p) => ({
         "@type": "BlogPosting",
         headline: p.title,
-        description: p.description,
+        description: metaDescription(p.description),
         datePublished: p.publishedAt,
         url: `${siteUrl}/blog/${p.slug}`,
       })),
@@ -181,15 +185,18 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
   ];
 }
 
-export function blogPostJsonLdGraph(post: BlogPostMeta): Record<string, unknown>[] {
+export function blogPostJsonLdGraph(
+  post: BlogPostMeta,
+  faqs: ServiceFaqItem[] = [],
+): Record<string, unknown>[] {
   const postUrl = `${siteUrl}/blog/${post.slug}`;
   const blogUrl = `${siteUrl}/blog`;
-  return [
+  const base: Record<string, unknown>[] = [
     {
       "@type": "BlogPosting",
       "@id": `${postUrl}#article`,
       headline: post.title,
-      description: post.description,
+      description: metaDescription(post.description),
       datePublished: post.publishedAt,
       url: postUrl,
       keywords: post.keywords,
@@ -223,7 +230,7 @@ export function blogPostJsonLdGraph(post: BlogPostMeta): Record<string, unknown>
       "@id": `${postUrl}#webpage`,
       url: postUrl,
       name: post.title,
-      description: post.description,
+      description: metaDescription(post.description),
       isPartOf: { "@id": websiteId },
       mainEntity: { "@id": `${postUrl}#article` },
     },
@@ -236,4 +243,23 @@ export function blogPostJsonLdGraph(post: BlogPostMeta): Record<string, unknown>
       ],
     },
   ];
+
+  if (faqs.length === 0) return base;
+
+  const faqPage: Record<string, unknown> = {
+    "@type": "FAQPage",
+    "@id": `${postUrl}#faq`,
+    url: postUrl,
+    isPartOf: { "@id": `${postUrl}#webpage` },
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
+  return [...base, faqPage];
 }

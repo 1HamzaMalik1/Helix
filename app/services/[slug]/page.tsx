@@ -22,6 +22,7 @@ import type { Service } from "@/lib/constants";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { serviceDetailJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, services, siteUrl } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 import { getServiceFaqs, ServiceDetailBody } from "@/components/services/detail/registry";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
@@ -57,13 +58,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   return {
     title: service.seoTitle,
-    description: service.seoDescription,
+    description: metaDescription(service.seoDescription),
     alternates: {
       canonical: `/services/${service.slug}`,
     },
     openGraph: {
       title: service.seoTitle,
-      description: service.seoDescription,
+      description: metaDescription(service.seoDescription),
       type: "website",
       url: `${siteUrl}/services/${service.slug}`,
       siteName: companyInfo.name,
@@ -71,7 +72,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     twitter: {
       card: "summary_large_image",
       title: service.seoTitle,
-      description: service.seoDescription,
+      description: metaDescription(service.seoDescription),
     },
   };
 }

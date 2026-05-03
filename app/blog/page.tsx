@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Calendar, PenLine } from "lucide-react";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
-import { blogPosts } from "@/lib/blog";
+import { getSortedBlogPosts } from "@/lib/blog";
 import { blogIndexJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, siteUrl, seoContent } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 function formatPostDate(iso: string) {
   try {
@@ -18,11 +19,15 @@ function formatPostDate(iso: string) {
 
 export const metadata: Metadata = {
   title: `Insights & Guides | ${companyInfo.name}`,
-  description: `${companyInfo.name} blog: AI in business, game dev costs, and modern web apps—written for founders, with links to our Lahore-based services.`,
+  description: metaDescription(
+    `${companyInfo.name} blog: AI, games, web apps, MVP costs, outsourcing to Pakistan, Unity hiring, and AI chatbots—FAQs and guides for founders, with links to our Lahore-based services.`,
+  ),
   alternates: { canonical: "/blog" },
   openGraph: {
     title: `Insights & Guides | ${companyInfo.name}`,
-    description: `AI adoption, game economics, and modern web apps—actionable articles from ${companyInfo.name} with links to services.`,
+    description: metaDescription(
+      `AI adoption, game economics, web strategy, MVPs, offshore delivery, and chatbots—actionable articles from ${companyInfo.name} with links to services.`,
+    ),
     url: `${siteUrl}/blog`,
     type: "website",
     siteName: companyInfo.name,
@@ -30,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Insights & Guides | ${companyInfo.name}`,
-    description: seoContent.description,
+    description: metaDescription(seoContent.description),
   },
 };
 
@@ -115,7 +120,7 @@ export default function BlogIndexPage() {
           <dl className="mt-12 grid gap-4 border-t border-white/10 pt-10 sm:grid-cols-2">
             <div className="rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4">
               <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Articles</dt>
-              <dd className="mt-1 text-2xl font-bold tabular-nums text-white">{blogPosts.length}</dd>
+              <dd className="mt-1 text-2xl font-bold tabular-nums text-white">{getSortedBlogPosts().length}</dd>
             </div>
             <div className="rounded-xl border border-white/10 bg-white/[0.04] px-5 py-4">
               <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Focus</dt>
@@ -128,7 +133,7 @@ export default function BlogIndexPage() {
       <div className="border-b border-zinc-200/80 bg-gradient-to-b from-zinc-100 to-white py-14 md:py-20">
         <div className="container mx-auto max-w-5xl px-4 lg:px-8">
           <ul className="space-y-5">
-            {blogPosts.map((post, index) => (
+            {getSortedBlogPosts().map((post, index) => (
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}

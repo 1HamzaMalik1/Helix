@@ -6,6 +6,7 @@ import HomeServicesOverview from "@/components/home/HomeServicesOverview";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { homePageJsonLdGraph } from "@/lib/page-jsonld";
 import { seoContent, siteUrl } from "@/lib/constants";
+import { metaDescription } from "@/lib/seo-meta";
 
 const Testimonials = dynamic(() => import("@/components/Testimonials"), {
   loading: () => (
@@ -53,13 +54,13 @@ const Contact = dynamic(() => import("@/components/Contact"), {
 
 export const metadata: Metadata = {
   title: seoContent.title,
-  description: seoContent.description,
+  description: metaDescription(seoContent.description),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: seoContent.title,
-    description: seoContent.description,
+    description: metaDescription(seoContent.description),
     url: `${siteUrl}/`,
     type: "website",
     siteName: "HelixCore Studio",
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: seoContent.title,
-    description: seoContent.description,
+    description: metaDescription(seoContent.description),
   },
 };
 
