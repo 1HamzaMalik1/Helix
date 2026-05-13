@@ -16,7 +16,7 @@ export const companyInfo = {
   addressCountry: "PK",
   linkedInCompany: "https://www.linkedin.com/company/helixcore-studio/",
   degree: "Masters in Software Engineering",
-  calendlyUrl: "https://calendly.com/hamzahakim12235",
+  calendlyUrl: "https://calendly.com/helixcorestudio/30min",
   /** Full-time builders in our Lahore studio (design, engineering, QA, ops) */
   inHouseTeamCount: 10,
 };
