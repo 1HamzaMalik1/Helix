@@ -5,6 +5,9 @@ import MvpDevelopmentCostArticle from "@/components/blog/articles/MvpDevelopment
 import OutsourceSoftwarePakistanArticle from "@/components/blog/articles/OutsourceSoftwarePakistanArticle";
 import HireUnityDevelopersArticle from "@/components/blog/articles/HireUnityDevelopersArticle";
 import AiChatbotBusinessArticle from "@/components/blog/articles/AiChatbotBusinessArticle";
+import AgenticAiWorkflowAutomation2026Article from "@/components/blog/articles/AgenticAiWorkflowAutomation2026Article";
+import IndieGameMonetizationLiveOps2026Article from "@/components/blog/articles/IndieGameMonetizationLiveOps2026Article";
+import ComposableCommerceHeadless2026Article from "@/components/blog/articles/ComposableCommerceHeadless2026Article";
 
 type BlogPostBodyProps = {
   slug: string;
@@ -26,6 +29,12 @@ export default function BlogPostBody({ slug }: BlogPostBodyProps) {
       <HireUnityDevelopersArticle />
     ) : slug === "ai-chatbot-for-business-website-guide" ? (
       <AiChatbotBusinessArticle />
+    ) : slug === "agentic-ai-workflow-automation-2026" ? (
+      <AgenticAiWorkflowAutomation2026Article />
+    ) : slug === "indie-game-monetization-live-ops-2026" ? (
+      <IndieGameMonetizationLiveOps2026Article />
+    ) : slug === "composable-commerce-headless-2026" ? (
+      <ComposableCommerceHeadless2026Article />
     ) : null;
 
   if (!inner) return null;

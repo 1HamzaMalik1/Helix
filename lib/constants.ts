@@ -9,7 +9,7 @@ export const companyInfo = {
   phone: "+923201469571",
   location: "Lahore, Pakistan",
   /** Full postal address for schema and footer (Ichra, Lahore) */
-  addressLine: "16 E Sultan Ahmed Road, Ichra",
+  addressLine: "16 E, Sultan Ahmed Road, Ichra",
   addressLocality: "Lahore",
   addressRegion: "Punjab",
   postalCode: "54000",
@@ -331,9 +331,9 @@ export const homePageStats = [
 ] as const;
 
 export const seoContent = {
-  title: "HelixCore Studio | AI, Game & Web Development Lahore",
+  title: "HelixCore Studio | Software Development Services — AI, Games & Web",
   description:
-    "HelixCore Studio in Lahore delivers AI development, game production, and modern web apps for startups and enterprises worldwide. Book a call.",
+    "Software development services in Lahore (Ichra): AI, game & web apps for startups and enterprises worldwide. HelixCore Studio—book a strategy call.",
   keywords:
-    "HelixCore Studio, AI development company Lahore, game development studio Pakistan, Unity developers, playable ads agency, Next.js web development, software house Lahore, AI agents, mobile game porting",
+    "HelixCore Studio, software development services Lahore, AI development company Lahore, game development studio Pakistan, Unity developers, playable ads agency, Next.js web development, software house Lahore, AI agents, mobile game porting",
 };

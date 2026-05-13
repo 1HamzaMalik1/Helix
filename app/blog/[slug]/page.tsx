@@ -14,6 +14,7 @@ import {
 } from "@/lib/blog";
 import { companyInfo, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
 function formatPostDate(iso: string) {
   try {
@@ -36,6 +37,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   if (!post) {
     return { title: "Post not found" };
   }
+  const share = openGraphShareImages("/opengraph-image", `${post.title} | ${companyInfo.name}`);
+  const tagList = post.keywords
+    .split(",")
+    .map((t) => t.trim())
+    .filter(Boolean)
+    .slice(0, 24);
+
   return {
     title: post.metaTitle ?? `${post.title} | ${companyInfo.name}`,
     description: metaDescription(post.description),
@@ -48,9 +56,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       publishedTime: post.publishedAt,
       url: `${siteUrl}/blog/${post.slug}`,
       siteName: companyInfo.name,
+      authors: [siteUrl],
+      tags: tagList,
+      ...share.openGraph,
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterSummaryLarge,
       title: post.title,
       description: metaDescription(post.description),
     },

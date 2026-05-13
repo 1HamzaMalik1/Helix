@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import './globals.css';
-import { companyInfo, seoContent, siteUrl, services } from "@/lib/constants";
+import { companyInfo, seoContent, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { twitterSummaryLarge } from "@/lib/share-metadata";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -56,6 +57,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: companyInfo.name,
+    title: seoContent.title,
+    description: metaDescription(seoContent.description),
+    url: siteUrl,
+  },
+  twitter: {
+    ...twitterSummaryLarge,
+    title: seoContent.title,
+    description: metaDescription(seoContent.description),
   },
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
@@ -70,103 +79,6 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTM_ID}');`;
-
-const faviconUrl = `${siteUrl}/favicon.ico`;
-const logoSvgUrl = `${siteUrl}/logo.svg`;
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      name: companyInfo.name,
-      url: siteUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: logoSvgUrl,
-        contentUrl: logoSvgUrl,
-        caption: `${companyInfo.name} logo`,
-      },
-      alternateName: ["HelixCore", "HelixCore Studio Lahore"],
-      description: metaDescription(companyInfo.description),
-      slogan: companyInfo.tagline,
-      email: companyInfo.email,
-      telephone: companyInfo.phone,
-      foundingLocation: {
-        "@type": "Place",
-        name: "Lahore, Pakistan",
-      },
-      areaServed: [
-        { "@type": "Country", name: "Pakistan" },
-        { "@type": "Place", name: "Worldwide" },
-      ],
-      knowsAbout: [
-        "Artificial intelligence software development",
-        "Video game development",
-        "Unity engine",
-        "Playable ads",
-        "Web application development",
-        "Next.js",
-        "Mobile game porting",
-      ],
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: `${companyInfo.name} professional services`,
-        itemListElement: services.map((s, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "Service",
-            name: s.title,
-            description: metaDescription(s.description),
-            url: `${siteUrl}/services/${s.slug}`,
-          },
-        })),
-      },
-      sameAs: [companyInfo.linkedInCompany],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      name: companyInfo.name,
-      url: siteUrl,
-      inLanguage: "en-US",
-      description: metaDescription(seoContent.description),
-      publisher: {
-        "@id": `${siteUrl}/#organization`,
-      },
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": `${siteUrl}/#localbusiness`,
-      name: companyInfo.name,
-      url: siteUrl,
-      image: [logoSvgUrl, faviconUrl],
-      telephone: companyInfo.phone,
-      priceRange: "$$",
-      parentOrganization: { "@id": `${siteUrl}/#organization` },
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: companyInfo.addressLine,
-        addressLocality: companyInfo.addressLocality,
-        addressRegion: companyInfo.addressRegion,
-        postalCode: companyInfo.postalCode,
-        addressCountry: companyInfo.addressCountry,
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 31.5204,
-        longitude: 74.3587,
-      },
-      areaServed: [
-        { "@type": "City", name: "Lahore" },
-        { "@type": "Country", name: "Pakistan" },
-      ],
-      sameAs: [companyInfo.linkedInCompany],
-    },
-  ],
-};
 
 export default function RootLayout({
   children,
@@ -189,12 +101,6 @@ export default function RootLayout({
           id="gtm"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{ __html: gtmScript }}
-        />
-        <Script
-          id="schema-global-entity"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <div className="min-h-screen flex flex-col relative overflow-x-hidden">
           <Navbar />

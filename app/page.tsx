@@ -5,8 +5,11 @@ import HomeStatsStrip from "@/components/home/HomeStatsStrip";
 import HomeServicesOverview from "@/components/home/HomeServicesOverview";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { homePageJsonLdGraph } from "@/lib/page-jsonld";
-import { seoContent, siteUrl } from "@/lib/constants";
+import { companyInfo, seoContent, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { openGraphShareImages, SITE_OG_ALT, twitterSummaryLarge } from "@/lib/share-metadata";
+
+const homeShare = openGraphShareImages("/opengraph-image", SITE_OG_ALT);
 
 const Testimonials = dynamic(() => import("@/components/Testimonials"), {
   loading: () => (
@@ -63,10 +66,11 @@ export const metadata: Metadata = {
     description: metaDescription(seoContent.description),
     url: `${siteUrl}/`,
     type: "website",
-    siteName: "HelixCore Studio",
+    siteName: companyInfo.name,
+    ...homeShare.openGraph,
   },
   twitter: {
-    card: "summary_large_image",
+    ...twitterSummaryLarge,
     title: seoContent.title,
     description: metaDescription(seoContent.description),
   },

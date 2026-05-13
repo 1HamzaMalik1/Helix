@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { companyInfo, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { privacyPolicyJsonLdGraph } from "@/lib/page-jsonld";
+import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
 const contactEmail = "helixcorestudio@gmail.com";
+
+const privacyShare = openGraphShareImages("/opengraph-image", "Privacy Policy (children's apps) | HelixCore Studio");
 
 export const metadata: Metadata = {
   title: "Privacy Policy (Children’s Apps) | HelixCore Studio",
@@ -19,9 +24,10 @@ export const metadata: Metadata = {
     url: `${siteUrl}/privacy-policy`,
     type: "website",
     siteName: companyInfo.name,
+    ...privacyShare.openGraph,
   },
   twitter: {
-    card: "summary_large_image",
+    ...twitterSummaryLarge,
     title: "Privacy Policy (Children’s Apps) | HelixCore Studio",
     description: metaDescription(
       "How we protect kids’ privacy in our Play Store apps—COPPA, Families Policy, ads, analytics, and parental rights.",
@@ -31,7 +37,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50 min-h-screen">
+    <>
+      <PageJsonLd id="jsonld-privacy-policy" graph={privacyPolicyJsonLdGraph()} />
+      <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50 min-h-screen">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <Link
           href="/"
@@ -222,5 +230,6 @@ export default function PrivacyPolicyPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

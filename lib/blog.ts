@@ -90,6 +90,39 @@ export const blogPosts: BlogPostMeta[] = [
     keywords:
       "AI chatbot business website, ChatGPT customer support, website chatbot ROI, RAG chatbot, HelixCore Studio",
   },
+  {
+    slug: "agentic-ai-workflow-automation-2026",
+    title: "Agentic AI & Workflow Automation in 2026",
+    metaTitle: "Agentic AI & Workflow Automation | HelixCore",
+    description:
+      "What agentic AI means beyond hype: orchestration, tool calling, governance, and safe autonomy—plus how it connects to chatbots, automation, and production AI delivery.",
+    publishedAt: "2026-05-13",
+    readingTimeMinutes: 9,
+    keywords:
+      "agentic AI, AI workflow automation, AI agents enterprise, tool calling LLM, AI orchestration 2026, HelixCore Studio",
+  },
+  {
+    slug: "indie-game-monetization-live-ops-2026",
+    title: "Indie Game Monetization & Live Ops in 2026",
+    metaTitle: "Indie Game Monetization & Live Ops 2026 | HelixCore",
+    description:
+      "Premium vs IAP vs ads, playable creatives, seasonal live ops, and hiring signals—practical economics for indies when UA and content cadence compete for runway.",
+    publishedAt: "2026-05-13",
+    readingTimeMinutes: 10,
+    keywords:
+      "indie game monetization 2026, live ops indie game, playable ads ROI, Unity indie revenue, game UA strategy, HelixCore Studio",
+  },
+  {
+    slug: "composable-commerce-headless-2026",
+    title: "Composable Commerce & Headless Stores in 2026",
+    metaTitle: "Composable Commerce & Headless 2026 | HelixCore",
+    description:
+      "When composable stacks speed up experiments versus when they sprawl—integrations, omnichannel truth, and ecommerce foundations tied to modern web delivery.",
+    publishedAt: "2026-05-13",
+    readingTimeMinutes: 9,
+    keywords:
+      "composable commerce 2026, headless ecommerce, omnichannel integration, storefront performance, ecommerce architecture, HelixCore Studio",
+  },
 ];
 
 /** FAQs for JSON-LD and in-article rendering; keyed by post slug. */
@@ -202,6 +235,87 @@ export const blogPostFaqs: Record<string, ServiceFaqItem[]> = {
         "Yes. Launch on a narrow FAQ or internal pilot, measure quality, then widen channels. Feature flags and staged rollouts prevent a bad bot experience from damaging brand trust site-wide.",
     },
   ],
+  "agentic-ai-workflow-automation-2026": [
+    {
+      question: "Is agentic AI just autonomous GPT?",
+      answer:
+        "No. Useful agentic systems combine planning or routing layers with tools (APIs, retrieval, browsers) and guardrails. Raw autonomy without permissions and tracing repeats pilot failures from earlier AI waves—pretty demos, brittle production.",
+    },
+    {
+      question: "How is this different from RAG chatbots?",
+      answer:
+        "Overlap exists—many assistants use retrieval. Agentic workflows add multi-step execution: branching logic, approvals, retries, and external actions with audit trails. Retrieval answers questions; orchestration completes operational tasks end-to-end where appropriate.",
+    },
+    {
+      question: "What metrics matter before scaling agents?",
+      answer:
+        "Step-level success rates, latency per tool call, human takeover frequency, cost per completed workflow, and defect rates on irreversible actions. Vanity autonomy percentages hide failures until traffic spikes.",
+    },
+    {
+      question: "Do we need new infrastructure?",
+      answer:
+        "Often you need better observability and workflow state—not necessarily net-new stacks. Secrets handling, queueing, idempotent APIs, and replayable logs matter more than another vector database checkbox.",
+    },
+    {
+      question: "When should humans stay in the loop?",
+      answer:
+        "Whenever mistakes carry asymmetric downside: money movement, legal commitments, account security, health-adjacent guidance, or brand-sensitive announcements. Design escalation as a first-class path—not an apology slot.",
+    },
+  ],
+  "indie-game-monetization-live-ops-2026": [
+    {
+      question: "What monetization model fits small teams best?",
+      answer:
+        "The model that matches your audience and update capacity—not TikTok trends. Premium works when discovery is organic or community-led; IAP/cosmetic fits ongoing content; ad-heavy models require volume and polish thresholds players tolerate.",
+    },
+    {
+      question: "How much live ops is realistic pre-launch?",
+      answer:
+        "Plan pipelines before launch: patch rhythm, analytics ownership, and how seasons map to asset creation. Underestimating ops burns teams that shipped a vertical slice but cannot sustain weekly engagement promises.",
+    },
+    {
+      question: "Are playable ads worth it for indies?",
+      answer:
+        "They can be when creative fatigue kills CPI and your mechanic differentiates. Misleading playables backfire in reviews and platform trust—honest mechanics outperform bait mechanics long term.",
+    },
+    {
+      question: "How do I balance UA spend with development?",
+      answer:
+        "Treat UA as an experiment budget tied to cohort retention and ROAS milestones—not a continuous entitlement. Re-invest when economics prove out; pause when creative cycles cannot supply winners.",
+    },
+    {
+      question: "When should I bring in external Unity help?",
+      answer:
+        "When milestones slip on networking, performance, or platform packaging—before crunch forces shortcuts that cascade. Trials on bounded tasks reveal communication fit faster than résumé keywords.",
+    },
+  ],
+  "composable-commerce-headless-2026": [
+    {
+      question: "When should I choose headless commerce?",
+      answer:
+        "When marketing and engineering need parallel velocity—custom storefront UX, international SEO, or omnichannel experiences—and your integrations justify owning the frontend lifecycle instead of theme constraints alone.",
+    },
+    {
+      question: "What breaks composable stacks most often?",
+      answer:
+        "Master data disagreements across POS, ERP, and storefronts; weak webhook reliability; missing reconciliation; and unclear ownership when checkout errors spike during campaigns.",
+    },
+    {
+      question: "Is composable always cheaper than monolith SaaS?",
+      answer:
+        "Not automatically. License sprawl and integration labor can exceed all-in platforms if you integrate casually. Composable wins when incremental GMV or agility pays for the coordination overhead.",
+    },
+    {
+      question: "How do MVPs fit composable plans?",
+      answer:
+        "Sequence ruthlessly: prove catalog and checkout truth before layering personalization stacks. Document non-functional needs—regions, taxes, fraud—early so MVP scope maps to revenue paths, not slides.",
+    },
+    {
+      question: "How important is Core Web Vitals for ecommerce?",
+      answer:
+        "Critical for SEO and conversion—especially mobile. Headless frontends win only when performance budgets, image pipelines, and caching strategies are engineered, not assumed.",
+    },
+  ],
 };
 
 export function getBlogPostFaqs(slug: string): ServiceFaqItem[] {
@@ -265,6 +379,24 @@ const sidebarServiceSlugs: Record<string, string[]> = {
     "ai-development",
     "web-development",
     "automation-services",
+  ],
+  "agentic-ai-workflow-automation-2026": [
+    "ai-agent-services",
+    "ai-development",
+    "automation-services",
+    "full-stack-web-development",
+  ],
+  "indie-game-monetization-live-ops-2026": [
+    "game-development",
+    "unity-game-development",
+    "playable-ads-development",
+    "mobile-console-porting",
+  ],
+  "composable-commerce-headless-2026": [
+    "ecommerce-development",
+    "web-development",
+    "full-stack-web-development",
+    "ai-development",
   ],
 };
 

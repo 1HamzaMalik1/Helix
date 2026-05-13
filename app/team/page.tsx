@@ -4,8 +4,13 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Calendar, Github, Heart, Linkedin, MapPin, Shield, Users } from "lucide-react";
 import { companyInfo, projectsDeliveredCountDisplay, siteUrl, teamMembers } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { teamPageJsonLdGraph } from "@/lib/page-jsonld";
+import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
 const [ceo, cto] = teamMembers;
+
+const teamShare = openGraphShareImages("/opengraph-image", `Our team & story | ${companyInfo.name}`);
 
 export const metadata: Metadata = {
   title: `Our team & story | ${companyInfo.name}`,
@@ -21,9 +26,10 @@ export const metadata: Metadata = {
     url: `${siteUrl}/team`,
     type: "website",
     siteName: companyInfo.name,
+    ...teamShare.openGraph,
   },
   twitter: {
-    card: "summary_large_image",
+    ...twitterSummaryLarge,
     title: `Our team & story | ${companyInfo.name}`,
     description: metaDescription(
       `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
@@ -67,6 +73,7 @@ const trustPoints = [
 export default function TeamPage() {
   return (
     <>
+      <PageJsonLd id="jsonld-team" graph={teamPageJsonLdGraph()} />
       <section
         className="relative overflow-hidden border-b border-white/10 bg-zinc-950 pt-28 text-white md:pt-32"
         aria-labelledby="team-hero-heading"

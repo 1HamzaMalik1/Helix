@@ -23,6 +23,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { serviceDetailJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, services, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 import { getServiceFaqs, ServiceDetailBody } from "@/components/services/detail/registry";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
@@ -56,6 +57,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
 
+  const share = openGraphShareImages("/opengraph-image", `${service.title} | ${companyInfo.name}`);
+
   return {
     title: service.seoTitle,
     description: metaDescription(service.seoDescription),
@@ -68,9 +71,10 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       type: "website",
       url: `${siteUrl}/services/${service.slug}`,
       siteName: companyInfo.name,
+      ...share.openGraph,
     },
     twitter: {
-      card: "summary_large_image",
+      ...twitterSummaryLarge,
       title: service.seoTitle,
       description: metaDescription(service.seoDescription),
     },

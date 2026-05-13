@@ -6,6 +6,10 @@ import { getSortedBlogPosts } from "@/lib/blog";
 import { blogIndexJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, siteUrl, seoContent } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
+
+const blogIndexOgAlt = `Insights & guides | ${companyInfo.name}`;
+const blogIndexShare = openGraphShareImages("/blog/opengraph-image", blogIndexOgAlt);
 
 function formatPostDate(iso: string) {
   try {
@@ -20,20 +24,21 @@ function formatPostDate(iso: string) {
 export const metadata: Metadata = {
   title: `Insights & Guides | ${companyInfo.name}`,
   description: metaDescription(
-    `${companyInfo.name} blog: AI, games, web apps, MVP costs, outsourcing to Pakistan, Unity hiring, and AI chatbots—FAQs and guides for founders, with links to our Lahore-based services.`,
+    `${companyInfo.name} blog: AI, games, web apps, MVP costs, outsourcing to Pakistan, Unity hiring, and AI chatbots—guides for founders with links to software development services.`,
   ),
   alternates: { canonical: "/blog" },
   openGraph: {
     title: `Insights & Guides | ${companyInfo.name}`,
     description: metaDescription(
-      `AI adoption, game economics, web strategy, MVPs, offshore delivery, and chatbots—actionable articles from ${companyInfo.name} with links to services.`,
+      `AI adoption, game economics, web strategy, MVPs, offshore delivery, and chatbots—actionable articles with links to software development services.`,
     ),
     url: `${siteUrl}/blog`,
     type: "website",
     siteName: companyInfo.name,
+    ...blogIndexShare.openGraph,
   },
   twitter: {
-    card: "summary_large_image",
+    ...twitterSummaryLarge,
     title: `Insights & Guides | ${companyInfo.name}`,
     description: metaDescription(seoContent.description),
   },

@@ -3,20 +3,26 @@ import type { Service } from "@/lib/constants";
 import { getSortedBlogPosts } from "@/lib/blog";
 import { companyInfo, services, siteUrl, seoContent } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
+import {
+  organizationSchemaId,
+  sharedEntityGraph,
+  websiteSchemaId,
+} from "@/lib/schema-shared";
 
-const orgId = `${siteUrl}/#organization`;
-const websiteId = `${siteUrl}/#website`;
+function withShared(nodes: Record<string, unknown>[]): Record<string, unknown>[] {
+  return [...sharedEntityGraph(), ...nodes];
+}
 
 export function homePageJsonLdGraph(): Record<string, unknown>[] {
-  return [
+  return withShared([
     {
       "@type": "WebPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
       name: seoContent.title,
       description: metaDescription(seoContent.description),
-      isPartOf: { "@id": websiteId },
-      about: { "@id": orgId },
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
       primaryImageOfPage: {
         "@type": "ImageObject",
         url: `${siteUrl}/og-image.jpg`,
@@ -34,36 +40,36 @@ export function homePageJsonLdGraph(): Record<string, unknown>[] {
         },
       ],
     },
-  ];
+  ]);
 }
 
 export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
-  return [
+  return withShared([
     {
       "@type": "WebPage",
       "@id": `${siteUrl}/services#webpage`,
       url: `${siteUrl}/services`,
       name: "Software Development Services | HelixCore Studio",
       description: metaDescription(
-        "AI development, game production, web apps, Unity, playables, ecommerce, and automation—detailed service pages from HelixCore Studio.",
+        "Software development services: AI, game production, web apps, Unity, playables, ecommerce, and automation—detailed pages from HelixCore Studio.",
       ),
-      isPartOf: { "@id": websiteId },
-      about: { "@id": orgId },
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
       inLanguage: "en-US",
     },
     {
       "@type": "CollectionPage",
       "@id": `${siteUrl}/services#collection`,
       url: `${siteUrl}/services`,
-      name: "Our Services",
-      isPartOf: { "@id": websiteId },
-      publisher: { "@id": orgId },
+      name: "Our software development services",
+      isPartOf: { "@id": websiteSchemaId },
+      publisher: { "@id": organizationSchemaId },
       mainEntity: { "@id": `${siteUrl}/services#itemlist` },
     },
     {
       "@type": "ItemList",
       "@id": `${siteUrl}/services#itemlist`,
-      name: `${companyInfo.name} service offerings`,
+      name: `${companyInfo.name} software development service offerings`,
       numberOfItems: services.length,
       itemListElement: services.map((s, i) => ({
         "@type": "ListItem",
@@ -79,14 +85,14 @@ export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
         { "@type": "ListItem", position: 2, name: "Services", item: `${siteUrl}/services` },
       ],
     },
-  ];
+  ]);
 }
 
 export type ServiceFaqItem = { question: string; answer: string };
 
 export function serviceDetailJsonLdGraph(
   service: Service,
-  faqs: ServiceFaqItem[] = []
+  faqs: ServiceFaqItem[] = [],
 ): Record<string, unknown>[] {
   const pageUrl = `${siteUrl}/services/${service.slug}`;
   const base: Record<string, unknown>[] = [
@@ -96,8 +102,8 @@ export function serviceDetailJsonLdGraph(
       url: pageUrl,
       name: service.seoTitle,
       description: metaDescription(service.seoDescription),
-      isPartOf: { "@id": websiteId },
-      about: { "@id": orgId },
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
       mainEntity: { "@id": `${pageUrl}#service` },
       inLanguage: "en-US",
     },
@@ -108,7 +114,7 @@ export function serviceDetailJsonLdGraph(
       description: service.longDescription,
       url: pageUrl,
       serviceType: service.title,
-      provider: { "@id": orgId },
+      provider: { "@id": organizationSchemaId },
       areaServed: [
         { "@type": "City", name: "Lahore", containedInPlace: { "@type": "Country", name: "Pakistan" } },
         { "@type": "Place", name: "Worldwide" },
@@ -124,7 +130,7 @@ export function serviceDetailJsonLdGraph(
     },
   ];
 
-  if (faqs.length === 0) return base;
+  if (faqs.length === 0) return withShared(base);
 
   const faqPage: Record<string, unknown> = {
     "@type": "FAQPage",
@@ -141,21 +147,21 @@ export function serviceDetailJsonLdGraph(
     })),
   };
 
-  return [...base, faqPage];
+  return withShared([...base, faqPage]);
 }
 
 export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
   const blogUrl = `${siteUrl}/blog`;
-  return [
+  return withShared([
     {
       "@type": "Blog",
       "@id": `${blogUrl}#blog`,
       name: `Insights & Guides | ${companyInfo.name}`,
       description: metaDescription(
-        `${companyInfo.name} articles on AI, games, web apps, MVPs, offshore delivery, Unity hiring, and chatbots—with links to professional services.`,
+        `${companyInfo.name} articles on AI, games, web apps, MVPs, offshore delivery, Unity hiring, and chatbots—with links to software development services.`,
       ),
       url: blogUrl,
-      publisher: { "@id": orgId },
+      publisher: { "@id": organizationSchemaId },
       blogPost: getSortedBlogPosts().map((p) => ({
         "@type": "BlogPosting",
         headline: p.title,
@@ -170,7 +176,7 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
       "@id": `${blogUrl}#webpage`,
       url: blogUrl,
       name: `Insights & Guides | ${companyInfo.name}`,
-      isPartOf: { "@id": websiteId },
+      isPartOf: { "@id": websiteSchemaId },
       about: { "@id": `${blogUrl}#blog` },
       mainEntity: { "@id": `${blogUrl}#blog` },
       inLanguage: "en-US",
@@ -182,7 +188,7 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
         { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
       ],
     },
-  ];
+  ]);
 }
 
 export function blogPostJsonLdGraph(
@@ -200,19 +206,8 @@ export function blogPostJsonLdGraph(
       datePublished: post.publishedAt,
       url: postUrl,
       keywords: post.keywords,
-      author: {
-        "@type": "Organization",
-        name: companyInfo.name,
-        url: siteUrl,
-      },
-      publisher: {
-        "@type": "Organization",
-        name: companyInfo.name,
-        logo: {
-          "@type": "ImageObject",
-          url: `${siteUrl}/logo.png`,
-        },
-      },
+      author: { "@id": organizationSchemaId },
+      publisher: { "@id": organizationSchemaId },
       isPartOf: {
         "@type": "Blog",
         "@id": `${blogUrl}#blog`,
@@ -231,7 +226,7 @@ export function blogPostJsonLdGraph(
       url: postUrl,
       name: post.title,
       description: metaDescription(post.description),
-      isPartOf: { "@id": websiteId },
+      isPartOf: { "@id": websiteSchemaId },
       mainEntity: { "@id": `${postUrl}#article` },
     },
     {
@@ -244,7 +239,7 @@ export function blogPostJsonLdGraph(
     },
   ];
 
-  if (faqs.length === 0) return base;
+  if (faqs.length === 0) return withShared(base);
 
   const faqPage: Record<string, unknown> = {
     "@type": "FAQPage",
@@ -261,5 +256,57 @@ export function blogPostJsonLdGraph(
     })),
   };
 
-  return [...base, faqPage];
+  return withShared([...base, faqPage]);
+}
+
+export function teamPageJsonLdGraph(): Record<string, unknown>[] {
+  const pageUrl = `${siteUrl}/team`;
+  const title = `Our team & story | ${companyInfo.name}`;
+  const desc = metaDescription(
+    `Meet ${companyInfo.ceo}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person Lahore studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
+  );
+  return withShared([
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description: desc,
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+        { "@type": "ListItem", position: 2, name: "Team", item: pageUrl },
+      ],
+    },
+  ]);
+}
+
+export function privacyPolicyJsonLdGraph(): Record<string, unknown>[] {
+  const pageUrl = `${siteUrl}/privacy-policy`;
+  return withShared([
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: "Privacy Policy (Children's Apps) | HelixCore Studio",
+      description: metaDescription(
+        "Privacy Policy for HelixCore Studio’s child-directed apps on Google Play (under 13): COPPA-aligned practices, limited data, non-personalized ads, and parental contact.",
+      ),
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+        { "@type": "ListItem", position: 2, name: "Privacy Policy", item: pageUrl },
+      ],
+    },
+  ]);
 }
