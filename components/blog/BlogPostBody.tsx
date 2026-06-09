@@ -6,6 +6,8 @@ import OutsourceSoftwarePakistanArticle from "@/components/blog/articles/Outsour
 import HireUnityDevelopersArticle from "@/components/blog/articles/HireUnityDevelopersArticle";
 import AiChatbotBusinessArticle from "@/components/blog/articles/AiChatbotBusinessArticle";
 import AgenticAiWorkflowAutomation2026Article from "@/components/blog/articles/AgenticAiWorkflowAutomation2026Article";
+import GoogleTrendingSearch2026Article from "@/components/blog/articles/GoogleTrendingSearch2026Article";
+import LlmEnterpriseSearchAutomation2026Article from "@/components/blog/articles/LlmEnterpriseSearchAutomation2026Article";
 import IndieGameMonetizationLiveOps2026Article from "@/components/blog/articles/IndieGameMonetizationLiveOps2026Article";
 import ComposableCommerceHeadless2026Article from "@/components/blog/articles/ComposableCommerceHeadless2026Article";
 
@@ -31,6 +33,10 @@ export default function BlogPostBody({ slug }: BlogPostBodyProps) {
       <AiChatbotBusinessArticle />
     ) : slug === "agentic-ai-workflow-automation-2026" ? (
       <AgenticAiWorkflowAutomation2026Article />
+    ) : slug === "google-trending-search-2026-business-strategy" ? (
+      <GoogleTrendingSearch2026Article />
+    ) : slug === "llms-in-enterprise-search-and-automation-2026" ? (
+      <LlmEnterpriseSearchAutomation2026Article />
     ) : slug === "indie-game-monetization-live-ops-2026" ? (
       <IndieGameMonetizationLiveOps2026Article />
     ) : slug === "composable-commerce-headless-2026" ? (

@@ -102,6 +102,28 @@ export const blogPosts: BlogPostMeta[] = [
       "agentic AI, AI workflow automation, AI agents enterprise, tool calling LLM, AI orchestration 2026, HelixCore Studio",
   },
   {
+    slug: "google-trending-search-2026-business-strategy",
+    title: "Google Trending Search 2026: What Businesses Need to Know",
+    metaTitle: "Google Trending Search 2026 | HelixCore",
+    description:
+      "Learn what Google search trends reveal about buyer intent, AI demand signals, and content topics that help businesses win visibility in 2026.",
+    publishedAt: "2026-06-09",
+    readingTimeMinutes: 9,
+    keywords:
+      "Google trending search 2026, search trends, SEO strategy, AI search intent, HelixCore Studio",
+  },
+  {
+    slug: "llms-in-enterprise-search-and-automation-2026",
+    title: "LLMs in Enterprise Search & Automation 2026",
+    metaTitle: "LLMs in Enterprise Search & Automation | HelixCore",
+    description:
+      "What modern LLMs really add to enterprise search, knowledge management, and workflow automation—and how to avoid deployment traps in 2026.",
+    publishedAt: "2026-06-09",
+    readingTimeMinutes: 10,
+    keywords:
+      "LLM enterprise search, large language model automation, AI search 2026, retrieval augmented generation, HelixCore Studio",
+  },
+  {
     slug: "indie-game-monetization-live-ops-2026",
     title: "Indie Game Monetization & Live Ops in 2026",
     metaTitle: "Indie Game Monetization & Live Ops 2026 | HelixCore",
@@ -233,6 +255,40 @@ export const blogPostFaqs: Record<string, ServiceFaqItem[]> = {
       question: "Can I start small and expand later?",
       answer:
         "Yes. Launch on a narrow FAQ or internal pilot, measure quality, then widen channels. Feature flags and staged rollouts prevent a bad bot experience from damaging brand trust site-wide.",
+    },
+  ],
+  "google-trending-search-2026-business-strategy": [
+    {
+      question: "What can Google trending search data tell my business?",
+      answer:
+        "It reveals shifts in customer intent, emerging pain points, and topics that are gaining momentum. Use it to align landing page content, PPC headlines, and product messaging with the queries people are actually typing today.",
+    },
+    {
+      question: "Should I chase every trending keyword?",
+      answer:
+        "No. Prioritize terms that match your target audience, product category, and conversion goals. High-volume trends are useful when they fit your positioning; irrelevant buzz attracts traffic that does not convert.",
+    },
+    {
+      question: "How do I use search trends without hurting SEO?",
+      answer:
+        "Signal quality first: update existing pages with helpful content, answer the query clearly, and surface official data or examples where possible. Avoid shallow trend-chasing pages that don’t serve the user’s intent.",
+    },
+  ],
+  "llms-in-enterprise-search-and-automation-2026": [
+    {
+      question: "When should an enterprise use an LLM for search?",
+      answer:
+        "When search must go beyond keyword matching and return answers from internal knowledge, documents, or workflows. LLMs are most valuable when you can link them to trusted sources and guard against hallucinations.",
+    },
+    {
+      question: "What’s the difference between LLM-powered search and a chatbot?",
+      answer:
+        "LLM-powered search focuses on retrieving relevant information, while chatbots orchestrate conversations and often trigger actions. Both may use the same models, but search products emphasize accuracy, ranking, and retrieval quality.",
+    },
+    {
+      question: "How do I avoid LLM automation risk?",
+      answer:
+        "Start with narrow tasks, define failure modes, and keep human oversight on any action that changes records or customer state. Instrument and log decisions so you can audit why an LLM suggested a step.",
     },
   ],
   "agentic-ai-workflow-automation-2026": [
