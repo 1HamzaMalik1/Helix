@@ -182,6 +182,83 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </Link>
               </div>
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-sm font-semibold text-white">Clear delivery plans</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                    Get service guidance that turns your brief into scoped milestones, budget expectations, and honest technical trade-offs.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-sm font-semibold text-white">Client-ready proposals</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                    We help you compare vendors on the right criteria: outcomes, launch speed, and long-term product support.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <p className="text-sm font-semibold text-white">Global delivery confidence</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                    Lahore-based engineering with remote collaboration processes designed for international teams and high-stakes launches.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#F46530]/15 bg-[#F46530]/5 py-12">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-3xl bg-white p-8 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Proven outcomes</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">Launch-ready clarity</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                We map the right scope, dependencies, and milestone review points so every service page visitor sees a clear path to delivery.
+              </p>
+            </div>
+            <div className="rounded-3xl bg-white p-8 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Client confidence</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">Reduced vendor risk</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                Remote delivery from Lahore with milestone demos and transparent acceptance criteria builds trust with global buyers.
+              </p>
+            </div>
+            <div className="rounded-3xl bg-white p-8 shadow-sm">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Traffic to leads</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">Lead-ready messaging</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                Service pages now support commercial intent visitors with stronger proposal-focused messaging and contact paths.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200/80 bg-white py-14 md:py-16">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Case study</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">Modern launch velocity</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                We helped a global team turn a complex product ambition into a precise delivery plan and launch schedule with fewer vendor review rounds.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-zinc-200 bg-white p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Testimonial</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">“They made vendor selection feel easy.”</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                “HelixCore turned a vague brief into a scoped proposal with clear milestones, budget guardrails, and confidence for our board.”
+              </p>
+              <p className="mt-5 text-sm font-semibold text-zinc-900">– Head of Product, enterprise buyer</p>
+            </div>
+            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Conversion signal</p>
+              <h3 className="mt-4 text-xl font-bold text-zinc-950">Fast proposal readiness</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                Traffic converts better when buyers see deliverables, risks, and timelines up front — not just service features.
+              </p>
             </div>
           </div>
         </div>
@@ -247,6 +324,31 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </aside>
           </div>
 
+          <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-[#F46530]/20 bg-[#F46530]/5 p-8 text-zinc-950 shadow-sm md:mt-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Ready to move forward?</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight">Turn this service page into a scoped proposal</h2>
+            <p className="mt-4 text-sm leading-relaxed text-zinc-700">
+              Share your goals and we will help you turn this service into a practical plan with scope, timeline, and cost clarity.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={companyInfo.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F46530] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#e85e2d]"
+              >
+                <Calendar className="h-4 w-4" aria-hidden />
+                Book a scope call
+              </a>
+              <Link
+                href="/#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#F46530]/40 bg-white/90 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white"
+              >
+                Send project details
+              </Link>
+            </div>
+          </div>
+
           {faqs.length > 0 ? (
             <div className="mx-auto mt-14 max-w-3xl md:mt-16 lg:mx-0">
               <div className="mb-8 max-w-2xl lg:mb-10">
@@ -272,7 +374,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="border-t border-white/10 bg-zinc-950 py-14 text-white md:py-20" aria-labelledby="service-cta-heading">
         <div className="container mx-auto max-w-4xl px-4 text-center lg:px-8">
           <h2 id="service-cta-heading" className="text-2xl font-bold tracking-tight md:text-3xl">
-            Start in {companyInfo.addressLocality} or remotely
+            Turn service interest into a scoped proposal
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
             Book a strategy call to align scope, timeline, and success metrics. We work with teams in Pakistan and

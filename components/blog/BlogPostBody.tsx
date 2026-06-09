@@ -8,6 +8,13 @@ import AiChatbotBusinessArticle from "@/components/blog/articles/AiChatbotBusine
 import AgenticAiWorkflowAutomation2026Article from "@/components/blog/articles/AgenticAiWorkflowAutomation2026Article";
 import GoogleTrendingSearch2026Article from "@/components/blog/articles/GoogleTrendingSearch2026Article";
 import LlmEnterpriseSearchAutomation2026Article from "@/components/blog/articles/LlmEnterpriseSearchAutomation2026Article";
+import UnityGameDevelopmentCompanyUsaArticle from "@/components/blog/articles/UnityGameDevelopmentCompanyUsaArticle";
+import HireUnityDevelopersInCanadaArticle from "@/components/blog/articles/HireUnityDevelopersInCanadaArticle";
+import PlayableAdsDevelopmentServicesArticle from "@/components/blog/articles/PlayableAdsDevelopmentServicesArticle";
+import AiAgentDevelopmentForStartupsArticle from "@/components/blog/articles/AiAgentDevelopmentForStartupsArticle";
+import MobileGameDevelopmentCostUaeArticle from "@/components/blog/articles/MobileGameDevelopmentCostUaeArticle";
+import UnityMultiplayerDevelopmentServicesArticle from "@/components/blog/articles/UnityMultiplayerDevelopmentServicesArticle";
+import WebglGameDevelopmentCompanyArticle from "@/components/blog/articles/WebglGameDevelopmentCompanyArticle";
 import IndieGameMonetizationLiveOps2026Article from "@/components/blog/articles/IndieGameMonetizationLiveOps2026Article";
 import ComposableCommerceHeadless2026Article from "@/components/blog/articles/ComposableCommerceHeadless2026Article";
 
@@ -37,6 +44,20 @@ export default function BlogPostBody({ slug }: BlogPostBodyProps) {
       <GoogleTrendingSearch2026Article />
     ) : slug === "llms-in-enterprise-search-and-automation-2026" ? (
       <LlmEnterpriseSearchAutomation2026Article />
+    ) : slug === "unity-game-development-company-usa" ? (
+      <UnityGameDevelopmentCompanyUsaArticle />
+    ) : slug === "hire-unity-developers-in-canada" ? (
+      <HireUnityDevelopersInCanadaArticle />
+    ) : slug === "playable-ads-development-services" ? (
+      <PlayableAdsDevelopmentServicesArticle />
+    ) : slug === "ai-agent-development-for-startups" ? (
+      <AiAgentDevelopmentForStartupsArticle />
+    ) : slug === "mobile-game-development-cost-in-uae" ? (
+      <MobileGameDevelopmentCostUaeArticle />
+    ) : slug === "unity-multiplayer-development-services" ? (
+      <UnityMultiplayerDevelopmentServicesArticle />
+    ) : slug === "webgl-game-development-company" ? (
+      <WebglGameDevelopmentCompanyArticle />
     ) : slug === "indie-game-monetization-live-ops-2026" ? (
       <IndieGameMonetizationLiveOps2026Article />
     ) : slug === "composable-commerce-headless-2026" ? (
