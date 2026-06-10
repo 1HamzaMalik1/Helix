@@ -198,7 +198,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
                   <p className="text-sm font-semibold text-white">Global delivery confidence</p>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-300">
-                    Lahore-based engineering with remote collaboration processes designed for international teams and high-stakes launches.
+                    Remote engineering with collaboration processes designed for international teams and high-stakes launches.
                   </p>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Client confidence</p>
               <h3 className="mt-4 text-xl font-bold text-zinc-950">Reduced vendor risk</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                Remote delivery from Lahore with milestone demos and transparent acceptance criteria builds trust with global buyers.
+                Remote delivery with milestone demos and transparent acceptance criteria builds trust with global buyers.
               </p>
             </div>
             <div className="rounded-3xl bg-white p-8 shadow-sm">
@@ -377,7 +377,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             Turn service interest into a scoped proposal
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
-            Book a strategy call to align scope, timeline, and success metrics. We work with teams in Pakistan and
+            Book a strategy call to align scope, timeline, and success metrics. We work with teams in USA, Canada, UAE, and
             worldwide with the same delivery standards — whether you need{" "}
             <Link href="/services/ai-development" className="font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 hover:decoration-[#F46530]">
               AI

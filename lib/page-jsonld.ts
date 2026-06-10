@@ -278,7 +278,7 @@ export function teamPageJsonLdGraph(): Record<string, unknown>[] {
   const pageUrl = `${siteUrl}/team`;
   const title = `Our team & story | ${companyInfo.name}`;
   const desc = metaDescription(
-    `Meet ${companyInfo.ceo}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person Lahore studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
+    `Meet ${companyInfo.ceo}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person remote studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
   );
   return withShared([
     {

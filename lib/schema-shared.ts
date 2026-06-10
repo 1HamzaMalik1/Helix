@@ -34,9 +34,9 @@ export function sharedEntityGraph(): Record<string, unknown>[] {
         contentUrl: logoSvgUrl,
         caption: `${companyInfo.name} logo`,
       },
-      alternateName: ["HelixCore", "HelixCore Studio Lahore", "HelixCore Studio Pakistan"],
+      alternateName: ["HelixCore", "HelixCore Studio"],
       description: metaDescription(
-        `${companyInfo.name} is a premier software development company providing AI development, game development, and web apps. Founded in Lahore, Pakistan, we serve clients across USA, Canada, UAE, and worldwide.`,
+        `${companyInfo.name} is a premier software development company providing AI development, game development, and web apps. We serve clients across USA, Canada, UAE, and worldwide.`,
       ),
       slogan: companyInfo.tagline,
       email: companyInfo.email,
@@ -187,9 +187,6 @@ export function sharedEntityGraph(): Record<string, unknown>[] {
         longitude: 74.3587,
       },
       areaServed: [
-        { "@type": "City", name: "Lahore", "containedInPlace": { "@type": "Country", name: "Pakistan" } },
-        { "@type": "State", name: "Punjab", "containedInPlace": { "@type": "Country", name: "Pakistan" } },
-        { "@type": "Country", name: "Pakistan" },
         { "@type": "Country", name: "United States" },
         { "@type": "Country", name: "Canada" },
         { "@type": "Country", name: "United Arab Emirates" },

@@ -24,7 +24,7 @@ function formatPostDate(iso: string) {
 export const metadata: Metadata = {
   title: `Insights & Guides | ${companyInfo.name}`,
   description: metaDescription(
-    `${companyInfo.name} blog: AI, games, web apps, MVP costs, outsourcing to Pakistan, Unity hiring, and AI chatbots—guides for founders with links to software development services.`,
+    `${companyInfo.name} blog: AI, games, web apps, MVP costs, offshore delivery, Unity hiring, and AI chatbots—guides for founders with links to software development services.`,
   ),
   alternates: { canonical: "/blog" },
   openGraph: {

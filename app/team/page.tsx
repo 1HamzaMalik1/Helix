@@ -15,13 +15,13 @@ const teamShare = openGraphShareImages("/opengraph-image", `Our team & story | $
 export const metadata: Metadata = {
   title: `Our team & story | ${companyInfo.name}`,
   description: metaDescription(
-    `Meet ${ceo.name}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person Lahore studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
+    `Meet ${ceo.name}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person remote-first studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
   ),
   alternates: { canonical: "/team" },
   openGraph: {
     title: `Our team & story | ${companyInfo.name}`,
     description: metaDescription(
-      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
+      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery.`,
     ),
     url: `${siteUrl}/team`,
     type: "website",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     ...twitterSummaryLarge,
     title: `Our team & story | ${companyInfo.name}`,
     description: metaDescription(
-      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery from Lahore.`,
+      `Leadership, studio culture, and why teams trust ${companyInfo.name} for remote-first delivery.`,
     ),
   },
 };
@@ -301,7 +301,7 @@ export default function TeamPage() {
                 <MapPin className="h-5 w-5 text-zinc-300" aria-hidden />
               </div>
               <div>
-                <p className="text-sm font-semibold">Lahore studio · global clients</p>
+                <p className="text-sm font-semibold">Remote-first studio · global clients</p>
                 <p className="mt-1 text-xs leading-relaxed text-zinc-500">
                   {companyInfo.addressLine}, {companyInfo.addressLocality} — overlap-friendly hours for EU &amp; US teams.
                 </p>

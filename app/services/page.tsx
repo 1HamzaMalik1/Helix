@@ -42,7 +42,7 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
 export const metadata: Metadata = {
   title: "Software Development Services | HelixCore",
   description: metaDescription(
-    "HelixCore Studio services: AI development, game development, web apps, Unity, playables, ecommerce, and automation—delivered from Lahore for global clients.",
+    "HelixCore Studio services: AI development, game development, web apps, Unity, playables, ecommerce, and automation—delivered remotely for global clients.",
   ),
   alternates: {
     canonical: "/services",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     ...twitterSummaryLarge,
     title: "Software Development Services | HelixCore",
     description: metaDescription(
-      "AI development, game development, and web services from HelixCore Studio. Based in Lahore, shipping worldwide.",
+      "AI development, game development, and web services from HelixCore Studio. Delivered remotely to global product teams.",
     ),
   },
 };
