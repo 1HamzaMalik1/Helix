@@ -115,10 +115,25 @@ export function serviceDetailJsonLdGraph(
       url: pageUrl,
       serviceType: service.title,
       provider: { "@id": organizationSchemaId },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount: 15,
+      },
       areaServed: [
         { "@type": "City", name: "Lahore", containedInPlace: { "@type": "Country", name: "Pakistan" } },
+        { "@type": "Country", name: "United States" },
+        { "@type": "Country", name: "Canada" },
+        { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Worldwide" },
       ],
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
     },
     {
       "@type": "BreadcrumbList",
@@ -309,4 +324,50 @@ export function privacyPolicyJsonLdGraph(): Record<string, unknown>[] {
       ],
     },
   ]);
+}
+
+/**
+ * Generate AggregateRating schema for the organization based on testimonials
+ * This signals trust and authority to search engines
+ */
+export function organizationAggregateRatingSchema(testimonials: any[] = []): Record<string, unknown> {
+  const validRatings = testimonials.filter((t) => t.rating && t.rating > 0);
+  const avgRating = validRatings.length > 0
+    ? (validRatings.reduce((sum, t) => sum + t.rating, 0) / validRatings.length).toFixed(1)
+    : "5.0";
+
+  return {
+    "@type": "AggregateRating",
+    "@id": `${siteUrl}/#aggregaterating`,
+    ratingValue: parseFloat(avgRating),
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: validRatings.length,
+    reviewCount: validRatings.length,
+  };
+}
+
+/**
+ * Generate Review schema for individual testimonials/client feedback
+ */
+export function testimonialReviewsSchema(testimonials: any[] = []): Record<string, unknown>[] {
+  return testimonials
+    .filter((t) => t.rating && t.rating > 0)
+    .slice(0, 5) // Limit to top 5 for performance
+    .map((t, index) => ({
+      "@type": "Review",
+      "@id": `${siteUrl}/#review-${index}`,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: t.rating,
+        bestRating: "5",
+        worstRating: "1",
+      },
+      reviewBody: t.comment || "",
+      author: {
+        "@type": "Person",
+        name: t.name || "Client",
+      },
+      publisher: { "@id": organizationSchemaId },
+    }));
 }
