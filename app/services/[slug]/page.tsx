@@ -25,6 +25,8 @@ import { companyInfo, services, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
 import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 import { getServiceFaqs, ServiceDetailBody } from "@/components/services/detail/registry";
+import { ServiceDetailV3Enhanced } from "@/components/services/ServiceDetailV3Enhanced";
+import { servicePageDataV3 } from "@/components/services/servicePageDataV3";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   Gamepad2,
@@ -264,12 +266,34 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
-        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
-          {/* Full width content section */}
-          <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
-            <ServiceDetailBody slug={service.slug} />
-          </div>
+      {/* Enhanced Service Detail Component */}
+      {servicePageDataV3[service.slug as keyof typeof servicePageDataV3] && (
+        <ServiceDetailV3Enhanced
+          serviceName={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.serviceName || service.title}
+          shortDescription={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.shortDescription || service.description}
+          stats={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.stats || []}
+          whatYouGet={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.whatYouGet || []}
+          whyUs={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.whyUs || []}
+          process={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.process || []}
+          results={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.results || []}
+          serviceSlug={service.slug}
+          keyValuePropositions={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.keyValuePropositions || []}
+          commonObjections={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.commonObjections || []}
+          competitorComparison={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.competitorComparison || []}
+          caseStudies={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.caseStudies || []}
+          faqs={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.faqs || []}
+          trustBadges={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.trustBadges || []}
+        />
+      )}
+
+      {/* Fallback to old component if V3 data not available */}
+      {!servicePageDataV3[service.slug as keyof typeof servicePageDataV3] && (
+        <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
+          <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+            {/* Full width content section */}
+            <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
+              <ServiceDetailBody slug={service.slug} />
+            </div>
 
           {/* Features and Related Services - Full Width Below */}
           <div className="mt-16 grid gap-12 lg:grid-cols-2">
@@ -325,6 +349,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </div>
       </div>
+      )}
+      
 
       <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
         <div className="container mx-auto max-w-6xl px-4 lg:px-8">
