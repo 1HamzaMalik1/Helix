@@ -142,20 +142,21 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="max-w-[16ch] text-4xl font-bold leading-snug tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
+            <h1 className="max-w-[18ch] text-4xl font-bold leading-snug tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
               <span className="inline-block w-full max-w-full bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text pb-[0.18em] text-transparent [-webkit-text-fill-color:transparent] [-webkit-background-clip:text]">
-                Engineering
+                Remote AI, game, and web delivery
               </span>
               <span className="mt-1.5 block text-white/95">
-                the future,{' '}
-                <span className="text-[#F46530]">together.</span>
+                for <span className="text-[#F46530]">USA & Canada product teams.</span>
               </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-              <span className="text-white/90">{companyInfo.name}</span> ships{' '}
-              <span className="font-medium text-white/90">games, web platforms, and AI</span> with the same rigor
-              whether you are a startup or an established product team.
+              <span className="text-white/90">{companyInfo.name}</span> builds launch-ready Unity games, Next.js platforms,
+              and AI automation with senior-led execution, regular demos, and predictable milestones.
+            </p>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-lg">
+              Replace vendor uncertainty with a scoped plan, clear delivery risks, and a remote team that collaborates like an extension of your product organization.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">

@@ -19,13 +19,13 @@ export default function HomeStatsStrip() {
           ))}
         </div>
         <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-zinc-600 md:mt-12">
-          We work as your technology partner to ship games, web platforms, and AI-backed products —{" "}
+          Get a scoped delivery plan that shows outcomes, timeline, and launch readiness — not just another price estimate.{' '}
           <Link
             href="/#contact"
             className="font-semibold text-zinc-950 underline decoration-zinc-300 decoration-2 underline-offset-4 transition hover:decoration-[#F46530] hover:text-[#F46530]"
           >
             start a conversation
-          </Link>{" "}
+          </Link>{' '}
           when you are ready.
         </p>
       </div>

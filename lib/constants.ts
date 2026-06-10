@@ -331,9 +331,9 @@ export const homePageStats = [
 ] as const;
 
 export const seoContent = {
-  title: "HelixCore Studio | Software Development Services — AI, Games & Web",
+  title: "HelixCore Studio | Remote AI, Unity Game & Web Development for USA / Canada",
   description:
-    "Software development services: AI, game & web apps for startups and enterprises worldwide. HelixCore Studio—book a strategy call.",
+    "Remote software development for USA and Canada teams: AI agents, Unity games, Next.js web apps, and automation delivered with senior-led execution and clear milestones.",
   keywords:
-    "HelixCore Studio, software development services, AI development, game development company, Unity developers, playable ads agency, Next.js web development, ecommerce development, USA software development, Canada software development, UAE software development, AI agents, mobile game porting",
+    "HelixCore Studio, remote software development, USA software development, Canada software development, AI development, Unity game development, Next.js development, remote development team, offshore software team, AI agents, playable ads, ecommerce development, UAE software development",
 };
