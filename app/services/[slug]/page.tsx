@@ -264,67 +264,71 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <div className="border-b border-zinc-200/80 bg-gradient-to-b from-zinc-100 to-white pb-16 pt-10 md:pb-24 md:pt-12">
+      <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
         <div className="container mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-            <article className="lg:col-span-8">
-              <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
-                <ServiceDetailBody slug={service.slug} />
-              </div>
-            </article>
-
-            <aside className="flex flex-col gap-6 lg:col-span-4">
-              <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-7 lg:sticky lg:top-28">
-                <div className="mb-4 h-1 w-10 rounded-full bg-[#F46530]" />
-                <h2 className="text-lg font-bold text-zinc-950">What you get</h2>
-                <ul className="mt-5 space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-sm leading-snug text-zinc-700">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#F46530]/12 text-[#F46530]">
-                        <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
-                      </span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {related.length > 0 ? (
-                <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-7">
-                  <h2 className="text-lg font-bold text-zinc-950">Related services</h2>
-                  <p className="mt-2 text-sm text-zinc-600">Explore adjacent work we often pair with this offering.</p>
-                  <ul className="mt-5 space-y-2">
-                    {related.map((item) => {
-                      const RIcon = SERVICE_ICONS[item.icon];
-                      return (
-                        <li key={item.slug}>
-                          <Link
-                            href={`/services/${item.slug}`}
-                            className="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3 text-sm font-semibold text-zinc-900 transition hover:border-zinc-900/20 hover:bg-white"
-                          >
-                            <span className="flex min-w-0 items-center gap-3">
-                              {RIcon ? (
-                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-zinc-950 text-white">
-                                  <RIcon className="h-4 w-4" strokeWidth={1.6} aria-hidden />
-                                </span>
-                              ) : null}
-                              <span className="truncate">{item.title}</span>
-                            </span>
-                            <ArrowRight
-                              className="h-4 w-4 shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-[#F46530]"
-                              aria-hidden
-                            />
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ) : null}
-            </aside>
+          {/* Full width content section */}
+          <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
+            <ServiceDetailBody slug={service.slug} />
           </div>
 
-          <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-[#F46530]/20 bg-[#F46530]/5 p-8 text-zinc-950 shadow-sm md:mt-14">
+          {/* Features and Related Services - Full Width Below */}
+          <div className="mt-16 grid gap-12 lg:grid-cols-2">
+            {/* Features */}
+            <div className="rounded-2xl border border-zinc-200/90 bg-zinc-50 p-8">
+              <div className="mb-6 h-1 w-12 rounded-full bg-[#F46530]" />
+              <h2 className="text-2xl font-bold text-zinc-950">What you get</h2>
+              <ul className="mt-6 space-y-4">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex gap-3 text-sm leading-snug text-zinc-700">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#F46530]/12 text-[#F46530]">
+                      <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Related Services */}
+            {related.length > 0 ? (
+              <div className="rounded-2xl border border-zinc-200/90 bg-zinc-50 p-8">
+                <h2 className="text-2xl font-bold text-zinc-950">Related services</h2>
+                <p className="mt-2 text-sm text-zinc-600">Explore adjacent work we often pair with this offering.</p>
+                <ul className="mt-6 space-y-3">
+                  {related.map((item) => {
+                    const RIcon = SERVICE_ICONS[item.icon];
+                    return (
+                      <li key={item.slug}>
+                        <Link
+                          href={`/services/${item.slug}`}
+                          className="group flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-semibold text-zinc-900 transition hover:border-[#F46530]/30 hover:bg-[#F46530]/5"
+                        >
+                          <span className="flex min-w-0 items-center gap-3">
+                            {RIcon ? (
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-zinc-950 text-white">
+                                <RIcon className="h-4 w-4" strokeWidth={1.6} aria-hidden />
+                              </span>
+                            ) : null}
+                            <span className="truncate">{item.title}</span>
+                          </span>
+                          <ArrowRight
+                            className="h-4 w-4 shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-[#F46530]"
+                            aria-hidden
+                          />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
+      <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="mx-auto mt-0 max-w-3xl rounded-3xl border border-[#F46530]/20 bg-[#F46530]/5 p-8 text-zinc-950 shadow-sm">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Ready to move forward?</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight">Turn this service page into a scoped proposal</h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-700">
