@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, company, service, budget, message } = body;
+    const { name, email, company, service, budget, message, source } = body;
 
     // Validate required fields
     if (!name || !email || !service || !message) {
@@ -13,6 +13,10 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const isHamzaPortfolio = source === 'hamza-hakim';
+    const recipient = isHamzaPortfolio ? 'hamzahakim12235@gmail.com' : process.env.GMAIL_USER;
+    const brandName = isHamzaPortfolio ? 'Hamza Hakim Portfolio' : 'HelixCore Studio';
 
     // Create SMTP transporter
     const transporter = nodemailer.createTransport({
@@ -25,12 +29,12 @@ export async function POST(request: NextRequest) {
 
     // Email content
     const mailOptions = {
-      from: `"HelixCore Studio" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+      from: `"${brandName}" <${process.env.GMAIL_USER}>`,
+      to: recipient,
       replyTo: email,
-      subject: `New Project Inquiry from ${name}`,
+      subject: `New Project Inquiry from ${name}${isHamzaPortfolio ? ' (Hamza Portfolio)' : ''}`,
       text: `
-New Project Inquiry - HelixCore Studio
+New Project Inquiry - ${brandName}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 CLIENT INFORMATION

@@ -326,6 +326,46 @@ export function privacyPolicyJsonLdGraph(): Record<string, unknown>[] {
   ]);
 }
 
+export function personalPortfolioJsonLdGraph(): Record<string, unknown>[] {
+  const pageUrl = `${siteUrl}/hamza-hakim`;
+  const title = `Hamza Hakim | Senior Unity Multiplayer Developer | ${companyInfo.name}`;
+  const description = metaDescription(
+    "Senior Unity multiplayer developer and playable ads expert. Portfolio showcasing Photon Fusion, PlayFab, Firebase, WebGL, and high-converting playable ads.",
+  );
+
+  return withShared([
+    {
+      "@type": "Person",
+      "@id": `${pageUrl}#person`,
+      name: "Hamza Hakim",
+      url: "https://www.linkedin.com/in/hamza-hakim1/",
+      jobTitle: "Senior Unity Multiplayer Developer & Playable Ads Expert",
+      worksFor: { "@id": organizationSchemaId },
+      sameAs: ["https://www.linkedin.com/in/hamza-hakim1/"],
+      description:
+        "Senior Unity developer with 5+ years building mobile, PC, WebGL, multiplayer games, and playable ads. Photon Fusion, PlayFab, Firebase, and high-conversion ad delivery.",
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": `${pageUrl}#person` },
+      mainEntity: { "@id": `${pageUrl}#person` },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+        { "@type": "ListItem", position: 2, name: "Hamza Hakim", item: pageUrl },
+      ],
+    },
+  ]);
+}
+
 /**
  * Generate AggregateRating schema for the organization based on testimonials
  * This signals trust and authority to search engines
