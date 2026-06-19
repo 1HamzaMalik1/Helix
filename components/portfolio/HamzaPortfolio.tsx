@@ -16,7 +16,7 @@ export default function HamzaPortfolio() {
       <Hero />
       <Services />
       <Projects />
-      <GamePortfolio />
+      {/* <GamePortfolio /> */}
       <Testimonials />
       <Contact />
       <StickyCta />
