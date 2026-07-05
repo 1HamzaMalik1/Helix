@@ -111,14 +111,6 @@ export function sharedEntityGraph(): Record<string, unknown>[] {
           description: "Experienced game developer with 5+ years of expertise in Unity and multiplayer systems. Masters in Software Engineering.",
           url: "https://www.linkedin.com/in/hamza-hakim1/",
           expertise: ["Unity Engine", "Multiplayer Systems", "Game Architecture", "Project Leadership"]
-        },
-        {
-          "@type": "Person",
-          name: "Samran Shoukat",
-          jobTitle: "CTO & Senior Software Engineer",
-          description: "Senior engineer specializing in scalable architecture, full-stack development, and reliable cloud deployment.",
-          url: "https://www.linkedin.com/in/samran-shoukat-36b930213/",
-          expertise: ["React", "Next.js", "Node.js", "Cloud Architecture"]
         }
       ],
       aggregateRating: (() => {

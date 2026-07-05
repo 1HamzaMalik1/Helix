@@ -14,7 +14,7 @@
 - **5+ years** of software development experience
 - **150+ projects** delivered to startups, enterprises, and game publishers
 - **10 full-time developers** in-house team (design, engineering, QA, DevOps)
-- **Team Leadership:** Hamza Hakim (CEO, Masters in Software Engineering, 5+ years game dev); Samran Shoukat (CTO, Senior full-stack engineer)
+- **Team Leadership:** Hamza Hakim (CEO, Masters in Software Engineering, 5+ years game dev)
 - **Quality Standards:** Cloud-certified infrastructure, secure integrations, measurable delivery
 
 ## Service Summary (USA, Canada, UAE Focus)

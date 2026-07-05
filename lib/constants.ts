@@ -179,15 +179,6 @@ export const teamMembers = [
     image: "/hamza.png",
     linkedin: "https://www.linkedin.com/in/hamza-hakim1/",
     github: "https://github.com/1HamzaMalik1"
-  },
-  {
-    name: "Samran Shoukat",
-    role: "CTO & Senior Software Engineer",
-    bio: "Senior engineer specializing in scalable application architecture, clean implementation, and reliable delivery across modern software stacks.",
-    expertise: ["React/Next.js", "TypeScript", "Node.js", "API Development"],
-    image: "/samran-shoukat-cto.png",
-    linkedin: "https://www.linkedin.com/in/samran-shoukat-36b930213/",
-    github: ""
   }
 ];
 

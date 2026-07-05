@@ -8,7 +8,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { teamPageJsonLdGraph } from "@/lib/page-jsonld";
 import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
-const [ceo, cto] = teamMembers;
+const [ceo] = teamMembers;
 
 const teamShare = openGraphShareImages("/opengraph-image", `Our team & story | ${companyInfo.name}`);
 
@@ -204,43 +204,6 @@ export default function TeamPage() {
                   <Github className="h-5 w-5" />
                 </a>
               ) : null}
-            </div>
-          </div>
-
-          <div className="mx-auto mt-14 max-w-4xl rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:mt-16 md:p-10">
-            <div className="flex flex-col gap-8 md:flex-row md:items-center">
-              <div className="relative mx-auto h-36 w-36 shrink-0 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 md:mx-0">
-                {cto.image ? (
-                  <Image src={cto.image} alt={`${cto.name}, ${cto.role}`} fill className="object-cover object-top" sizes="144px" />
-                ) : null}
-              </div>
-              <div className="min-w-0 flex-1 text-center md:text-left">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Technology leadership</p>
-                <h3 className="mt-2 text-xl font-bold text-zinc-950 md:text-2xl">{cto.name}</h3>
-                <p className="mt-1 text-sm font-medium text-[#F46530]">{cto.role}</p>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-600 md:text-base">{cto.bio}</p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2 md:justify-start">
-                  {cto.expertise.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1 text-xs font-medium text-zinc-800"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                {cto.linkedin ? (
-                  <a
-                    href={cto.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#F46530] underline decoration-[#F46530]/35 underline-offset-2 hover:decoration-[#F46530]"
-                  >
-                    <Linkedin className="h-4 w-4" aria-hidden />
-                    Connect on LinkedIn
-                  </a>
-                ) : null}
-              </div>
             </div>
           </div>
 
