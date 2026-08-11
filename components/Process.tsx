@@ -21,7 +21,7 @@ const processSteps = [
     id: 1,
     icon: Search,
     title: 'Discovery',
-    summary: 'Requirements, constraints, and technical approach.',
+    summary: 'Scope, constraints, and technical approach.',
     duration: '1–2 weeks',
     deliverables: ['Scope & milestones', 'Architecture notes', 'Risk register'],
   },
@@ -29,15 +29,15 @@ const processSteps = [
     id: 2,
     icon: Palette,
     title: 'Design',
-    summary: 'UX flows and UI aligned to your brand and users.',
+    summary: 'UX flows and UI aligned to your brand.',
     duration: '2–3 weeks',
-    deliverables: ['Wireframes', 'UI kit', 'Clickable prototype'],
+    deliverables: ['Wireframes', 'UI kit', 'Prototype'],
   },
   {
     id: 3,
     icon: Code,
     title: 'Development',
-    summary: 'Iterative builds with reviews, CI, and transparent progress.',
+    summary: 'Iterative builds with reviews and CI.',
     duration: '4–12 weeks',
     deliverables: ['Working increments', 'Repo access', 'Release notes'],
   },
@@ -45,23 +45,23 @@ const processSteps = [
     id: 4,
     icon: TestTube2,
     title: 'Quality',
-    summary: 'Functional, performance, and security checks before release.',
+    summary: 'Functional, performance, and security checks.',
     duration: '1–2 weeks',
-    deliverables: ['Test plan', 'Defect triage', 'Sign-off criteria'],
+    deliverables: ['Test plan', 'Defect triage', 'Sign-off'],
   },
   {
     id: 5,
     icon: Rocket,
     title: 'Launch',
-    summary: 'Production deploy, monitoring, and handover documentation.',
+    summary: 'Production deploy, monitoring, and handover.',
     duration: '~1 week',
-    deliverables: ['Go-live checklist', 'Runbooks', 'Training session'],
+    deliverables: ['Go-live checklist', 'Runbooks', 'Training'],
   },
   {
     id: 6,
     icon: Settings,
     title: 'Evolve',
-    summary: 'Support, tuning, and roadmap for the next iteration.',
+    summary: 'Support, tuning, and next iteration.',
     duration: 'Ongoing',
     deliverables: ['SLAs', 'Backlog grooming', 'Metrics review'],
   },
@@ -70,19 +70,19 @@ const processSteps = [
 const principles = [
   {
     title: 'Clear ownership',
-    body: 'A single lead engineer stays accountable from kickoff through delivery.',
+    body: 'One lead engineer accountable from kickoff to delivery.',
   },
   {
     title: 'Documented decisions',
-    body: 'Key trade-offs and assumptions are captured so your team can maintain the system.',
+    body: 'Trade-offs captured so your team can maintain the system.',
   },
   {
     title: 'Predictable rhythm',
-    body: 'Weekly demos and written updates — no black-box development.',
+    body: 'Weekly demos and written updates.',
   },
   {
     title: 'Production mindset',
-    body: 'We ship with observability, rollback paths, and operational readiness in mind.',
+    body: 'Observability, rollback paths, and operational readiness.',
   },
 ] as const;
 
@@ -95,7 +95,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden border-t border-white/10 bg-zinc-950 py-20 text-white md:py-28"
+      className="relative overflow-hidden border-t border-white/10 bg-zinc-950 py-16 text-white md:py-20"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_-30%,rgba(255,255,255,0.04),transparent_50%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
@@ -114,14 +114,14 @@ export default function Process() {
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Delivery methodology
+            How we deliver
           </h2>
           <p
-            className={`mt-4 text-sm leading-relaxed text-zinc-400 md:text-base transition-all delay-100 duration-700 ${
+            className={`mt-3 text-sm text-zinc-400 md:text-base transition-all delay-100 duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Six connected phases — tap a step to see what you get at each stage.
+            Six phases — tap a step for deliverables.
           </p>
         </header>
 
@@ -247,8 +247,7 @@ export default function Process() {
           </ul>
         </div>
 
-        <div className="mx-auto mt-14 max-w-lg text-center md:mt-16">
-          <p className="text-sm text-zinc-500">We will map these phases to your timeline and risk profile.</p>
+        <div className="mx-auto mt-10 max-w-lg text-center md:mt-12">
           <a
             href={companyInfo.calendlyUrl}
             target="_blank"

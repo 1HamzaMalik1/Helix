@@ -5,21 +5,21 @@ import { ArrowRight, PlayCircle, ExternalLink } from "lucide-react";
 const recentGames = [
   {
     name: "Game Name 1",
-    shortDescription: "A polished mobile game built for performance, retention, and store readiness.",
+    shortDescription: "Unity mobile game — performance and retention focused.",
     playStoreUrl: "#",
     imageUrl: "https://placehold.co/900x1600/png?text=Game+1",
     tags: ["Mobile", "Unity", "Live Ops"],
   },
   {
     name: "Game Name 2",
-    shortDescription: "A lightweight, highly playable experience with strong first-session engagement.",
+    shortDescription: "Casual hypercasual — strong first-session engagement.",
     playStoreUrl: "#",
     imageUrl: "https://placehold.co/900x1600/png?text=Game+2",
     tags: ["Casual", "Hypercasual", "Ads"],
   },
   {
     name: "Game Name 3",
-    shortDescription: "A web-first interactive build designed for fast launch and strong monetization potential.",
+    shortDescription: "Web-first build — fast launch, monetization ready.",
     playStoreUrl: "#",
     imageUrl: "https://placehold.co/900x1600/png?text=Game+3",
     tags: ["Web", "HTML5", "Playable"],
@@ -28,17 +28,14 @@ const recentGames = [
 
 export default function TrustProofSection() {
   return (
-    <section className="border-t border-zinc-200 bg-white py-20 md:py-24">
+    <section className="border-t border-zinc-200 bg-white py-16 md:py-20">
       <div className="container mx-auto max-w-full px-4 lg:px-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Recent work</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">
-              Games and products clients can actually review
+              Shipped games and products
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600 md:text-base">
-              Here are recent examples of game work that can be shared publicly. Replace the placeholders with your real game names, screenshots, and Play Store links to build instant trust.
-            </p>
           </div>
           <Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-900 transition hover:text-[#F46530]">
             View services

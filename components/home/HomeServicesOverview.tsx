@@ -7,7 +7,7 @@ export default function HomeServicesOverview() {
 
   return (
     <section
-      className="relative overflow-hidden border-t border-zinc-200 bg-zinc-950 py-20 text-white md:py-28"
+      className="relative overflow-hidden border-t border-zinc-200 bg-zinc-950 py-16 text-white md:py-20"
       aria-labelledby="home-services-overview-heading"
     >
       <div
@@ -31,18 +31,18 @@ export default function HomeServicesOverview() {
               id="home-services-overview-heading"
               className="mt-3 text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem] lg:leading-tight"
             >
-              Services for founders,
-              <span className="text-[#F46530]"> studios, and operators</span>
+              What we
+              <span className="text-[#F46530]"> build</span>
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">
-              We help teams ship AI products, immersive games, and modern web platforms with a calm, accountable process and practical guidance from day one.
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-zinc-400 md:text-base">
+              AI products, games, and web platforms — scoped clearly, delivered by senior engineers.
             </p>
           </div>
           <Link
             href="/services"
             className="group inline-flex shrink-0 items-center gap-2 self-start rounded-xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#F46530]/50 hover:bg-[#F46530]/10 lg:self-auto"
           >
-            Full services index
+            Full services
             <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
           </Link>
         </div>

@@ -23,17 +23,6 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
   ),
 });
 
-const Services = dynamic(() => import("@/components/Services"), {
-  loading: () => (
-    <section
-      id="services"
-      className="min-h-[36rem] py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 overflow-x-hidden"
-      aria-busy="true"
-      aria-label="Loading services"
-    />
-  ),
-});
-
 const Process = dynamic(() => import("@/components/Process"), {
   loading: () => (
     <section
@@ -86,7 +75,6 @@ export default function HomePage() {
       <TrustProofSection />
       <HomeServicesOverview />
       <Testimonials />
-      <Services />
       <Process />
       <Contact />
     </>

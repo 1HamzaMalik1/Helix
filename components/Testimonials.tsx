@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState, useEffect, useCallback } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote, Calendar } from 'lucide-react';
 import Image from 'next/image';
-import { testimonials, companyInfo, projectsDeliveredCountDisplay } from '@/lib/constants';
+import { testimonials, companyInfo } from '@/lib/constants';
 
 function flagSrc(code: string) {
   return `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
@@ -32,7 +32,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="overflow-x-hidden border-t border-zinc-200 bg-white py-20 md:py-28"
+      className="overflow-x-hidden border-t border-zinc-200 bg-white py-16 md:py-20"
     >
       <div className="container mx-auto max-w-full px-4 lg:px-8">
         <header className="mx-auto max-w-2xl text-center" ref={ref}>
@@ -48,14 +48,14 @@ export default function Testimonials() {
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Trusted by clients who value clarity and follow-through
+            Trusted by teams who value follow-through
           </h2>
           <p
-            className={`mt-4 text-sm leading-relaxed text-zinc-600 md:text-base transition-all delay-100 duration-700 ${
+            className={`mt-3 text-sm text-zinc-600 md:text-base transition-all delay-100 duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Real feedback from founders, studios, and product teams who needed dependable execution and calm communication under pressure.
+            Real feedback from founders and studios.
           </p>
         </header>
 
@@ -178,21 +178,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-4">
-          {[
-            { v: '70+', l: 'Client relationships' },
-            { v: '5.0', l: 'Typical rating' },
-            { v: '10+', l: 'Countries' },
-            { v: projectsDeliveredCountDisplay, l: 'Projects delivered' },
-          ].map((s) => (
-            <div key={s.l} className="bg-white px-4 py-6 text-center md:py-8">
-              <p className="text-2xl font-bold tabular-nums text-zinc-950 md:text-3xl">{s.v}</p>
-              <p className="mt-1 text-[11px] font-medium uppercase tracking-wide text-zinc-500">{s.l}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-12 max-w-xl text-center">
+        <div className="mx-auto mt-10 max-w-xl text-center">
           <a
             href={companyInfo.calendlyUrl}
             target="_blank"

@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { ChevronRight, Sparkles, Code2, Zap, ArrowUpRight } from 'lucide-react';
-import { companyInfo, technologies, homePageStats } from '@/lib/constants';
+import { companyInfo } from '@/lib/constants';
 
 const unityCode = [
   'using UnityEngine;',
@@ -68,7 +68,6 @@ export default function Hero() {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const techPills = technologies.slice(0, 7);
   const driftX = (pointer.x - 0.5) * 28;
   const driftY = (pointer.y - 0.5) * 22;
 
@@ -144,18 +143,15 @@ export default function Hero() {
 
             <h1 className="max-w-[18ch] text-4xl font-bold leading-snug tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
               <span className="inline-block w-full max-w-full bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text pb-[0.18em] text-transparent [-webkit-text-fill-color:transparent] [-webkit-background-clip:text]">
-                Trusted delivery partner for AI, game, and web products
+                AI, games, and web products
               </span>
               <span className="mt-1.5 block text-white/95">
-                that <span className="text-[#F46530]">ship with clarity, speed, and senior-level execution.</span>
+                built to <span className="text-[#F46530]">ship.</span>
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-              We help founders, studios, and product teams turn complex ideas into dependable software — from Unity games and AI workflows to modern web platforms that need to launch cleanly and scale confidently.
-            </p>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-lg">
-              Expect a direct point of contact, a scoped delivery plan, and a team that communicates like an extension of your business rather than a black box vendor.
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-zinc-400 sm:text-lg">
+              Senior-led delivery for founders and studios — Unity games, AI workflows, and web platforms with clear scope and direct communication.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -186,40 +182,11 @@ export default function Hero() {
 
             <div className="mt-8 flex flex-wrap gap-2">
               <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
-                Senior-led delivery
+                Senior-led
               </span>
               <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
                 NDA available
               </span>
-              <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
-                US & Canada-friendly collaboration
-              </span>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-8">
-              {homePageStats.map((s) => (
-                <div
-                  key={s.line1}
-                  className="min-w-[100px] flex-1 rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 backdrop-blur-sm sm:min-w-0 sm:flex-none"
-                >
-                  <p className="text-2xl font-bold tabular-nums text-white">{s.value}</p>
-                  <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/40">
-                    {s.line1} <span className="text-white/25">·</span> {s.line2}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-8 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/35">Stack &amp; tools</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {techPills.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-white/25 hover:text-white"
-                >
-                  {t}
-                </span>
-              ))}
             </div>
           </div>
 

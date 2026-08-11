@@ -5,9 +5,9 @@ import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Shield, Users, AlertCirc
 import { companyInfo } from '@/lib/constants';
 
 const whyChooseUs = [
-  { icon: Clock, title: '24–48h response', description: 'We reply to serious inquiries quickly.' },
-  { icon: Shield, title: 'NDA on request', description: 'We treat your roadmap and IP as confidential.' },
-  { icon: Users, title: 'Direct access', description: 'You talk to engineers, not layers of account staff.' },
+  { icon: Clock, title: '24–48h response', description: 'Quick replies to serious inquiries.' },
+  { icon: Shield, title: 'NDA on request', description: 'Your roadmap stays confidential.' },
+  { icon: Users, title: 'Direct access', description: 'Talk to engineers, not account layers.' },
 ] as const;
 
 export default function Contact() {
@@ -122,14 +122,14 @@ ${formData.message}
     'w-full rounded-xl border border-zinc-200 bg-white px-4 py-3.5 text-sm text-zinc-900 placeholder:text-zinc-400 transition focus:border-[#F46530] focus:outline-none focus:ring-2 focus:ring-[#F46530]/20';
 
   return (
-    <section id="contact" className="overflow-x-hidden border-t border-zinc-200 bg-white py-20 md:py-28">
+    <section id="contact" className="overflow-x-hidden border-t border-zinc-200 bg-white py-16 md:py-20">
       <div className="container mx-auto max-w-full px-4 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <header className="max-w-2xl">
+          <header className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Contact</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start a project with a partner you can trust</h2>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-600 md:text-base">
-              Share your goals, constraints, and timeline — we respond with a clear read on fit, scope, and the most practical path forward. Prefer a call? Book time directly.
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start a project</h2>
+            <p className="mt-3 text-sm text-zinc-600 md:text-base">
+              Share your goals — we&apos;ll reply with scope and next steps. Prefer a call? Book directly.
             </p>
           </header>
 
@@ -192,7 +192,7 @@ ${formData.message}
               <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
                 <div className="border-b border-zinc-100 bg-zinc-50/50 px-6 py-5 md:px-8">
                   <h3 className="text-lg font-bold text-zinc-950">Project inquiry</h3>
-                  <p className="mt-1 text-sm text-zinc-600">We typically reply within one to two business days.</p>
+                  <p className="mt-1 text-sm text-zinc-600">Reply within 1–2 business days.</p>
                 </div>
 
                 <div className="p-6 md:p-8">
@@ -337,7 +337,7 @@ ${formData.message}
                         <div className="flex gap-3">
                           <Shield className="mt-0.5 h-5 w-5 shrink-0 text-zinc-600" aria-hidden />
                           <p className="text-xs leading-relaxed text-zinc-600">
-                            We do not sell your information. NDA available on request before sharing sensitive material.
+                            We don&apos;t sell your information. NDA available on request.
                           </p>
                         </div>
                       </div>
