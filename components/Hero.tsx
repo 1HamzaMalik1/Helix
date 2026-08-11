@@ -144,19 +144,18 @@ export default function Hero() {
 
             <h1 className="max-w-[18ch] text-4xl font-bold leading-snug tracking-tight text-white sm:max-w-none sm:text-5xl lg:text-[3.35rem] xl:text-6xl">
               <span className="inline-block w-full max-w-full bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text pb-[0.18em] text-transparent [-webkit-text-fill-color:transparent] [-webkit-background-clip:text]">
-                Remote AI, game, and web delivery
+                Trusted delivery partner for AI, game, and web products
               </span>
               <span className="mt-1.5 block text-white/95">
-                for <span className="text-[#F46530]">USA & Canada product teams.</span>
+                that <span className="text-[#F46530]">ship with clarity, speed, and senior-level execution.</span>
               </span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-              <span className="text-white/90">{companyInfo.name}</span> builds launch-ready Unity games, Next.js platforms,
-              and AI automation with senior-led execution, regular demos, and predictable milestones.
+              We help founders, studios, and product teams turn complex ideas into dependable software — from Unity games and AI workflows to modern web platforms that need to launch cleanly and scale confidently.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-lg">
-              Replace vendor uncertainty with a scoped plan, clear delivery risks, and a remote team that collaborates like an extension of your product organization.
+              Expect a direct point of contact, a scoped delivery plan, and a team that communicates like an extension of your business rather than a black box vendor.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -183,6 +182,18 @@ export default function Hero() {
               >
                 Book a call
               </a>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
+                Senior-led delivery
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
+                NDA available
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300">
+                US & Canada-friendly collaboration
+              </span>
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3 border-t border-white/10 pt-8">

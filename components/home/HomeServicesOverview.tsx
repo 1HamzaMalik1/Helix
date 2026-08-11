@@ -31,12 +31,11 @@ export default function HomeServicesOverview() {
               id="home-services-overview-heading"
               className="mt-3 text-3xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem] lg:leading-tight"
             >
-              What North American teams
-              <span className="text-[#F46530]"> hire us for</span>
+              Services for founders,
+              <span className="text-[#F46530]"> studios, and operators</span>
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">
-              AI agents, Unity games, and SaaS platforms delivered with USA/Canada-friendly collaboration, launch-focused scope,
-              and practical FAQs so you can qualify fit before we talk.
+              We help teams ship AI products, immersive games, and modern web platforms with a calm, accountable process and practical guidance from day one.
             </p>
           </div>
           <Link

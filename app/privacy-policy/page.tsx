@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-sm md:text-base opacity-80 mb-10" style={{ color: "#2A2E30" }}>
-          <strong>Effective Date:</strong> 2026-05-02
+          <strong>Effective Date:</strong> 2026-08-11
         </p>
 
         <div className="space-y-8 text-sm md:text-base leading-relaxed" style={{ color: "#2A2E30" }}>
@@ -148,6 +148,13 @@ export default function PrivacyPolicyPage() {
               Our apps may use analytics services such as Google Analytics for Firebase to understand how users interact with our games.
             </p>
             <p className="opacity-90 mb-4">
+              Our apps may use the Meta/Facebook SDK and Meta App Events to measure app installs, app activations, campaign attribution, and interactions within our apps. Meta may process device information, advertising identifiers, app activity, and attribution data according to the{" "}
+              <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="font-semibold underline decoration-[#F46530]/40" style={{ color: "#F46530" }}>
+                Meta Privacy Policy
+              </a>
+              .
+            </p>
+            <p className="opacity-90 mb-4">
               Analytics data may include session length, first app open, gameplay progress, quest activity, device information, app performance, and crash-related information.
             </p>
             <p className="opacity-90">We use analytics to:</p>
@@ -174,6 +181,7 @@ export default function PrivacyPolicyPage() {
               <li>Google AdMob</li>
               <li>Google Analytics for Firebase</li>
               <li>Meta Audience Network</li>
+              <li>Meta/Facebook SDK</li>
               <li>ironSource</li>
               <li>AppLovin</li>
               <li>Unity Ads</li>

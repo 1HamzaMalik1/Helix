@@ -18,16 +18,23 @@ export default function HomeStatsStrip() {
             </div>
           ))}
         </div>
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-zinc-600 md:mt-12">
-          Get a scoped delivery plan that shows outcomes, timeline, and launch readiness — not just another price estimate.{' '}
+        <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-zinc-200 bg-white/80 p-6 text-center shadow-sm md:mt-12 md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Why teams choose us</p>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-600 md:text-base">
+            We combine senior engineering with direct communication, clear scope, and a practical delivery rhythm so your project stays focused on outcomes rather than surprises.
+          </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-2 text-sm text-zinc-700">
+            <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5">Clear milestones</span>
+            <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5">Fast response</span>
+            <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5">Launch-ready delivery</span>
+          </div>
           <Link
             href="/#contact"
-            className="font-semibold text-zinc-950 underline decoration-zinc-300 decoration-2 underline-offset-4 transition hover:decoration-[#F46530] hover:text-[#F46530]"
+            className="mt-6 inline-flex items-center justify-center font-semibold text-zinc-950 underline decoration-zinc-300 decoration-2 underline-offset-4 transition hover:decoration-[#F46530] hover:text-[#F46530]"
           >
-            start a conversation
-          </Link>{' '}
-          when you are ready.
-        </p>
+            Start a conversation
+          </Link>
+        </div>
       </div>
     </section>
   );

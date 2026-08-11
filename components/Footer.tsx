@@ -12,6 +12,7 @@ const footerLinkRow: FooterLink[] = [
   { label: 'Services', href: '/services' },
   { label: 'Blog', href: '/blog' },
   { label: 'Privacy', href: '/privacy-policy' },
+  { label: 'Terms', href: '/terms-and-conditions' },
   { label: 'LLMs.txt', href: `${siteUrl}/llms.txt`, external: true },
 ];
 
@@ -37,6 +38,9 @@ export default function Footer() {
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
               {companyInfo.description}
+            </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">
+              Senior-led delivery · clear milestones · dependable communication
             </p>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">Find us elsewhere</p>
             <div className="mt-3 flex flex-wrap gap-3">

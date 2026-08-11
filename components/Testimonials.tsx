@@ -48,14 +48,14 @@ export default function Testimonials() {
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            What clients say
+            Trusted by clients who value clarity and follow-through
           </h2>
           <p
             className={`mt-4 text-sm leading-relaxed text-zinc-600 md:text-base transition-all delay-100 duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Real feedback from marketplaces and long-term engagements — unedited usernames and locations.
+            Real feedback from founders, studios, and product teams who needed dependable execution and calm communication under pressure.
           </p>
         </header>
 

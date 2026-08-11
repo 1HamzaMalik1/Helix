@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import HomeStatsStrip from "@/components/home/HomeStatsStrip";
 import HomeServicesOverview from "@/components/home/HomeServicesOverview";
+import TrustProofSection from "@/components/home/TrustProofSection";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { homePageJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, seoContent, siteUrl } from "@/lib/constants";
@@ -82,6 +83,7 @@ export default function HomePage() {
       <PageJsonLd id="jsonld-home" graph={homePageJsonLdGraph()} />
       <Hero />
       <HomeStatsStrip />
+      <TrustProofSection />
       <HomeServicesOverview />
       <Testimonials />
       <Services />

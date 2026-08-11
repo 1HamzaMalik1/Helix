@@ -1,7 +1,7 @@
 export const companyInfo = {
   name: "HelixCore Studio",
-  tagline: "Crafting Digital Excellence Through Code & Creativity",
-  description: "HelixCore Studio is a premier software development house specializing in game development, full-stack web solutions, and AI-powered applications. With 5+ years of industry expertise and global delivery experience.",
+  tagline: "Remote-first software partner for AI, games, and web products",
+  description: "HelixCore Studio is a remote-first software delivery partner helping founders, studios, and product teams build AI products, Unity games, and scalable web platforms with clear milestones and senior execution.",
   ceo: "Hamza Hakim",
   experience: "5+ years",
   email: "helixcorestudio@gmail.com",
@@ -15,6 +15,9 @@ export const companyInfo = {
   postalCode: "54000",
   addressCountry: "PK",
   linkedInCompany: "https://www.linkedin.com/company/helixcore-studio/",
+  facebookUrl: "https://www.facebook.com/helixcorestudio",
+  instagramUrl: "https://www.instagram.com/helixcorestudio",
+  tiktokUrl: "https://www.tiktok.com/@helixcorestudio",
   degree: "Masters in Software Engineering",
   calendlyUrl: "https://calendly.com/helixcorestudio/30min",
   /** Full-time builders in our remote development studio (design, engineering, QA, ops) */
@@ -316,15 +319,15 @@ export const projectsDeliveredCountDisplay = "150+" as const;
 
 /** Homepage stats band — values and labels are editable in one place. */
 export const homePageStats = [
-  { value: "5+", line1: "YEARS", line2: "ON THE MARKET" },
-  { value: projectsDeliveredCountDisplay, line1: "PROJECTS", line2: "DELIVERED GLOBALLY" },
-  { value: "2", line1: "SENIOR", line2: "LEADS ON DELIVERY" },
+  { value: "5+", line1: "YEARS", line2: "BUILDING DIGITAL PRODUCTS" },
+  { value: projectsDeliveredCountDisplay, line1: "PROJECTS", line2: "DELIVERED WORLDWIDE" },
+  { value: "24h", line1: "RESPONSE", line2: "ON SERIOUS INQUIRIES" },
 ] as const;
 
 export const seoContent = {
-  title: "HelixCore Studio | Remote AI, Unity Game & Web Development for USA / Canada",
+  title: "HelixCore Studio | Trusted AI, Game & Web Delivery Partner for USA & Canada",
   description:
-    "Remote software development for USA and Canada teams: AI agents, Unity games, Next.js web apps, and automation delivered with senior-led execution and clear milestones.",
+    "HelixCore Studio delivers AI products, Unity games, and modern web platforms with senior-led execution, clear milestones, and dependable client communication for USA and Canada teams.",
   keywords:
-    "HelixCore Studio, remote software development, USA software development, Canada software development, AI development, Unity game development, Next.js development, remote development team, offshore software team, AI agents, playable ads, ecommerce development, UAE software development",
+    "HelixCore Studio, AI development partner, Unity game development, Next.js development partner, remote software partner, USA software development, Canada software development, AI automation, playable ads, ecommerce development, trusted web agency",
 };

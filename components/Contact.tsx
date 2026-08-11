@@ -127,10 +127,9 @@ ${formData.message}
         <div className="mx-auto max-w-6xl">
           <header className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Contact</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start a project</h2>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start a project with a partner you can trust</h2>
             <p className="mt-4 text-sm leading-relaxed text-zinc-600 md:text-base">
-              Share context and constraints — we respond with a clear read on fit, approach, and next steps. Prefer
-              live conversation? Book a call anytime.
+              Share your goals, constraints, and timeline — we respond with a clear read on fit, scope, and the most practical path forward. Prefer a call? Book time directly.
             </p>
           </header>
 
