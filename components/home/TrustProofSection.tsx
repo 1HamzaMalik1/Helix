@@ -4,25 +4,18 @@ import { ArrowRight, PlayCircle, ExternalLink } from "lucide-react";
 
 const recentGames = [
   {
-    name: "Game Name 1",
-    shortDescription: "Unity mobile game — performance and retention focused.",
-    playStoreUrl: "#",
-    imageUrl: "https://placehold.co/900x1600/png?text=Game+1",
-    tags: ["Mobile", "Unity", "Live Ops"],
+    name: "Car Mechanic Simulator: Fix",
+    shortDescription: "Repair, restore, and upgrade cars in your own 3D mechanic garage.",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.car.mechanic.fix.my.car",
+    imageUrl: "/car-mechanic.png",
+    tags: ["Mobile", "Unity", "Simulation"],
   },
   {
-    name: "Game Name 2",
-    shortDescription: "Casual hypercasual — strong first-session engagement.",
-    playStoreUrl: "#",
-    imageUrl: "https://placehold.co/900x1600/png?text=Game+2",
-    tags: ["Casual", "Hypercasual", "Ads"],
-  },
-  {
-    name: "Game Name 3",
-    shortDescription: "Web-first build — fast launch, monetization ready.",
-    playStoreUrl: "#",
-    imageUrl: "https://placehold.co/900x1600/png?text=Game+3",
-    tags: ["Web", "HTML5", "Playable"],
+    name: "Smash Fest! - Royal Puzzle",
+    shortDescription: "Aim, fire, and smash towers in satisfying cannon physics puzzles.",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.flow.cannonball.smash.carnival",
+    imageUrl: "/smash-fest-royal-puzzle-2.png",
+    tags: ["Casual", "Puzzle", "Physics"],
   },
 ] as const;
 
@@ -43,7 +36,7 @@ export default function TrustProofSection() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl">
           {recentGames.map((game) => (
             <article key={game.name} className="overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 shadow-sm">
               <div className="relative aspect-[9/14] w-full bg-zinc-200">
@@ -51,7 +44,7 @@ export default function TrustProofSection() {
                   src={game.imageUrl}
                   alt={`${game.name} showcase`}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>
