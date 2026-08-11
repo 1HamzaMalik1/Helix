@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Send, CheckCircle, Clock, Shield, Users, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Shield, Users, AlertCircle, ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '@/lib/constants';
 
 const whyChooseUs = [
@@ -119,45 +119,81 @@ ${formData.message}
   };
 
   const inputClass =
-    'w-full rounded-md border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 transition focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500';
+    'w-full rounded-xl border border-zinc-200 bg-white px-4 py-3.5 text-sm text-zinc-900 placeholder:text-zinc-400 transition focus:border-[#F46530] focus:outline-none focus:ring-2 focus:ring-[#F46530]/15';
 
   return (
-    <section id="contact" className="overflow-x-hidden border-t border-zinc-200 bg-white py-16 md:py-20">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="mx-auto max-w-2xl">
-          <header className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Contact</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start a project</h2>
-            <p className="mt-3 text-sm text-zinc-600 md:text-base">
-              Tell us about your product — we respond within 1–2 business days.
+    <section id="contact" className="relative overflow-hidden border-t border-zinc-200 bg-gradient-to-b from-white to-zinc-50 py-20 md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(244,101,48,0.05),transparent_60%)]" />
+
+      <div className="container relative mx-auto px-4 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <header className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Contact</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl">Start your project</h2>
+            <p className="mt-4 text-sm text-zinc-600 md:text-base">
+              Share your goals and timeline — we respond within 1–2 business days with scope and next steps.
             </p>
           </header>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-b border-zinc-100 pb-8 text-sm">
-            <a href={`mailto:${companyInfo.email}`} className="font-medium text-zinc-800 hover:text-zinc-950 hover:underline">
-              {companyInfo.email}
-            </a>
-            <span className="hidden text-zinc-300 sm:inline" aria-hidden>·</span>
-            <a href={`tel:${companyInfo.phone.replace(/\s/g, '')}`} className="font-medium text-zinc-800 hover:text-zinc-950 hover:underline">
-              {companyInfo.phone}
-            </a>
-            <span className="hidden text-zinc-300 sm:inline" aria-hidden>·</span>
-            <a
-              href={companyInfo.calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-zinc-800 hover:text-zinc-950 hover:underline"
-            >
-              Book a call
-            </a>
-          </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-10">
+            <aside className="flex flex-col gap-4 lg:col-span-4">
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="group flex gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white transition group-hover:bg-[#F46530]">
+                  <Mail className="h-5 w-5" aria-hidden />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Email</p>
+                  <p className="mt-1 truncate text-sm font-semibold text-zinc-950">{companyInfo.email}</p>
+                </div>
+                <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-zinc-300 transition group-hover:text-[#F46530]" aria-hidden />
+              </a>
 
-          <div className="mt-8 overflow-hidden rounded-lg border border-zinc-200 bg-white">
-            <div className="border-b border-zinc-100 px-6 py-4 md:px-8">
-              <h3 className="text-base font-semibold text-zinc-950">Project inquiry</h3>
-            </div>
+              <a
+                href={`tel:${companyInfo.phone.replace(/\s/g, '')}`}
+                className="group flex gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-950 text-white transition group-hover:bg-[#F46530]">
+                  <Phone className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Phone</p>
+                  <p className="mt-1 text-sm font-semibold text-zinc-950">{companyInfo.phone}</p>
+                </div>
+              </a>
 
-            <div className="p-6 md:p-8">
+              <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-950 text-white">
+                  <MapPin className="h-5 w-5" aria-hidden />
+                </span>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">Studio</p>
+                <p className="mt-1 text-sm font-medium text-zinc-800">{companyInfo.location}</p>
+                <p className="mt-1 text-xs text-zinc-500">
+                  {companyInfo.addressLine}, {companyInfo.addressLocality}
+                </p>
+              </div>
+
+              <a
+                href={companyInfo.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-950 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-zinc-950/10 transition hover:bg-[#F46530]"
+              >
+                Book a call
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </a>
+            </aside>
+
+            <div className="lg:col-span-8">
+              <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_12px_40px_-20px_rgba(0,0,0,0.12)]">
+                <div className="border-b border-zinc-100 bg-zinc-50/80 px-6 py-5 md:px-8">
+                  <h3 className="text-lg font-bold text-zinc-950">Project inquiry</h3>
+                  <p className="mt-1 text-sm text-zinc-600">Tell us what you&apos;re building.</p>
+                </div>
+
+                <div className="p-6 md:p-8">
                   {isSubmitted ? (
                     <div className="py-10 text-center">
                       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
@@ -171,7 +207,7 @@ ${formData.message}
                       <button
                         type="button"
                         onClick={() => setIsSubmitted(false)}
-                        className="mt-8 text-sm font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-4 hover:decoration-zinc-600"
+                        className="mt-8 text-sm font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-4 hover:decoration-[#F46530]"
                       >
                         Send another message
                       </button>
@@ -187,8 +223,8 @@ ${formData.message}
 
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-zinc-700">
-                            Full name <span className="text-zinc-500">*</span>
+                          <label htmlFor="contact-name" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
+                            Full name <span className="text-[#F46530]">*</span>
                           </label>
                           <input
                             id="contact-name"
@@ -202,8 +238,8 @@ ${formData.message}
                           />
                         </div>
                         <div>
-                          <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-zinc-700">
-                            Work email <span className="text-zinc-500">*</span>
+                          <label htmlFor="contact-email" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
+                            Work email <span className="text-[#F46530]">*</span>
                           </label>
                           <input
                             id="contact-email"
@@ -220,7 +256,7 @@ ${formData.message}
 
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div>
-                          <label htmlFor="contact-company" className="mb-1.5 block text-xs font-medium text-zinc-700">
+                          <label htmlFor="contact-company" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
                             Company
                           </label>
                           <input
@@ -234,7 +270,7 @@ ${formData.message}
                           />
                         </div>
                         <div>
-                          <label htmlFor="contact-budget" className="mb-1.5 block text-xs font-medium text-zinc-700">
+                          <label htmlFor="contact-budget" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
                             Budget range
                           </label>
                           <select
@@ -255,8 +291,8 @@ ${formData.message}
                       </div>
 
                       <div>
-                        <label htmlFor="contact-service" className="mb-1.5 block text-xs font-medium text-zinc-700">
-                          Service <span className="text-zinc-500">*</span>
+                        <label htmlFor="contact-service" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
+                          Service <span className="text-[#F46530]">*</span>
                         </label>
                         <select
                           id="contact-service"
@@ -280,8 +316,8 @@ ${formData.message}
                       </div>
 
                       <div>
-                        <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-zinc-700">
-                          Project details <span className="text-zinc-500">*</span>
+                        <label htmlFor="contact-message" className="mb-2 block text-xs font-semibold uppercase tracking-wide text-zinc-600">
+                          Project details <span className="text-[#F46530]">*</span>
                         </label>
                         <textarea
                           id="contact-message"
@@ -295,10 +331,10 @@ ${formData.message}
                         />
                       </div>
 
-                      <div className="rounded-md border border-zinc-200 bg-zinc-50 px-4 py-3">
-                        <div className="flex gap-2">
-                          <Shield className="mt-0.5 h-4 w-4 shrink-0 text-zinc-500" aria-hidden />
-                          <p className="text-xs text-zinc-600">
+                      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+                        <div className="flex gap-3">
+                          <Shield className="mt-0.5 h-5 w-5 shrink-0 text-zinc-600" aria-hidden />
+                          <p className="text-xs leading-relaxed text-zinc-600">
                             NDA available on request. We don&apos;t sell your information.
                           </p>
                         </div>
@@ -307,7 +343,7 @@ ${formData.message}
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex w-full items-center justify-center gap-2 rounded-md bg-zinc-950 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#F46530] px-6 py-4 text-sm font-bold text-white shadow-lg shadow-[#F46530]/20 transition hover:bg-[#e85e2d] disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {isSubmitting ? (
                           <>
@@ -330,15 +366,24 @@ ${formData.message}
                 </div>
               </div>
 
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-            {whyChooseUs.map(({ icon: Icon, title, description }) => (
-              <li key={title} className="text-center">
-                <Icon className="mx-auto h-4 w-4 text-zinc-500" strokeWidth={1.75} aria-hidden />
-                <p className="mt-2 text-sm font-medium text-zinc-950">{title}</p>
-                <p className="mt-0.5 text-xs text-zinc-600">{description}</p>
-              </li>
-            ))}
-          </ul>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+                {whyChooseUs.map(({ icon: Icon, title, description }) => (
+                  <li
+                    key={title}
+                    className="flex gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-4 shadow-sm"
+                  >
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-950 text-white">
+                      <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-950">{title}</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-zinc-600">{description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
