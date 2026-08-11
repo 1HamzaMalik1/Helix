@@ -326,6 +326,31 @@ export function privacyPolicyJsonLdGraph(): Record<string, unknown>[] {
   ]);
 }
 
+export function termsAndConditionsJsonLdGraph(): Record<string, unknown>[] {
+  const pageUrl = `${siteUrl}/terms-and-conditions`;
+  return withShared([
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: "Terms and Conditions | HelixCore Studio",
+      description: metaDescription(
+        "Terms and conditions for HelixCore Studio engagements, including project scope, communication expectations, and intellectual property handling.",
+      ),
+      isPartOf: { "@id": websiteSchemaId },
+      about: { "@id": organizationSchemaId },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+        { "@type": "ListItem", position: 2, name: "Terms and Conditions", item: pageUrl },
+      ],
+    },
+  ]);
+}
+
 export function personalPortfolioJsonLdGraph(): Record<string, unknown>[] {
   const pageUrl = `${siteUrl}/hamza-hakim`;
   const title = `Hamza Hakim | Senior Unity Multiplayer Developer | ${companyInfo.name}`;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { companyInfo, siteUrl } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import { termsAndConditionsJsonLdGraph } from "@/lib/page-jsonld";
 import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
 const termsShare = openGraphShareImages("/opengraph-image", "Terms and Conditions | HelixCore Studio");
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage() {
   return (
     <>
-      <PageJsonLd id="jsonld-terms" graph={{}} />
+      <PageJsonLd id="jsonld-terms" graph={termsAndConditionsJsonLdGraph()} />
       <section className="pt-32 pb-16 md:pb-24 bg-gradient-to-b from-white to-gray-50 min-h-screen">
         <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
           <Link href="/" className="text-sm font-semibold mb-8 inline-block hover:underline" style={{ color: "#F46530" }}>
