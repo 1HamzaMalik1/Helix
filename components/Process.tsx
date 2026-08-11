@@ -2,24 +2,12 @@
 
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
-import {
-  Search,
-  Palette,
-  Code,
-  TestTube2,
-  Rocket,
-  Settings,
-  Calendar,
-  Clock,
-  ArrowRight,
-  Check,
-} from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { companyInfo } from '@/lib/constants';
 
 const processSteps = [
   {
     id: 1,
-    icon: Search,
     title: 'Discovery',
     summary: 'Scope, constraints, and technical approach.',
     duration: '1–2 weeks',
@@ -27,7 +15,6 @@ const processSteps = [
   },
   {
     id: 2,
-    icon: Palette,
     title: 'Design',
     summary: 'UX flows and UI aligned to your brand.',
     duration: '2–3 weeks',
@@ -35,7 +22,6 @@ const processSteps = [
   },
   {
     id: 3,
-    icon: Code,
     title: 'Development',
     summary: 'Iterative builds with reviews and CI.',
     duration: '4–12 weeks',
@@ -43,7 +29,6 @@ const processSteps = [
   },
   {
     id: 4,
-    icon: TestTube2,
     title: 'Quality',
     summary: 'Functional, performance, and security checks.',
     duration: '1–2 weeks',
@@ -51,7 +36,6 @@ const processSteps = [
   },
   {
     id: 5,
-    icon: Rocket,
     title: 'Launch',
     summary: 'Production deploy, monitoring, and handover.',
     duration: '~1 week',
@@ -59,7 +43,6 @@ const processSteps = [
   },
   {
     id: 6,
-    icon: Settings,
     title: 'Evolve',
     summary: 'Support, tuning, and next iteration.',
     duration: 'Ongoing',
@@ -68,159 +51,88 @@ const processSteps = [
 ] as const;
 
 const principles = [
-  {
-    title: 'Clear ownership',
-    body: 'One lead engineer accountable from kickoff to delivery.',
-  },
-  {
-    title: 'Documented decisions',
-    body: 'Trade-offs captured so your team can maintain the system.',
-  },
-  {
-    title: 'Predictable rhythm',
-    body: 'Weekly demos and written updates.',
-  },
-  {
-    title: 'Production mindset',
-    body: 'Observability, rollback paths, and operational readiness.',
-  },
+  { title: 'Clear ownership', body: 'One lead engineer from kickoff to delivery.' },
+  { title: 'Documented decisions', body: 'Trade-offs captured for your team.' },
+  { title: 'Predictable rhythm', body: 'Weekly demos and written updates.' },
+  { title: 'Production mindset', body: 'Observability and operational readiness.' },
 ] as const;
 
 export default function Process() {
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true });
   const [active, setActive] = useState(0);
   const step = processSteps[active];
-  const StepIcon = step.icon;
 
   return (
     <section
       id="process"
-      className="relative overflow-hidden border-t border-white/10 bg-zinc-950 py-16 text-white md:py-20"
+      className="border-t border-zinc-200 bg-zinc-50 py-16 md:py-20"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_50%_-30%,rgba(255,255,255,0.04),transparent_50%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-
-      <div className="container relative mx-auto max-w-full px-4 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-8">
         <header className="mx-auto max-w-2xl text-center" ref={ref}>
           <p
-            className={`text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500 transition-all duration-700 ${
+            className={`text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 transition-all duration-700 ${
               inView ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            Process
+            Delivery
           </p>
           <h2
-            className={`mt-3 text-3xl font-bold tracking-tight md:text-4xl transition-all delay-75 duration-700 ${
+            className={`mt-2 text-3xl font-bold tracking-tight text-zinc-950 md:text-4xl transition-all delay-75 duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            How we deliver
+            How we work
           </h2>
           <p
-            className={`mt-3 text-sm text-zinc-400 md:text-base transition-all delay-100 duration-700 ${
+            className={`mt-3 text-sm text-zinc-600 md:text-base transition-all delay-100 duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
           >
-            Six phases — tap a step for deliverables.
+            A structured delivery model used across AI, game, and web engagements.
           </p>
         </header>
 
-        {/* Horizontal stepper */}
         <div
-          className={`mx-auto mt-12 max-w-5xl transition-all delay-100 duration-700 md:mt-14 ${
+          className={`mx-auto mt-10 max-w-4xl transition-all delay-100 duration-700 ${
             inView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
           }`}
         >
-          <div className="relative overflow-x-auto pb-2 md:overflow-visible md:pb-0">
-            <div className="flex min-w-max items-center gap-0 px-2 md:min-w-0 md:justify-between md:px-0">
-              {processSteps.map((s, i) => {
-                const Icon = s.icon;
-                const isActive = i === active;
-                const isPast = i < active;
-                return (
-                  <div key={s.id} className="flex items-center md:flex-1 md:min-w-0">
-                    <button
-                      type="button"
-                      onClick={() => setActive(i)}
-                      className="group flex flex-col items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F46530] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-                    >
-                      <span
-                        className={`relative z-[1] flex h-11 w-11 items-center justify-center rounded-full border-2 transition md:h-12 md:w-12 ${
-                          isActive
-                            ? 'border-[#F46530] bg-[#F46530] text-white shadow-[0_0_20px_-4px_rgba(244,101,48,0.5)]'
-                            : isPast
-                              ? 'border-white/25 bg-white/10 text-white'
-                              : 'border-white/15 bg-zinc-900 text-zinc-500 group-hover:border-white/30 group-hover:text-zinc-300'
-                        }`}
-                      >
-                        {isPast && !isActive ? (
-                          <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-                        ) : (
-                          <Icon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
-                        )}
-                      </span>
-                      <span
-                        className={`mt-2 hidden max-w-[5.5rem] text-center text-[10px] font-semibold uppercase leading-tight tracking-wide sm:block md:max-w-none md:text-[11px] ${
-                          isActive ? 'text-white' : 'text-zinc-600'
-                        }`}
-                      >
-                        {s.title}
-                      </span>
-                    </button>
-                    {i < processSteps.length - 1 ? (
-                      <div
-                        className="mx-1 h-0.5 w-6 shrink-0 rounded-full md:mx-2 md:flex-1 md:min-w-[1rem]"
-                        style={{
-                          background:
-                            active > i
-                              ? 'linear-gradient(90deg, rgba(244,101,48,0.85), rgba(244,101,48,0.35))'
-                              : 'rgba(255,255,255,0.1)',
-                        }}
-                        aria-hidden
-                      />
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
+          <div className="flex flex-wrap justify-center gap-1 border-b border-zinc-200">
+            {processSteps.map((s, i) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => setActive(i)}
+                className={`px-4 py-3 text-sm font-medium transition ${
+                  i === active
+                    ? 'border-b-2 border-zinc-950 text-zinc-950'
+                    : 'text-zinc-500 hover:text-zinc-800'
+                }`}
+              >
+                {s.title}
+              </button>
+            ))}
           </div>
-          <p className="mt-3 text-center text-xs text-zinc-500 sm:hidden">
-            {processSteps[active].title} · {processSteps[active].duration}
-          </p>
-        </div>
 
-        {/* Detail */}
-        <div
-          className={`mx-auto mt-10 max-w-5xl transition-all delay-150 duration-700 md:mt-12 ${
-            inView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-          }`}
-        >
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-transparent p-6 md:p-10">
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-              <div className="max-w-xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-xs font-medium text-zinc-400">
-                  <span className="font-mono text-[#F46530]">0{active + 1}</span>
-                  <span className="text-zinc-500">/</span>
-                  <span>06</span>
-                </div>
-                <h3 className="mt-4 text-2xl font-bold md:text-3xl">{step.title}</h3>
+          <div className="mt-8 rounded-lg border border-zinc-200 bg-white p-6 md:p-8">
+            <div className="flex flex-col gap-8 md:flex-row md:justify-between">
+              <div className="max-w-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                  Phase {active + 1} of {processSteps.length}
+                </p>
+                <h3 className="mt-2 text-xl font-bold text-zinc-950 md:text-2xl">{step.title}</h3>
                 <p className="mt-2 flex items-center gap-2 text-sm text-zinc-500">
                   <Clock className="h-4 w-4" aria-hidden />
-                  Typical duration: {step.duration}
+                  {step.duration}
                 </p>
-                <p className="mt-6 text-sm leading-relaxed text-zinc-400 md:text-base">{step.summary}</p>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-600">{step.summary}</p>
               </div>
-              <div className="w-full border-t border-white/10 pt-8 lg:w-80 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">Deliverables</p>
-                <ul className="mt-4 space-y-3">
+              <div className="md:w-64 md:shrink-0">
+                <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Deliverables</p>
+                <ul className="mt-3 space-y-2">
                   {step.deliverables.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-zinc-200"
-                    >
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-[#F46530]/15 text-[#F46530]">
-                        <Check className="h-3 w-3" strokeWidth={3} aria-hidden />
-                      </span>
+                    <li key={item} className="flex items-center gap-2 text-sm text-zinc-700">
+                      <span className="h-1 w-1 shrink-0 rounded-full bg-zinc-400" aria-hidden />
                       {item}
                     </li>
                   ))}
@@ -230,29 +142,21 @@ export default function Process() {
           </div>
         </div>
 
-        <div className="mx-auto mt-16 max-w-5xl border-t border-white/10 pt-14 md:mt-20 md:pt-16">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            How we operate
-          </p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {principles.map((p) => (
-              <li
-                key={p.title}
-                className="rounded-xl border border-white/10 bg-black/25 p-5 backdrop-blur-sm transition hover:border-white/20"
-              >
-                <p className="text-sm font-bold text-white">{p.title}</p>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{p.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {principles.map((p) => (
+            <li key={p.title} className="text-center">
+              <p className="text-sm font-semibold text-zinc-950">{p.title}</p>
+              <p className="mt-1 text-xs leading-relaxed text-zinc-600">{p.body}</p>
+            </li>
+          ))}
+        </ul>
 
-        <div className="mx-auto mt-10 max-w-lg text-center md:mt-12">
+        <div className="mx-auto mt-10 max-w-lg text-center">
           <a
             href={companyInfo.calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#F46530] px-8 py-3.5 text-sm font-bold text-white transition hover:bg-[#e85e2d]"
+            className="inline-flex items-center gap-2 rounded-md bg-zinc-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
           >
             <Calendar className="h-4 w-4" aria-hidden />
             Schedule consultation
