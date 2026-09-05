@@ -1,10 +1,13 @@
 # Primary direct and requested ad partner records
+
 google.com, pub-6938174274357328, DIRECT, f08c47fec0942fa0
 facebook.com, 1011838154835845, DIRECT, c3e20eee3f780d68
 vungle.com, 6a4fe35aede581a0424818c9, DIRECT, c107d686becd2d77
 pangleglobal.com, 5041263, DIRECT
 pubmatic.com, 161490, RESELLER, 5d62403b186f2ace
+
 # BlueX reseller records
+
 bluexad.ai, 1996418805747683328, RESELLER
 rubiconproject.com, 25060, RESELLER, 0bfd66d529a55807
 pubmatic.com, 163117, RESELLER, 5d62403b186f2ace
@@ -157,10 +160,14 @@ pubmatic.com, 160145, RESELLER, 5d62403b186f2ace
 lijit.com, 528770, RESELLER, fafdf38b16bf6b2b
 bigo.sg, adidz3dyfp, RESELLER
 appads.in, 106246, RESELLER
+
 # Unity Ads direct record
+
 unity.com, 134892860, DIRECT, 96cabb5fbdde37a7
 pubmatic.com, 159906, RESELLER, 5d62403b186f2ace
+
 # Vungle/Liftoff reseller records
+
 33across.com, 001Pg0000197KcKIAU, RESELLER, bbea06d9c4d2853c
 contextweb.com, 562852, RESELLER, 89ff185a4c4e857c
 media.net, 8CU12AQ1Y, RESELLER
@@ -524,7 +531,9 @@ zmaticoo.com, 5135063, RESELLER
 zmaticoo.com, 5135224, RESELLER
 zmaticoo.com, 5135302, RESELLER
 zoomd.com, 88478941, RESELLER
+
 # Vungle/Liftoff supplied records in original formatting
+
 33across.com,001Pg0000197KcKIAU,RESELLER,bbea06d9c4d2853c
 contextweb.com,562852,RESELLER,89ff185a4c4e857c
 media.net,8CU12AQ1Y,RESELLER
