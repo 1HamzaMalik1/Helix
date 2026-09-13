@@ -30,6 +30,9 @@ module.exports = {
     if (rel === "" || rel === "/") {
       priority = 1;
       changefreq = "weekly";
+    } else if (rel === "/smash-fest") {
+      priority = 0.94;
+      changefreq = "weekly";
     } else if (rel.startsWith("/services/")) {
       priority = 0.88;
       changefreq = "weekly";

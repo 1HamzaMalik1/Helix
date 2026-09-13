@@ -104,6 +104,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/smash-fest" className="transition hover:text-white">
+                    Smash Fest
+                  </Link>
+                </li>
+                <li>
                   <Link href="/team" className="transition hover:text-white">
                     Team & story
                   </Link>
