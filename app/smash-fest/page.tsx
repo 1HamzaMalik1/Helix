@@ -18,6 +18,7 @@ const imageUrl = `${siteUrl}/smash-fest-royal-puzzle-2.png`;
 const youtubeShortUrl = "https://youtube.com/shorts/SOioTEaK93E";
 const youtubeEmbedUrl = "https://www.youtube.com/embed/SOioTEaK93E?rel=0&modestbranding=1";
 const youtubeThumbnailUrl = "https://i.ytimg.com/vi/SOioTEaK93E/hqdefault.jpg";
+const youtubeUploadDate = "2026-09-04";
 
 const sections = [
   {
@@ -221,6 +222,7 @@ function SmashFestJsonLd() {
       embedUrl: youtubeEmbedUrl,
       url: youtubeShortUrl,
       thumbnailUrl: [youtubeThumbnailUrl],
+      uploadDate: youtubeUploadDate,
       publisher: {
         "@type": "Organization",
         name: companyInfo.name,
