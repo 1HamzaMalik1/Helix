@@ -199,7 +199,7 @@ export const termsSections = [
       "If you have questions, concerns, complaints, or requests relating to these Terms or our games, please contact us.",
       "**Company:** HelixCore Studio (Private) Limited",
       "**Country:** Pakistan",
-      "**Business address:** [INSERT VERIFIED REGISTERED BUSINESS ADDRESS]",
+      "**Business address:** Sultan Ahmed Rd, Ichhra Lahore, 54000",
       "**Email:** official@helixcorestudio.com",
       "We will make reasonable efforts to review and respond to inquiries."
     ]
