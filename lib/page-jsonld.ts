@@ -333,9 +333,9 @@ export function termsAndConditionsJsonLdGraph(): Record<string, unknown>[] {
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
       url: pageUrl,
-      name: "Terms and Conditions | HelixCore Studio",
+        name: "Terms of Service | HelixCore Studio",
       description: metaDescription(
-        "Terms and conditions for HelixCore Studio engagements, including project scope, communication expectations, and intellectual property handling.",
+          "Terms of Service for HelixCore Studio (Private) Limited games, applications, and websites, including purchases, advertising, privacy, and consumer rights.",
       ),
       isPartOf: { "@id": websiteSchemaId },
       about: { "@id": organizationSchemaId },
@@ -345,7 +345,7 @@ export function termsAndConditionsJsonLdGraph(): Record<string, unknown>[] {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-        { "@type": "ListItem", position: 2, name: "Terms and Conditions", item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Terms of Service", item: pageUrl },
       ],
     },
   ]);
