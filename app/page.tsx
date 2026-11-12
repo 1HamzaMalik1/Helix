@@ -46,7 +46,7 @@ const Contact = dynamic(() => import("@/components/Contact"), {
 });
 
 export const metadata: Metadata = {
-  title: seoContent.title,
+  title: { absolute: seoContent.title },
   description: metaDescription(seoContent.description),
   alternates: {
     canonical: "/",

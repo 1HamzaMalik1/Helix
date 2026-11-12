@@ -27,6 +27,7 @@ import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata"
 import { getServiceFaqs, ServiceDetailBody } from "@/components/services/detail/registry";
 import { ServiceDetailV3Enhanced } from "@/components/services/ServiceDetailV3Enhanced";
 import { servicePageDataV3 } from "@/components/services/servicePageDataV3";
+import ServiceProof, { getServiceProof } from "@/components/services/detail/ServiceProof";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
   Gamepad2,
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const share = openGraphShareImages("/opengraph-image", `${service.title} | ${companyInfo.name}`);
 
   return {
-    title: service.seoTitle,
+    title: { absolute: service.seoTitle },
     description: metaDescription(service.seoDescription),
     alternates: {
       canonical: `/services/${service.slug}`,
@@ -97,6 +98,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   const faqs = getServiceFaqs(service.slug);
   const Icon = SERVICE_ICONS[service.icon];
+  const proof = getServiceProof(service.slug);
 
   return (
     <>
@@ -209,62 +211,66 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="border-b border-[#F46530]/15 bg-[#F46530]/5 py-12">
-        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-3xl bg-white p-8 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Proven outcomes</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">Launch-ready clarity</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                We map the right scope, dependencies, and milestone review points so every service page visitor sees a clear path to delivery.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white p-8 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Client confidence</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">Reduced vendor risk</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                Remote delivery with milestone demos and transparent acceptance criteria builds trust with global buyers.
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white p-8 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Traffic to leads</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">Lead-ready messaging</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                Service pages now support commercial intent visitors with stronger proposal-focused messaging and contact paths.
-              </p>
+      {proof ? <ServiceProof proof={proof} /> : (
+        <>
+        <section className="border-b border-[#F46530]/15 bg-[#F46530]/5 py-12">
+          <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+            <div className="grid gap-6 lg:grid-cols-3">
+              <div className="rounded-3xl bg-white p-8 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Proven outcomes</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">Launch-ready clarity</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  We map the right scope, dependencies, and milestone review points so every service page visitor sees a clear path to delivery.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white p-8 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Client confidence</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">Reduced vendor risk</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  Remote delivery with milestone demos and transparent acceptance criteria builds trust with global buyers.
+                </p>
+              </div>
+              <div className="rounded-3xl bg-white p-8 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Traffic to leads</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">Lead-ready messaging</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  Service pages now support commercial intent visitors with stronger proposal-focused messaging and contact paths.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="border-b border-zinc-200/80 bg-white py-14 md:py-16">
-        <div className="container mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Case study</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">Modern launch velocity</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                We helped a global team turn a complex product ambition into a precise delivery plan and launch schedule with fewer vendor review rounds.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-zinc-200 bg-white p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Testimonial</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">“They made vendor selection feel easy.”</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                “HelixCore turned a vague brief into a scoped proposal with clear milestones, budget guardrails, and confidence for our board.”
-              </p>
-              <p className="mt-5 text-sm font-semibold text-zinc-900">– Head of Product, enterprise buyer</p>
-            </div>
-            <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Conversion signal</p>
-              <h3 className="mt-4 text-xl font-bold text-zinc-950">Fast proposal readiness</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                Traffic converts better when buyers see deliverables, risks, and timelines up front — not just service features.
-              </p>
+        <section className="border-b border-zinc-200/80 bg-white py-14 md:py-16">
+          <div className="container mx-auto max-w-6xl px-4 lg:px-8">
+            <div className="grid gap-6 lg:grid-cols-3">
+              <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Case study</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">Modern launch velocity</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  We helped a global team turn a complex product ambition into a precise delivery plan and launch schedule with fewer vendor review rounds.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-zinc-200 bg-white p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Testimonial</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">“They made vendor selection feel easy.”</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  “HelixCore turned a vague brief into a scoped proposal with clear milestones, budget guardrails, and confidence for our board.”
+                </p>
+                <p className="mt-5 text-sm font-semibold text-zinc-900">– Head of Product, enterprise buyer</p>
+              </div>
+              <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#F46530]">Conversion signal</p>
+                <h3 className="mt-4 text-xl font-bold text-zinc-950">Fast proposal readiness</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
+                  Traffic converts better when buyers see deliverables, risks, and timelines up front — not just service features.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        </>
+      )}
 
       {/* Enhanced Service Detail Component */}
       {servicePageDataV3[service.slug as keyof typeof servicePageDataV3] && (
@@ -282,7 +288,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           competitorComparison={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.competitorComparison || []}
           caseStudies={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.caseStudies || []}
           faqs={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.faqs || []}
-          trustBadges={servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.trustBadges || []}
+          trustBadges={proof ? [] : servicePageDataV3[service.slug as keyof typeof servicePageDataV3]?.trustBadges || []}
         />
       )}
 
@@ -291,9 +297,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="border-b border-zinc-200/80 bg-white py-16 md:py-20">
           <div className="container mx-auto max-w-6xl px-4 lg:px-8">
             {/* Full width content section */}
-            <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
+            {slug !== "video-ads-development" && <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
               <ServiceDetailBody slug={service.slug} />
-            </div>
+            </div>}
 
           {/* Features and Related Services - Full Width Below */}
           <div className="mt-16 grid gap-12 lg:grid-cols-2">

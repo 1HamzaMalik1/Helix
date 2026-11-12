@@ -15,11 +15,12 @@ export const NAV_SERVICE_GROUPS: readonly NavServiceGroup[] = [
   },
   {
     title: "Games & interactive",
-    description: "Unity, playables, web games, and porting",
+    description: "Unity games, playable ads, video ads, and porting",
     slugs: [
       "game-development",
       "unity-game-development",
       "playable-ads-development",
+      "video-ads-development",
       "html5-web-games",
       "mobile-console-porting",
     ],

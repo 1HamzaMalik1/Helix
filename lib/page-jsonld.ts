@@ -115,13 +115,6 @@ export function serviceDetailJsonLdGraph(
       url: pageUrl,
       serviceType: service.title,
       provider: { "@id": organizationSchemaId },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        worstRating: "1",
-        ratingCount: 15,
-      },
       areaServed: [
         { "@type": "City", name: "Lahore", containedInPlace: { "@type": "Country", name: "Pakistan" } },
         { "@type": "Country", name: "United States" },

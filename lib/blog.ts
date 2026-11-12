@@ -1,5 +1,6 @@
 import type { ServiceFaqItem } from "@/lib/page-jsonld";
 import { services } from "@/lib/constants";
+import { getGuide2027, guides2027 } from "@/lib/blog-guides-2027";
 
 export type BlogPostMeta = {
   slug: string;
@@ -13,6 +14,7 @@ export type BlogPostMeta = {
 };
 
 export const blogPosts: BlogPostMeta[] = [
+  ...guides2027.map(({ meta }) => meta),
   {
     slug: "how-ai-transforms-businesses",
     title: "How AI is Transforming Businesses",
@@ -653,7 +655,7 @@ const sidebarServiceSlugs: Record<string, string[]> = {
 };
 
 export function getBlogSidebarServiceLinks(slug: string): { href: string; label: string }[] {
-  const slugs = sidebarServiceSlugs[slug];
+  const slugs = getGuide2027(slug)?.services ?? sidebarServiceSlugs[slug];
   if (!slugs?.length) return [{ href: "/services", label: "All services" }];
   return slugs
     .map((s) => {

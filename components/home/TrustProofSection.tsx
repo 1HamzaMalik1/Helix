@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink, Smartphone } from "lucide-react";
+import StudioProofBadges from "@/components/seo/StudioProofBadges";
 
 const recentGames = [
   {
@@ -45,6 +46,8 @@ export default function TrustProofSection() {
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </div>
+
+        <div className="mt-7 flex justify-center"><StudioProofBadges /></div>
 
         <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:gap-8">
           {recentGames.map((game) => (

@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 type PageJsonLdProps = {
   id: string;
   graph: Record<string, unknown>[];
@@ -11,11 +9,10 @@ export function PageJsonLd({ id, graph }: PageJsonLdProps) {
     "@graph": graph,
   };
   return (
-    <Script
+    <script
       id={id}
       type="application/ld+json"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload).replace(/</g, "\\u003c") }}
     />
   );
 }

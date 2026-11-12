@@ -17,14 +17,19 @@ import UnityMultiplayerDevelopmentServicesArticle from "@/components/blog/articl
 import WebglGameDevelopmentCompanyArticle from "@/components/blog/articles/WebglGameDevelopmentCompanyArticle";
 import IndieGameMonetizationLiveOps2026Article from "@/components/blog/articles/IndieGameMonetizationLiveOps2026Article";
 import ComposableCommerceHeadless2026Article from "@/components/blog/articles/ComposableCommerceHeadless2026Article";
+import Guide2027Article from "@/components/blog/articles/Guide2027Article";
+import { getGuide2027 } from "@/lib/blog-guides-2027";
 
 type BlogPostBodyProps = {
   slug: string;
 };
 
 export default function BlogPostBody({ slug }: BlogPostBodyProps) {
+  const guide = getGuide2027(slug);
   const inner =
-    slug === "how-ai-transforms-businesses" ? (
+    guide ? (
+      <Guide2027Article guide={guide} />
+    ) : slug === "how-ai-transforms-businesses" ? (
       <HowAiTransformsBusinessesArticle />
     ) : slug === "cost-of-game-development-2026" ? (
       <CostOfGameDevelopment2026Article />

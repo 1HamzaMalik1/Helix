@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight } from 'lucide-react';
 import { companyInfo, siteUrl } from '@/lib/constants';
 import { getNavServiceGroups } from '@/lib/site-nav';
+import PreferredSourceBadge from '@/components/seo/PreferredSourceBadge';
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
@@ -42,6 +43,7 @@ export default function Footer() {
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">
               Senior-led delivery · clear milestones · dependable communication
             </p>
+            <div className="mt-6"><PreferredSourceBadge /></div>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">Find us elsewhere</p>
             <div className="mt-3 flex flex-wrap gap-3">
               <a

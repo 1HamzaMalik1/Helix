@@ -70,9 +70,9 @@ export const services: Service[] = [
     icon: "Code",
     features: ["React & Next.js", "APIs & backends", "Ecommerce", "Cloud DevOps"],
     longDescription: "We engineer fast, maintainable web platforms—from marketing sites to complex SaaS and ecommerce. Our stack prioritizes performance, SEO-friendly structure, and reliable release pipelines.",
-    seoTitle: "Web Development Services | HelixCore Studio",
+    seoTitle: "Web & Software Development Services | HelixCore Studio",
     seoDescription:
-      "Web development services with Next.js and cloud DevOps. HelixCore Studio builds fast SaaS, ecommerce, and enterprise web apps for international clients.",
+      "Custom software and web development for SaaS platforms, business portals, and ecommerce. HelixCore Studio builds Next.js apps, APIs, and integrations.",
     relatedSlugs: ["ai-development", "game-development", "full-stack-web-development", "ecommerce-development"],
   },
   {
@@ -94,10 +94,21 @@ export const services: Service[] = [
     icon: "Megaphone",
     features: ["Mintegral", "AppLovin", "TikTok", "Meta", "IronSource", "Unity Ads"],
     longDescription: "Our playable ad team creates lightweight, high-performance ad experiences designed to increase click-through and install rates. We tailor every ad to platform requirements while preserving your gameplay hook and brand identity.",
-    seoTitle: "Playable Ads Development | HelixCore Studio",
+    seoTitle: "HTML5 Playable Ads Development | HelixCore Studio",
     seoDescription:
       "Playable ads for Meta, TikTok, AppLovin, and Unity Ads. Lightweight HTML5 creatives engineered for UA performance by HelixCore Studio.",
-    relatedSlugs: ["game-development", "unity-game-development", "html5-web-games"],
+    relatedSlugs: ["video-ads-development", "game-development", "unity-game-development", "html5-web-games"],
+  },
+  {
+    slug: "video-ads-development",
+    title: "Video Ads Development",
+    description: "Gameplay videos and short-form mobile ad creative for user acquisition.",
+    icon: "Megaphone",
+    features: ["Creative briefs and storyboards", "Gameplay capture and editing", "Captions and branded end cards", "Cutdowns and aspect ratio variants"],
+    longDescription: "Turn a mobile game's core mechanic into a short video ad. We scope the hook, gameplay footage, edit, and end card around your campaign brief, then prepare variants for the placements you plan to test.",
+    seoTitle: "Mobile Game Video Ads Production | HelixCore Studio",
+    seoDescription: "Video ad production for mobile games and apps, from gameplay capture and editing to creative variants, captions, and branded end cards.",
+    relatedSlugs: ["playable-ads-development", "game-development", "unity-game-development"],
   },
   {
     slug: "ecommerce-development",
@@ -106,9 +117,9 @@ export const services: Service[] = [
     icon: "ShoppingCart",
     features: ["Shopify", "WordPress", "Wix", "Webflow", "Custom Solutions"],
     longDescription: "We design and develop ecommerce experiences that convert visitors into customers. Whether you need a platform-based store or a custom commerce stack, we deliver secure checkouts, optimized product flows, and scalable integrations.",
-    seoTitle: "E-commerce Development Services | HelixCore",
+    seoTitle: "Shopify Website & Ecommerce Development | HelixCore Studio",
     seoDescription:
-      "Custom ecommerce on Shopify, WooCommerce, Webflow, and headless stacks. Secure checkout, SEO-friendly storefronts from HelixCore Studio.",
+      "Shopify website development for new stores, redesigns, and migrations. HelixCore Studio builds storefronts, catalog integrations, and ecommerce experiences.",
     relatedSlugs: ["web-development", "full-stack-web-development"],
   },
   {
@@ -325,9 +336,9 @@ export const homePageStats = [
 ] as const;
 
 export const seoContent = {
-  title: "HelixCore Studio | Trusted AI, Game & Web Delivery Partner for USA & Canada",
+  title: "Game, Software & Ad Creative Development | HelixCore Studio",
   description:
-    "HelixCore Studio delivers AI products, Unity games, and modern web platforms with senior-led execution, clear milestones, and dependable client communication for USA and Canada teams.",
+    "HelixCore Studio builds Unity games, custom software, Shopify storefronts, and playable and video ad creatives for game studios and product teams.",
   keywords:
     "HelixCore Studio, AI development partner, Unity game development, Next.js development partner, remote software partner, USA software development, Canada software development, AI automation, playable ads, ecommerce development, trusted web agency",
 };

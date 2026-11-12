@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Calendar, PenLine } from "lucide-react";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
+import PreferredSourceBadge from "@/components/seo/PreferredSourceBadge";
 import { getSortedBlogPosts } from "@/lib/blog";
 import { blogIndexJsonLdGraph } from "@/lib/page-jsonld";
 import { companyInfo, siteUrl, seoContent } from "@/lib/constants";
@@ -22,7 +23,7 @@ function formatPostDate(iso: string) {
 }
 
 export const metadata: Metadata = {
-  title: `Insights & Guides | ${companyInfo.name}`,
+  title: "Insights & Guides",
   description: metaDescription(
     `${companyInfo.name} blog: AI, games, web apps, MVP costs, offshore delivery, Unity hiring, and AI chatbots—guides for founders with links to software development services.`,
   ),
@@ -103,6 +104,7 @@ export default function BlogIndexPage() {
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
+              <PreferredSourceBadge />
               <a
                 href={companyInfo.calendlyUrl}
                 target="_blank"
