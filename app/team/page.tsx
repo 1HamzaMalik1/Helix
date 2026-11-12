@@ -13,7 +13,7 @@ const [ceo] = teamMembers;
 const teamShare = openGraphShareImages("/opengraph-image", `Our team & story | ${companyInfo.name}`);
 
 export const metadata: Metadata = {
-  title: `Our team & story | ${companyInfo.name}`,
+  title: "Our Team & Story",
   description: metaDescription(
     `Meet ${ceo.name}, CEO of ${companyInfo.name}, and learn how our ${companyInfo.inHouseTeamCount}-person remote-first studio ships AI, games, and web products for clients worldwide—with clear communication and senior-led delivery.`,
   ),

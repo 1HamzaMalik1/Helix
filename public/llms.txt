@@ -9,6 +9,9 @@ Last reviewed: 2026-11-12
 - [Team](https://helixcorestudio.com/team): Studio leadership and team information.
 - [Hamza Hakim](https://helixcorestudio.com/hamza-hakim): CEO and game developer portfolio.
 - [Company LinkedIn](https://www.linkedin.com/company/helixcore-studio/): Official company profile.
+- [Company YouTube](https://www.youtube.com/@HelixCoreStudio): Gameplay and studio videos.
+- [Facebook](https://www.facebook.com/HelixCoreStudio/), [Instagram](https://www.instagram.com/helixcorestudio/), and [TikTok](https://www.tiktok.com/@helixcore.studio): Studio social profiles.
+- [Clutch](https://clutch.co/profile/helixcore-studio) and [GoodFirms](https://www.goodfirms.co/company/helixcore-studio): Third-party company listings.
 - [Hamza Hakim on LinkedIn](https://www.linkedin.com/in/hamza-hakim1/): Leadership profile.
 - [Contact](https://helixcorestudio.com/#contact): Project inquiries.
 - Email: official@helixcorestudio.com.
@@ -22,10 +25,14 @@ Last reviewed: 2026-11-12
 ## Services
 - [Mobile and PC game development](https://helixcorestudio.com/services/game-development): Prototyping, production, and release planning.
 - [Unity game development](https://helixcorestudio.com/services/unity-game-development): 2D and 3D gameplay, platform builds, and device profiling.
+- [Smash Fest case study](https://helixcorestudio.com/services/unity-game-development#smash-fest-case-study): Gameplay decisions and evidence from the Android release.
 - [Playable ads](https://helixcorestudio.com/services/playable-ads-development): Interactive HTML5 ad production.
 - [Video ads](https://helixcorestudio.com/services/video-ads-development): Gameplay footage and short-form ad variants.
 - [Custom AI development](https://helixcorestudio.com/services/ai-development): AI applications, integrations, and automation.
+- [AI agent development](https://helixcorestudio.com/services/ai-agent-services): Workflow pilots, tool integrations, evaluation, and human approvals.
+- [Business automation](https://helixcorestudio.com/services/automation-services): API integrations, data pipelines, and workflow automation.
 - [Custom web development](https://helixcorestudio.com/services/web-development): Web apps, APIs, and software integrations.
+- [Full-stack development](https://helixcorestudio.com/services/full-stack-web-development): Frontend, backend, and deployment.
 - [Shopify and ecommerce](https://helixcorestudio.com/services/ecommerce-development): Storefronts, migrations, and integrations.
 - [All services](https://helixcorestudio.com/services): Full service directory.
 

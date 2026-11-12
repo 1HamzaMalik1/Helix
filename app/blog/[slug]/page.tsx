@@ -8,7 +8,6 @@ import { blogPostJsonLdGraph } from "@/lib/page-jsonld";
 import {
   blogPosts,
   getBlogPost,
-  getBlogPostFaqs,
   getBlogSidebarServiceLinks,
   getOtherPosts,
 } from "@/lib/blog";
@@ -38,6 +37,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return { title: "Post not found" };
   }
   const share = openGraphShareImages("/opengraph-image", `${post.title} | ${companyInfo.name}`);
+  const title = post.metaTitle ?? post.title;
   const tagList = post.keywords
     .split(",")
     .map((t) => t.trim())
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     .slice(0, 24);
 
   return {
-    title: post.metaTitle ?? `${post.title} | ${companyInfo.name}`,
+    title: /\| HelixCore(?: Studio)?$/i.test(title) ? { absolute: title } : title,
     description: metaDescription(post.description),
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
@@ -76,11 +76,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   const sidebarLinks = getBlogSidebarServiceLinks(post.slug);
   const otherPosts = getOtherPosts(post.slug);
-  const faqs = getBlogPostFaqs(post.slug);
 
   return (
     <>
-      <PageJsonLd id={`jsonld-blog-${post.slug}`} graph={blogPostJsonLdGraph(post, faqs)} />
+      <PageJsonLd id={`jsonld-blog-${post.slug}`} graph={blogPostJsonLdGraph(post)} />
 
       <section
         className="relative overflow-hidden border-b border-white/10 bg-zinc-950 pt-28 text-white md:pt-32"
@@ -139,6 +138,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
             <p className="mt-5 text-base leading-relaxed text-zinc-400 md:text-lg">{post.description}</p>
+            <p className="mt-3 text-sm text-zinc-400">By <Link href="/team" className="font-semibold text-zinc-200 underline underline-offset-4 hover:text-white">{companyInfo.name}</Link></p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={companyInfo.calendlyUrl}
@@ -165,9 +165,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="container mx-auto max-w-6xl px-4 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-8">
-              <div className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
+              <article aria-labelledby="blog-post-heading" className="rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-9 lg:p-10">
                 <BlogPostBody slug={post.slug} />
-              </div>
+              </article>
 
               <footer className="mt-10 rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm md:p-8">
                 <div className="mb-4 h-1 w-10 rounded-full bg-[#F46530]" />

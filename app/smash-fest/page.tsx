@@ -203,18 +203,6 @@ function SmashFestJsonLd() {
       },
     },
     {
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      mainEntity: faqs.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer,
-        },
-      })),
-    },
-    {
       "@type": "VideoObject",
       "@id": `${pageUrl}#video`,
       name: `${gameName} gameplay video`,

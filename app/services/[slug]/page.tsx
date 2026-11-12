@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      <PageJsonLd id={`jsonld-service-${service.slug}`} graph={serviceDetailJsonLdGraph(service, faqs)} />
+      <PageJsonLd id={`jsonld-service-${service.slug}`} graph={serviceDetailJsonLdGraph(service)} />
 
       <section
         className="relative overflow-hidden border-b border-white/10 bg-zinc-950 pt-28 text-white md:pt-32"

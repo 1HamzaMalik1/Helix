@@ -11,7 +11,7 @@ const contactEmail = companyInfo.email;
 const privacyShare = openGraphShareImages("/opengraph-image", "Privacy Policy (children's apps) | HelixCore Studio");
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | HelixCore Studio",
+  title: "Privacy Policy",
   description: metaDescription(
     "Privacy Policy for HelixCore Studio’s mobile games and applications on Google Play, covering data collection, advertising, analytics, user choices, and contact details.",
   ),

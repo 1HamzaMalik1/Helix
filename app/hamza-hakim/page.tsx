@@ -12,7 +12,7 @@ const portfolioShare = openGraphShareImages(
 );
 
 export const metadata: Metadata = {
-  title: `Hamza Hakim | Senior Unity Multiplayer Developer | ${companyInfo.name}`,
+  title: "Hamza Hakim | Senior Unity Multiplayer Developer",
   description: metaDescription(
     "Senior Unity multiplayer developer and playable ads expert. Portfolio showcasing Photon Fusion, PlayFab, Firebase, WebGL, and high-converting playable ads.",
   ),

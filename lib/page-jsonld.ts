@@ -90,10 +90,7 @@ export function servicesIndexJsonLdGraph(): Record<string, unknown>[] {
 
 export type ServiceFaqItem = { question: string; answer: string };
 
-export function serviceDetailJsonLdGraph(
-  service: Service,
-  faqs: ServiceFaqItem[] = [],
-): Record<string, unknown>[] {
+export function serviceDetailJsonLdGraph(service: Service): Record<string, unknown>[] {
   const pageUrl = `${siteUrl}/services/${service.slug}`;
   const base: Record<string, unknown>[] = [
     {
@@ -133,24 +130,7 @@ export function serviceDetailJsonLdGraph(
     },
   ];
 
-  if (faqs.length === 0) return withShared(base);
-
-  const faqPage: Record<string, unknown> = {
-    "@type": "FAQPage",
-    "@id": `${pageUrl}#faq`,
-    url: pageUrl,
-    isPartOf: { "@id": `${pageUrl}#webpage` },
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.answer,
-      },
-    })),
-  };
-
-  return withShared([...base, faqPage]);
+  return withShared(base);
 }
 
 export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
@@ -194,10 +174,7 @@ export function blogIndexJsonLdGraph(): Record<string, unknown>[] {
   ]);
 }
 
-export function blogPostJsonLdGraph(
-  post: BlogPostMeta,
-  faqs: ServiceFaqItem[] = [],
-): Record<string, unknown>[] {
+export function blogPostJsonLdGraph(post: BlogPostMeta): Record<string, unknown>[] {
   const postUrl = `${siteUrl}/blog/${post.slug}`;
   const blogUrl = `${siteUrl}/blog`;
   const base: Record<string, unknown>[] = [
@@ -242,24 +219,7 @@ export function blogPostJsonLdGraph(
     },
   ];
 
-  if (faqs.length === 0) return withShared(base);
-
-  const faqPage: Record<string, unknown> = {
-    "@type": "FAQPage",
-    "@id": `${postUrl}#faq`,
-    url: postUrl,
-    isPartOf: { "@id": `${postUrl}#webpage` },
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: f.answer,
-      },
-    })),
-  };
-
-  return withShared([...base, faqPage]);
+  return withShared(base);
 }
 
 export function teamPageJsonLdGraph(): Record<string, unknown>[] {

@@ -25,7 +25,16 @@ export function sharedEntityGraph(): Record<string, unknown>[] {
         postalCode: companyInfo.postalCode,
         addressCountry: companyInfo.addressCountry,
       },
-      sameAs: [companyInfo.linkedInCompany, companyInfo.googlePlayDeveloper],
+      sameAs: [
+        companyInfo.linkedInCompany,
+        companyInfo.googlePlayDeveloper,
+        companyInfo.youtubeUrl,
+        companyInfo.facebookUrl,
+        companyInfo.instagramUrl,
+        companyInfo.tiktokUrl,
+        companyInfo.clutchUrl,
+        companyInfo.goodFirmsUrl,
+      ],
       employee: {
         "@type": "Person",
         name: companyInfo.ceo,

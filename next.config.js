@@ -66,7 +66,7 @@ const nextConfig = {
       },
       {
         source: "/blog/playable-ads-development-guide",
-        destination: "/blog/indie-game-monetization-live-ops-2026",
+        destination: "/blog/playable-ads-development-services",
         permanent: true,
       },
     ];
