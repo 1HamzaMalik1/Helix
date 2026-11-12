@@ -1,23 +1,28 @@
 export const companyInfo = {
   name: "HelixCore Studio",
+  legalName: "HelixCore Studio (Private) Limited",
   tagline: "Remote-first software partner for AI, games, and web products",
   description: "HelixCore Studio is a remote-first software delivery partner helping founders, studios, and product teams build AI products, Unity games, and scalable web platforms with clear milestones and senior execution.",
   ceo: "Hamza Hakim",
   experience: "5+ years",
-  email: "helixcorestudio@gmail.com",
-  adminEmail: "hamzahakim12235@gmail.com",
+  email: "official@helixcorestudio.com",
   phone: "+923201469571",
   location: "Remote-first global studio",
   /** Full postal address for schema and footer (Ichra, Lahore) */
-  addressLine: "16 E, Sultan Ahmed Road, Ichra",
+  addressLine: "Sultan Ahmed Rd, Ichhra",
   addressLocality: "Lahore",
   addressRegion: "Punjab",
   postalCode: "54000",
   addressCountry: "PK",
   linkedInCompany: "https://www.linkedin.com/company/helixcore-studio/",
-  facebookUrl: "https://www.facebook.com/helixcorestudio",
-  instagramUrl: "https://www.instagram.com/helixcorestudio",
-  tiktokUrl: "https://www.tiktok.com/@helixcorestudio",
+  clutchUrl: "https://clutch.co/profile/helixcore-studio",
+  goodFirmsUrl: "https://www.goodfirms.co/company/helixcore-studio",
+  youtubeUrl: "https://www.youtube.com/@HelixCoreStudio",
+  linkedInCeo: "https://www.linkedin.com/in/hamza-hakim1/",
+  googlePlayDeveloper: "https://play.google.com/store/apps/dev?id=6757601249402259430",
+  facebookUrl: "https://www.facebook.com/HelixCoreStudio/",
+  instagramUrl: "https://www.instagram.com/helixcorestudio/",
+  tiktokUrl: "https://www.tiktok.com/@helixcore.studio",
   degree: "Masters in Software Engineering",
   calendlyUrl: "https://calendly.com/helixcorestudio/30min",
   /** Full-time builders in our remote development studio (design, engineering, QA, ops) */
@@ -46,7 +51,7 @@ export const services: Service[] = [
     icon: "Brain",
     features: ["Custom AI agents", "LLM integrations", "Workflow automation", "NLP & chatbots"],
     longDescription: "We build AI solutions that automate support, operations, and internal processes. Our team delivers agent architectures, secure third-party integrations, and measurable efficiency gains for startups and enterprises.",
-    seoTitle: "AI Development Services | HelixCore Studio",
+    seoTitle: "Custom AI Development Services | HelixCore",
     seoDescription:
       "Custom AI development: LLM integrations, AI agents, and workflow automation. HelixCore Studio ships secure, measurable AI for startups and enterprises worldwide.",
     relatedSlugs: ["game-development", "web-development", "ai-agent-services", "automation-services"],
@@ -58,9 +63,9 @@ export const services: Service[] = [
     icon: "Gamepad2",
     features: ["Unity 2D/3D", "Playable ads", "HTML5 / WebGL", "Porting & launch"],
     longDescription: "From Unity titles and high-performing playable ads to browser games and platform ports, we ship engaging experiences optimized for acquisition, retention, and store compliance.",
-    seoTitle: "Game Development Company | HelixCore Studio",
+    seoTitle: "Mobile & PC Game Development Company | HelixCore",
     seoDescription:
-      "Game development company: Unity, playable ads, HTML5, and porting. HelixCore Studio builds and ships games for studios worldwide.",
+      "Plan and build mobile and PC games with HelixCore. Get help with prototypes, gameplay, platform selection, porting, and release preparation.",
     relatedSlugs: ["ai-development", "web-development", "unity-game-development", "playable-ads-development"],
   },
   {
@@ -70,10 +75,10 @@ export const services: Service[] = [
     icon: "Code",
     features: ["React & Next.js", "APIs & backends", "Ecommerce", "Cloud DevOps"],
     longDescription: "We engineer fast, maintainable web platforms—from marketing sites to complex SaaS and ecommerce. Our stack prioritizes performance, SEO-friendly structure, and reliable release pipelines.",
-    seoTitle: "Web & Software Development Services | HelixCore Studio",
+    seoTitle: "Custom Web Development Services | HelixCore",
     seoDescription:
       "Custom software and web development for SaaS platforms, business portals, and ecommerce. HelixCore Studio builds Next.js apps, APIs, and integrations.",
-    relatedSlugs: ["ai-development", "game-development", "full-stack-web-development", "ecommerce-development"],
+    relatedSlugs: ["full-stack-web-development", "ecommerce-development", "ai-agent-services"],
   },
   {
     slug: "unity-game-development",
@@ -82,10 +87,10 @@ export const services: Service[] = [
     icon: "Gamepad2",
     features: ["2D/3D Game Dev", "Multiplayer Games", "Cross-Platform", "Steam Integration"],
     longDescription: "We build production-ready Unity games for startups, agencies, and game studios. From rapid prototyping to launch-ready builds, our team handles gameplay programming, optimization, and platform-specific publishing so your product reaches players faster.",
-    seoTitle: "Unity Game Development Services | HelixCore",
+    seoTitle: "Unity Game Development Services | HelixCore Studio",
     seoDescription:
-      "Unity game development for mobile, PC, and Steam. 2D/3D, multiplayer, and store-ready builds with HelixCore Studio.",
-    relatedSlugs: ["game-development", "playable-ads-development", "mobile-console-porting"],
+      "Build and launch 2D and 3D Unity games with HelixCore Studio. Experienced developers for mobile games, gameplay systems, optimization and publishing.",
+    relatedSlugs: ["game-development", "playable-ads-development", "video-ads-development", "mobile-console-porting"],
   },
   {
     slug: "playable-ads-development",
@@ -94,7 +99,7 @@ export const services: Service[] = [
     icon: "Megaphone",
     features: ["Mintegral", "AppLovin", "TikTok", "Meta", "IronSource", "Unity Ads"],
     longDescription: "Our playable ad team creates lightweight, high-performance ad experiences designed to increase click-through and install rates. We tailor every ad to platform requirements while preserving your gameplay hook and brand identity.",
-    seoTitle: "HTML5 Playable Ads Development | HelixCore Studio",
+    seoTitle: "Playable Ads Development for Mobile Games | HelixCore",
     seoDescription:
       "Playable ads for Meta, TikTok, AppLovin, and Unity Ads. Lightweight HTML5 creatives engineered for UA performance by HelixCore Studio.",
     relatedSlugs: ["video-ads-development", "game-development", "unity-game-development", "html5-web-games"],
@@ -132,7 +137,7 @@ export const services: Service[] = [
     seoTitle: "AI Agent Development Services | HelixCore",
     seoDescription:
       "Custom AI agents and ChatGPT-style integrations for support and ops. Secure prompts, APIs, and monitoring from HelixCore Studio.",
-    relatedSlugs: ["ai-development", "automation-services", "full-stack-web-development"],
+    relatedSlugs: ["ai-development", "automation-services", "web-development"],
   },
   {
     slug: "automation-services",
@@ -336,7 +341,7 @@ export const homePageStats = [
 ] as const;
 
 export const seoContent = {
-  title: "Game, Software & Ad Creative Development | HelixCore Studio",
+  title: "Unity Game Development & Playable Ads | HelixCore",
   description:
     "HelixCore Studio builds Unity games, custom software, Shopify storefronts, and playable and video ad creatives for game studios and product teams.",
   keywords:

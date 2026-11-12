@@ -137,7 +137,7 @@ export default function Hero() {
               </span>
               <Sparkles className="h-3.5 w-3.5 text-zinc-400" aria-hidden />
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75">
-                Remote-first · Global clients
+                Your Vision · Our Expertise
               </span>
             </div>
 

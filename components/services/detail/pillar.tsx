@@ -405,9 +405,13 @@ export function WebDevelopmentContent() {
           </Link>{" "}
           and{" "}
           <Link href="/services/ecommerce-development" className="font-semibold text-[#F46530] hover:underline">
-            ecommerce development
+            Shopify and ecommerce development
           </Link>
           , each with tailored SEO and performance acceptance criteria.
+        </p>
+        <p>
+          Planning a storefront move? Use the <Link href="/blog/shopify-migration-seo-checklist-2027">Shopify migration SEO checklist</Link> to plan redirects and check indexing before launch.
+          For a new SaaS product or customer portal, our <Link href="/blog/mvp-development-cost-and-timeline-2026">MVP cost and timeline guide</Link> helps define the first release before you request estimates.
         </p>
       </section>
 

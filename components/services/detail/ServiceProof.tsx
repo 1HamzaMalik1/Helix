@@ -10,8 +10,8 @@ type Proof = {
 
 const proofBySlug: Record<string, Proof> = {
   "game-development": {
-    heading: "Unity game development from prototype to release",
-    paragraphs: ["Start with a playable build that tests the core loop. Then plan the level progression, performance targets, device testing, and store submission around the platforms you intend to launch on. See Smash Fest for an example of our physics puzzle work on Android."],
+    heading: "Plan a mobile or PC game from prototype to release",
+    paragraphs: ["Start with a playable build that tests the core loop. Then choose platforms based on your players, controls, device targets, and distribution plan. A mobile launch may prioritize touch input and device coverage, while a PC build may need keyboard and controller support, scalable graphics settings, and storefront integration."],
     links: [
       { label: "Explore Smash Fest on Android", href: "/smash-fest" },
       { label: "Unity game development services", href: "/services/unity-game-development" },

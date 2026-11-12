@@ -6,7 +6,7 @@ import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { privacyPolicyJsonLdGraph } from "@/lib/page-jsonld";
 import { openGraphShareImages, twitterSummaryLarge } from "@/lib/share-metadata";
 
-const contactEmail = "helixcorestudio@gmail.com";
+const contactEmail = companyInfo.email;
 
 const privacyShare = openGraphShareImages("/opengraph-image", "Privacy Policy (children's apps) | HelixCore Studio");
 

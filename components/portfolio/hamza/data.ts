@@ -241,7 +241,7 @@ export const idealClients: IdealClient[] = [
 export const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/in/hamza-hakim1", icon: FaLinkedin },
   { label: "GitHub", href: "https://github.com", icon: FaGithub },
-  { label: "Email", href: "mailto:hamzahakim12235@gmail.com", icon: FaEnvelope },
+  { label: "Email", href: `mailto:${companyInfo.email}`, icon: FaEnvelope },
 ];
 
 export const heroHighlights = [
@@ -393,8 +393,8 @@ export const testimonials: TestimonialItem[] = [
 export const contactItems = [
   {
     label: "Email",
-    value: "hamzahakim12235@gmail.com",
-    href: "mailto:hamzahakim12235@gmail.com",
+    value: companyInfo.email,
+    href: `mailto:${companyInfo.email}`,
     icon: FaEnvelope,
   },
   {

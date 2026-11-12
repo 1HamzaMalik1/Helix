@@ -53,7 +53,7 @@ export default function TermsAndConditionsPage() {
               <ol>{termsSections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title.replace(/^\d+\.\s*/, "")}</a></li>)}</ol>
             </nav>
           </details>
-          <a className={styles.support} href="mailto:official@helixcorestudio.com"><Mail size={17} aria-hidden="true" /> Contact support</a>
+          <a className={styles.support} href={`mailto:${companyInfo.email}`}><Mail size={17} aria-hidden="true" /> Contact support</a>
         </aside>
         <article className={styles.article} aria-label="Terms of Service">
           <div className={styles.introduction}>{termsIntroduction.map((paragraph, index) => <p key={index}>{inline(paragraph)}</p>)}</div>

@@ -6,6 +6,14 @@ import { LinkAI, LinkGame, LinkWeb } from "./InternalLink";
 export const secondaryFaqs: Record<string, ServiceFaqItem[]> = {
   "unity-game-development": [
     {
+      question: "What affects the cost and timeline of a Unity project?",
+      answer: "A prototype, a polished vertical slice, and a store-ready game require different scopes. Art and level count, multiplayer, target devices, SDK integrations, and submission requirements all affect the estimate. Start with a small playable milestone and agree what it must prove before pricing the rest of production.",
+    },
+    {
+      question: "How do you agree on a frame-rate target?",
+      answer: "Define target devices, quality settings, and test scenes before setting a frame-rate goal. Measure frame time, memory, and thermal behavior on representative hardware, then adjust physics, effects, or graphics quality where necessary. The target depends on the game and supported devices.",
+    },
+    {
       question: "What types of Unity games do you build?",
       answer:
         "We build 2D and 3D experiences for mobile, PC, and Steam where applicable—casual to mid-core depending on scope—plus tooling for analytics hooks and remote content when live ops matter. Multiplayer features are scoped with networking architecture and cheating/abuse considerations early.",
@@ -296,6 +304,10 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
               <LinkAI>AI solutions</LinkAI> for analytics-driven tuning or player-support automation without compromising
               competitive integrity.
             </p>
+            <p>
+              Validate the hardest mechanic first with a <Link href="/blog/unity-game-prototype-cost-2027">scoped Unity prototype</Link>.
+              If the main risk is networking, use our <Link href="/blog/unity-multiplayer-development-services">Unity multiplayer architecture guide</Link> to compare authority, latency, and hosting choices before expanding the build.
+            </p>
           </section>
           <section>
             <h2>Services overview</h2>
@@ -572,6 +584,10 @@ export function SecondaryServiceContent({ slug }: { slug: string }) {
             <p className="text-sm md:text-base leading-relaxed opacity-90">
               Handoffs to operations include runbooks: how to pause agents, rotate credentials, and audit decisions when
               regulators or partners ask questions.
+            </p>
+            <p>
+              For a first pilot, use our <Link href="/blog/ai-agent-development-for-startups">AI agent development guide for startups</Link> to choose one workflow and define success criteria.
+              If the agent needs approvals or access to sensitive tools, our <Link href="/blog/agentic-ai-workflow-automation-2026">agentic workflow automation guide</Link> explains where to keep a human in the loop.
             </p>
           </section>
           <section>

@@ -1,18 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink, Smartphone } from "lucide-react";
-import StudioProofBadges from "@/components/seo/StudioProofBadges";
 
 const recentGames = [
-  {
-    name: "Car Mechanic Simulator: Fix",
-    shortDescription: "Unity mobile simulation with repair workflows, garage progression, and live Google Play release.",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.car.mechanic.fix.my.car",
-    imageUrl: "/car-mechanic.png",
-    platform: "Android",
-    stack: "Unity",
-    category: "Simulation",
-  },
   {
     name: "Smash Fest! - Royal Puzzle",
     shortDescription: "Unity physics puzzle with cannon mechanics, level progression, and monetization-ready production build.",
@@ -47,9 +37,7 @@ export default function TrustProofSection() {
           </Link>
         </div>
 
-        <div className="mt-7 flex justify-center"><StudioProofBadges /></div>
-
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:gap-8">
+        <div className="mx-auto mt-10 max-w-md">
           {recentGames.map((game) => (
             <article
               key={game.name}

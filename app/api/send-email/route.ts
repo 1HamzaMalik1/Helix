@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { companyInfo } from '@/lib/constants';
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,8 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     const isHamzaPortfolio = source === 'hamza-hakim';
-    const recipient = isHamzaPortfolio ? 'hamzahakim12235@gmail.com' : process.env.GMAIL_USER;
-    const brandName = isHamzaPortfolio ? 'Hamza Hakim Portfolio' : 'HelixCore Studio';
+    const brandName = isHamzaPortfolio ? 'Hamza Hakim Portfolio' : companyInfo.name;
 
     // Create SMTP transporter
     const transporter = nodemailer.createTransport({
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     // Email content
     const mailOptions = {
       from: `"${brandName}" <${process.env.GMAIL_USER}>`,
-      to: recipient,
+      to: companyInfo.email,
       replyTo: email,
       subject: `New Project Inquiry from ${name}${isHamzaPortfolio ? ' (Hamza Portfolio)' : ''}`,
       text: `

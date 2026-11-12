@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AlertCircle, CheckCircle, Send } from "lucide-react";
+import { companyInfo } from "@/lib/constants";
 
 const SERVICE_OPTIONS = [
   "Unity Game Development",
@@ -67,7 +68,7 @@ export default function ContactForm() {
       setFormData(emptyForm);
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch {
-      setError("Could not send — try email at hamzahakim12235@gmail.com");
+      setError(`Could not send. Try emailing ${companyInfo.email}.`);
     } finally {
       setIsSubmitting(false);
     }

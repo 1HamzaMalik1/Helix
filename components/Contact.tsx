@@ -80,7 +80,6 @@ export default function Contact() {
       }
     } catch {
       setIsSubmitting(false);
-      const adminEmail = 'hamzahakim12235@gmail.com';
       const subject = encodeURIComponent(`New Project Inquiry from ${formData.name}`);
       const body = encodeURIComponent(
         `
@@ -96,7 +95,7 @@ ${formData.message}
       `.trim()
       );
 
-      const mailtoLink = `mailto:${adminEmail}?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:${companyInfo.email}?subject=${subject}&body=${body}`;
       setError('Unable to send automatically. Opening your email client...');
 
       setTimeout(() => {

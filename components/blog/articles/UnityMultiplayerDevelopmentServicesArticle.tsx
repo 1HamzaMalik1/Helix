@@ -59,7 +59,7 @@ export default function UnityMultiplayerDevelopmentServicesArticle() {
         If you need a partner that understands multiplayer architecture and can deliver the full stack behind it, our approach is to build the client, the backend, and the operations layer in one coherent engagement.
       </p>
       <p>
-        We pair Unity multiplayer build work with cloud deployment and live ops readiness for real commercial launches. <InternalLink href="/#contact">Reach out</InternalLink> to discuss your multiplayer roadmap.
+        Our <InternalLink href="/services/unity-game-development">Unity game development services</InternalLink> cover gameplay, device profiling, and platform builds. <InternalLink href="/#contact">Reach out</InternalLink> to discuss your multiplayer roadmap.
       </p>
 
       <BlogArticleFaq items={getBlogPostFaqs(SLUG)} />

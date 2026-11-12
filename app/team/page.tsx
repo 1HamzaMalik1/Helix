@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Calendar, Github, Heart, Linkedin, MapPin, Shield, Users } from "lucide-react";
-import { companyInfo, projectsDeliveredCountDisplay, siteUrl, teamMembers } from "@/lib/constants";
+import { companyInfo, siteUrl, teamMembers } from "@/lib/constants";
 import { metaDescription } from "@/lib/seo-meta";
 import { PageJsonLd } from "@/components/seo/PageJsonLd";
 import { teamPageJsonLdGraph } from "@/lib/page-jsonld";
@@ -229,12 +229,10 @@ export default function TeamPage() {
             </ol>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 md:mt-20 md:gap-4">
+          <div className="mx-auto mt-16 grid max-w-xl grid-cols-2 gap-3 md:mt-20 md:gap-4">
             {[
               { value: companyInfo.experience.split(/\s/)[0] ?? "5+", label: "Years building" },
               { value: String(companyInfo.inHouseTeamCount), label: "In-house team" },
-              { value: projectsDeliveredCountDisplay, label: "Projects delivered" },
-              { value: "10+", label: "Countries served" },
             ].map((s) => (
               <div key={s.label} className="rounded-xl border border-zinc-200 bg-white px-4 py-5 text-center shadow-sm">
                 <p className="text-2xl font-bold tabular-nums text-zinc-950 md:text-3xl">{s.value}</p>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { Calendar } from "lucide-react";
+import { companyInfo } from "@/lib/constants";
 import SectionHeading from "./SectionHeading";
 import { calendlyUrl, trustLinks } from "./data";
 import ContactForm from "./ContactForm";
@@ -41,8 +41,8 @@ export default function Contact() {
           <div className="space-y-3 border-t border-zinc-800 pt-6 text-zinc-400">
             <p>
               <span className="text-zinc-500">Email </span>
-              <a href="mailto:hamzahakim12235@gmail.com" className="text-white hover:text-secondary">
-                hamzahakim12235@gmail.com
+              <a href={`mailto:${companyInfo.email}`} className="text-white hover:text-secondary">
+                {companyInfo.email}
               </a>
             </p>
             <p>

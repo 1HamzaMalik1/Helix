@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight, Youtube, Facebook, Instagram } from 'lucide-react';
+import { SiTiktok } from 'react-icons/si';
 import { companyInfo, siteUrl } from '@/lib/constants';
 import { getNavServiceGroups } from '@/lib/site-nav';
 import PreferredSourceBadge from '@/components/seo/PreferredSourceBadge';
@@ -15,6 +16,15 @@ const footerLinkRow: FooterLink[] = [
   { label: 'Privacy', href: '/privacy-policy' },
   { label: 'Terms', href: '/terms-and-conditions' },
   { label: 'LLMs.txt', href: `${siteUrl}/llms.txt`, external: true },
+];
+
+const socialLinks = [
+  { label: 'LinkedIn', href: companyInfo.linkedInCompany, Icon: Linkedin },
+  { label: 'GitHub', href: 'https://github.com/1HamzaMalik1', Icon: Github },
+  { label: 'YouTube', href: companyInfo.youtubeUrl, Icon: Youtube },
+  { label: 'Facebook', href: companyInfo.facebookUrl, Icon: Facebook },
+  { label: 'Instagram', href: companyInfo.instagramUrl, Icon: Instagram },
+  { label: 'TikTok', href: companyInfo.tiktokUrl, Icon: SiTiktok },
 ];
 
 export default function Footer() {
@@ -46,24 +56,19 @@ export default function Footer() {
             <div className="mt-6"><PreferredSourceBadge /></div>
             <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/35">Find us elsewhere</p>
             <div className="mt-3 flex flex-wrap gap-3">
-              <a
-                href={companyInfo.linkedInCompany}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white/70 transition hover:border-[#F46530]/50 hover:text-[#F46530]"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="https://github.com/1HamzaMalik1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white/70 transition hover:border-[#F46530]/50 hover:text-[#F46530]"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
+              {socialLinks.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white/70 transition hover:border-[#F46530]/50 hover:text-[#F46530] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F46530]"
+                  aria-label={label}
+                  title={label}
+                >
+                  <Icon className="h-5 w-5" aria-hidden />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -150,7 +155,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm text-white/45">
-            © {year} {companyInfo.name}. All rights reserved.
+            © {year} {companyInfo.legalName}. All rights reserved.
           </p>
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
             {footerLinkRow.map((item) =>

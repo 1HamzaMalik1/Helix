@@ -4,7 +4,6 @@ import { companyInfo, siteUrl } from "@/lib/constants";
 export function serviceDetailJsonLdGraphV3(
   service: Service,
   faqs: { question: string; answer: string }[] = [],
-  stats: { label: string; value: string }[] = [],
   results: { metric: string; description: string }[] = []
 ) {
   const baseUrl = siteUrl;
@@ -166,21 +165,6 @@ export function serviceDetailJsonLdGraphV3(
                   text: faq.answer,
                 },
               })),
-            },
-          ]
-        : []),
-
-      // AggregateRating Schema (if stats available)
-      ...(stats.length > 0
-        ? [
-            {
-              "@type": "AggregateRating",
-              "@id": `${serviceUrl}#rating`,
-              ratingValue: "4.8",
-              bestRating: "5",
-              worstRating: "1",
-              ratingCount: "94",
-              name: `${service.title} Rating`,
             },
           ]
         : []),

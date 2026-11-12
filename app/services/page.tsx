@@ -40,7 +40,7 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
 };
 
 export const metadata: Metadata = {
-  title: "Software Development Services | HelixCore",
+  title: { absolute: "Software Development Services | HelixCore" },
   description: metaDescription(
     "HelixCore Studio services: AI development, game development, web apps, Unity, playables, ecommerce, and automation—delivered remotely for global clients.",
   ),

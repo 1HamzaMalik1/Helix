@@ -56,7 +56,7 @@ export default function AiAgentDevelopmentForStartupsArticle() {
         HelixCore Studio delivers AI agent development for startups with a production-first mindset. We focus on use cases where an AI agent can actually improve operations and create commercial leverage, rather than chasing novelty.
       </p>
       <p>
-        If your startup needs a partner that can build an AI agent, integrate it with your existing stack, and help you measure the outcome, we can support the work from pilot to production.
+        Our <InternalLink href="/services/ai-agent-services">custom AI agent development services</InternalLink> cover workflow design, integrations, and evaluation from pilot to production.
       </p>
       <p>
         We also help startups connect AI agent development to commercial metrics and product velocity by aligning the work with your funding plan and growth targets.
